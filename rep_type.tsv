@@ -1,0 +1,1749 @@
+contig_name	strain_name	taxon	rep_type
+CP108322	['NBC_00001']	['Streptomyces canus']	chromosome
+CP108321	['NBC_00002']	['Streptomyces canus']	chromosome
+CP108318	['NBC_00003']	['Streptomyces sp. NBC_00003']	chromosome
+CP108319	['NBC_00003']	['Streptomyces sp. NBC_00003']	extrachromosomal
+CP108320	['NBC_00003']	['Streptomyces sp. NBC_00003']	extrachromosomal
+CP108316	['NBC_00005']	['Streptomyces sp. NBC_00005']	chromosome
+CP108317	['NBC_00005']	['Streptomyces sp. NBC_00005']	plasmid
+CP108313	['NBC_00008']	['Streptomyces sp. NBC_00008']	chromosome
+CP108314	['NBC_00008']	['Streptomyces sp. NBC_00008']	extrachromosomal
+CP108315	['NBC_00008']	['Streptomyces sp. NBC_00008']	plasmid
+CP108312	['NBC_00009']	['Streptomyces sp. NBC 00009']	chromosome
+CP108309	['NBC_00012']	['Streptomyces sp. NBC 00012']	chromosome
+CP108310	['NBC_00012']	['Streptomyces sp. NBC 00012']	plasmid
+CP108311	['NBC_00012']	['Streptomyces sp. NBC 00012']	plasmid
+CP108306	['NBC_00015']	['Streptomyces sp. NBC_00015']	chromosome
+CP108307	['NBC_00015']	['Streptomyces sp. NBC_00015']	plasmid
+CP108308	['NBC_00015']	['Streptomyces sp. NBC_00015']	plasmid
+CP108304	['NBC_00016']	['Streptomyces sp. NBC 00016']	chromosome
+CP108305	['NBC_00016']	['Streptomyces sp. NBC 00016']	plasmid
+CP108341	['NBC_00017']	['Streptomyces purpurascens']	chromosome
+CP108302	['NBC_00019']	['Streptomyces sp. NBC 00019']	chromosome
+CP108303	['NBC_00019']	['Streptomyces sp. NBC 00019']	plasmid
+CP108299	['NBC_00022']	['Streptomyces canus']	chromosome
+CP108300	['NBC_00022']	['Streptomyces canus']	plasmid
+CP108301	['NBC_00022']	['Streptomyces canus']	plasmid
+CP108339	['NBC_00023']	['Streptomyces jietaisiensis']	chromosome
+CP108340	['NBC_00023']	['Streptomyces jietaisiensis']	plasmid
+CP108298	['NBC_00024']	['Streptomyces sp. NBC_00024']	chromosome
+CP108295	['NBC_00027']	['Streptomyces melanogenes']	chromosome
+CP108296	['NBC_00027']	['Streptomyces melanogenes']	plasmid
+CP108297	['NBC_00027']	['Streptomyces melanogenes']	extrachromosomal
+CP108293	['NBC_00028']	['Streptomyces sp. NBC 00028']	chromosome
+CP108294	['NBC_00028']	['Streptomyces sp. NBC 00028']	plasmid
+CP108292	['NBC_00029']	['Streptomyces sp. NBC_00029']	chromosome
+CP108291	['NBC_00035']	['Streptomyces sp. NBC_00035']	chromosome
+CP108289	['NBC_00039']	['Kitasatospora sp. NBC_00039']	chromosome
+CP108290	['NBC_00039']	['Kitasatospora sp. NBC_00039']	plasmid
+CP108287	['NBC_00040']	['Streptomyces sp. NBC_00040']	chromosome
+CP108288	['NBC_00040']	['Streptomyces sp. NBC_00040']	plasmid
+CP108283	['NBC_00041']	['Streptomyces atratus']	chromosome
+CP108284	['NBC_00041']	['Streptomyces atratus']	plasmid
+CP108285	['NBC_00041']	['Streptomyces atratus']	plasmid
+CP108286	['NBC_00041']	['Streptomyces atratus']	extrachromosomal
+CP108281	['NBC_00042']	['[Kitasatospora] papulosa']	chromosome
+CP108282	['NBC_00042']	['[Kitasatospora] papulosa']	plasmid
+CP108276	['NBC_00043']	['Streptomyces atratus']	chromosome
+CP108277	['NBC_00043']	['Streptomyces atratus']	plasmid
+CP108278	['NBC_00043']	['Streptomyces atratus']	plasmid
+CP108279	['NBC_00043']	['Streptomyces atratus']	plasmid
+CP108280	['NBC_00043']	['Streptomyces atratus']	extrachromosomal
+CP108273	['NBC_00044']	['Streptomyces zaomyceticus']	chromosome
+CP108274	['NBC_00044']	['Streptomyces zaomyceticus']	plasmid
+CP108275	['NBC_00044']	['Streptomyces zaomyceticus']	plasmid
+CP108271	['NBC_00045']	['Streptomyces sp. NBC 00045']	chromosome
+CP108272	['NBC_00045']	['Streptomyces sp. NBC 00045']	plasmid
+CP108268	['NBC_00046']	['Streptomyces sp. NBC 00046']	chromosome
+CP108269	['NBC_00046']	['Streptomyces sp. NBC 00046']	plasmid
+CP108270	['NBC_00046']	['Streptomyces sp. NBC 00046']	plasmid
+CP108266	['NBC_00048']	['Streptomyces sp. NBC 00048']	chromosome
+CP108267	['NBC_00048']	['Streptomyces sp. NBC 00048']	plasmid
+CP108264	['NBC_00049']	['Streptomyces sp. NBC_00049']	chromosome
+CP108265	['NBC_00049']	['Streptomyces sp. NBC_00049']	extrachromosomal
+CP108261	['NBC_00053']	['Streptomyces sp. NBC 00053']	chromosome
+CP108262	['NBC_00053']	['Streptomyces sp. NBC 00053']	plasmid
+CP108263	['NBC_00053']	['Streptomyces sp. NBC 00053']	plasmid
+CP108259	['NBC_00055']	['Streptomyces sp. NBC 00055']	chromosome
+CP108260	['NBC_00055']	['Streptomyces sp. NBC 00055']	plasmid
+CP108258	['NBC_00056']	['Streptomyces sp. NBC 00056']	chromosome
+CP108256	['NBC_00057']	['Streptomyces sp. NBC 00057']	chromosome
+CP108257	['NBC_00057']	['Streptomyces sp. NBC 00057']	plasmid
+CP108253	['NBC_00060']	['Streptomyces sp. NBC 00060']	chromosome
+CP108254	['NBC_00060']	['Streptomyces sp. NBC 00060']	plasmid
+CP108255	['NBC_00060']	['Streptomyces sp. NBC 00060']	extrachromosomal
+CP108252	['NBC_00061']	['Kitasatospora purpeofusca']	chromosome
+CP108249	['NBC_00069']	['Streptomyces sp. NBC 00069']	chromosome
+CP108250	['NBC_00069']	['Streptomyces sp. NBC 00069']	plasmid
+CP108251	['NBC_00069']	['Streptomyces sp. NBC 00069']	plasmid
+CP108247	['NBC_00070']	['Kitasatospora sp. NBC 00070']	chromosome
+CP108248	['NBC_00070']	['Kitasatospora sp. NBC 00070']	plasmid
+CP108244	['NBC_00073']	['Streptomyces sp. NBC 00073']	chromosome
+CP108245	['NBC_00073']	['Streptomyces sp. NBC 00073']	plasmid
+CP108246	['NBC_00073']	['Streptomyces sp. NBC 00073']	plasmid
+CP108243	['NBC_00075']	['Streptomyces sp. NBC 00075']	chromosome
+CP108242	['NBC_00076']	['Streptomyces sp. NBC 00076']	chromosome
+CP108238	['NBC_00077']	['Streptomyces exfoliatus']	chromosome
+CP108239	['NBC_00077']	['Streptomyces exfoliatus']	plasmid
+CP108240	['NBC_00077']	['Streptomyces exfoliatus']	extrachromosomal
+CP108241	['NBC_00077']	['Streptomyces exfoliatus']	extrachromosomal
+CP108237	['NBC_00079']	['Streptomyces sp. NBC 00079']	chromosome
+CP108235	['NBC_00080']	['Streptomyces sp. NBC 00080']	chromosome
+CP108236	['NBC_00080']	['Streptomyces sp. NBC 00080']	plasmid
+CP108234	['NBC_00081']	['Streptomyces sp. NBC 00081']	chromosome
+CP108233	['NBC_00082']	['[Kitasatospora] papulosa']	chromosome
+CP108230	['NBC_00084']	['Streptomyces zaomyceticus']	chromosome
+CP108231	['NBC_00084']	['Streptomyces zaomyceticus']	plasmid
+CP108232	['NBC_00084']	['Streptomyces zaomyceticus']	plasmid
+CP108229	['NBC_00085']	['Kitasatospora sp. NBC_00085']	chromosome
+CP108227	['NBC_00087']	['Streptomyces canus']	chromosome
+CP108228	['NBC_00087']	['Streptomyces canus']	plasmid
+CP108225	['NBC_00088']	['Streptomyces zaomyceticus']	chromosome
+CP108226	['NBC_00088']	['Streptomyces zaomyceticus']	plasmid
+CP108224	['NBC_00090']	['Streptomyces sp. NBC_00090']	chromosome
+CP108222	['NBC_00093']	['Streptomyces sp. NBC 00093']	chromosome
+CP108223	['NBC_00093']	['Streptomyces sp. NBC 00093']	extrachromosomal
+CP108221	['NBC_00096']	['Streptomyces sp. NBC 00096']	chromosome
+CP108218	['NBC_00099']	['Streptomyces coelicoflavus']	chromosome
+CP108219	['NBC_00099']	['Streptomyces coelicoflavus']	plasmid
+CP108220	['NBC_00099']	['Streptomyces coelicoflavus']	plasmid
+CP108217	['NBC_00101']	['Streptomyces sp. NBC 00101']	chromosome
+CP108215	['NBC_00104']	['Streptomyces sp. NBC_00104']	chromosome
+CP108216	['NBC_00104']	['Streptomyces sp. NBC_00104']	plasmid
+CP108213	['NBC_00105']	['Streptomyces sp. NBC_00105']	chromosome
+CP108214	['NBC_00105']	['Streptomyces sp. NBC_00105']	plasmid
+CP108208	['NBC_00106']	['Kitasatospora indigofera']	chromosome
+CP108209	['NBC_00106']	['Kitasatospora indigofera']	plasmid
+CP108210	['NBC_00106']	['Kitasatospora indigofera']	plasmid
+CP108211	['NBC_00106']	['Kitasatospora indigofera']	extrachromosomal
+CP108212	['NBC_00106']	['Kitasatospora indigofera']	extrachromosomal
+CP108207	['NBC_00107']	['Streptomyces anulatus']	chromosome
+CP108206	['NBC_00110']	['Streptomyces sp. NBC 00110']	chromosome
+CP108203	['NBC_00111']	['Streptomyces sp. NBC 00111']	chromosome
+CP108204	['NBC_00111']	['Streptomyces sp. NBC 00111']	plasmid
+CP108205	['NBC_00111']	['Streptomyces sp. NBC 00111']	plasmid
+CP108202	['NBC_00112']	['Micrococcus luteus']	chromosome
+CP108201	['NBC_00114']	['Streptomyces sp. NBC 00114']	chromosome
+CP108200	['NBC_00116']	['Streptomyces anthocyanicus']	chromosome
+CP108199	['NBC_00117']	['Streptomyces sp. NBC 00117']	chromosome
+CP108198	['NBC_00118']	['Streptomyces sp. NBC 00118']	chromosome
+CP108195	['NBC_00119']	['Streptomyces sp. NBC 00119']	chromosome
+CP108196	['NBC_00119']	['Streptomyces sp. NBC 00119']	extrachromosomal
+CP108197	['NBC_00119']	['Streptomyces sp. NBC 00119']	extrachromosomal
+CP108194	['NBC_00121']	['Streptomyces sp. NBC 00121']	chromosome
+CP108191	['NBC_00122']	['Streptomyces sp. NBC_00122']	chromosome
+CP108192	['NBC_00122']	['Streptomyces sp. NBC_00122']	plasmid
+CP108193	['NBC_00122']	['Streptomyces sp. NBC_00122']	plasmid
+CP108188	['NBC_00123']	['Streptomyces zaomyceticus']	chromosome
+CP108189	['NBC_00123']	['Streptomyces zaomyceticus']	plasmid
+CP108190	['NBC_00123']	['Streptomyces zaomyceticus']	plasmid
+CP108184	['NBC_00125']	['Streptomyces virginiae']	chromosome
+CP108185	['NBC_00125']	['Streptomyces virginiae']	plasmid
+CP108186	['NBC_00125']	['Streptomyces virginiae']	plasmid
+CP108187	['NBC_00125']	['Streptomyces virginiae']	plasmid
+CP108334	['NBC_00131']	['Streptomyces virginiae']	chromosome
+CP108335	['NBC_00131']	['Streptomyces virginiae']	plasmid
+CP108336	['NBC_00131']	['Streptomyces virginiae']	extrachromosomal
+CP108337	['NBC_00131']	['Streptomyces virginiae']	plasmid
+CP108338	['NBC_00131']	['Streptomyces virginiae']	extrachromosomal
+CP108183	['NBC_00133']	['Streptomyces sp. NBC_00133']	chromosome
+CP108181	['NBC_00134']	['Streptomyces sp. NBC 00134']	chromosome
+CP108182	['NBC_00134']	['Streptomyces sp. NBC 00134']	plasmid
+CP108179	['NBC_00135']	['Streptomyces canus']	chromosome
+CP108180	['NBC_00135']	['Streptomyces canus']	plasmid
+CP108177	['NBC_00138']	['Streptomyces sp. NBC_00138']	chromosome
+CP108178	['NBC_00138']	['Streptomyces sp. NBC_00138']	plasmid
+CP108175	['NBC_00144']	['Streptomyces sp. NBC 00144']	chromosome
+CP108176	['NBC_00144']	['Streptomyces sp. NBC 00144']	plasmid
+CP108174	['NBC_00145']	['Streptomyces sp. NBC 00145']	chromosome
+CP108172	['NBC_00147']	['Streptomyces sp. NBC 00147']	chromosome
+CP108173	['NBC_00147']	['Streptomyces sp. NBC 00147']	plasmid
+CP108169	['NBC_00148']	['Streptomyces sp. NBC_00148']	chromosome
+CP108170	['NBC_00148']	['Streptomyces sp. NBC_00148']	plasmid
+CP108171	['NBC_00148']	['Streptomyces sp. NBC_00148']	extrachromosomal
+CP130716	['NBC_00150']	['Streptomyces sp. NBC_00150']	chromosome
+CP130717	['NBC_00150']	['Streptomyces sp. NBC_00150']	plasmid
+CP108166	['NBC 00150']	['Streptomyces sp. NBC 00150']	chromosome
+CP108167	['NBC 00150']	['Streptomyces sp. NBC 00150']	plasmid
+CP108168	['NBC 00150']	['Streptomyces sp. NBC 00150']	extrachromosomal
+CP108165	['NBC_00151']	['Streptomyces sp. NBC 00151']	chromosome
+CP108164	['NBC_00156']	['Streptomyces achromogenes']	chromosome
+CP108161	['NBC_00158']	['Streptomyces sp. NBC_00158']	chromosome
+CP108162	['NBC_00158']	['Streptomyces sp. NBC_00158']	plasmid
+CP108163	['NBC_00158']	['Streptomyces sp. NBC_00158']	plasmid
+CP108156	['NBC_00161']	['Streptomyces sp. NBC 00161']	chromosome
+CP108157	['NBC_00161']	['Streptomyces sp. NBC 00161']	plasmid
+CP108158	['NBC_00161']	['Streptomyces sp. NBC 00161']	plasmid
+CP108159	['NBC_00161']	['Streptomyces sp. NBC 00161']	plasmid
+CP108160	['NBC_00161']	['Streptomyces sp. NBC 00161']	plasmid
+CP108155	['NBC_00163']	['Nocardioides sp. NBC 00163']	chromosome
+CP108153	['NBC 00164']	['Streptomyces virginiae']	chromosome
+CP108154	['NBC 00164']	['Streptomyces virginiae']	extrachromosomal
+CP108152	['NBC_00165']	['Streptomyces glauciniger']	chromosome
+CP108148	['NBC_00168']	['Streptomyces virginiae']	chromosome
+CP108149	['NBC_00168']	['Streptomyces virginiae']	plasmid
+CP108150	['NBC_00168']	['Streptomyces virginiae']	plasmid
+CP108151	['NBC_00168']	['Streptomyces virginiae']	plasmid
+CP108147	['NBC_00169']	['Streptomyces sp. NBC_00169']	chromosome
+CP108146	['NBC_00171']	['Streptomyces anulatus']	chromosome
+CP108145	['NBC_00172']	['Streptomyces sp. NBC_00172']	chromosome
+CP108143	['NBC_00178']	['Streptomyces sp. NBC 00178']	chromosome
+CP108144	['NBC_00178']	['Streptomyces sp. NBC 00178']	plasmid
+CP108142	['NBC_00179']	['Streptomyces virginiae']	chromosome
+CP108140	['NBC 00180']	['Streptomyces sp. NBC_00180']	chromosome
+CP108141	['NBC 00180']	['Streptomyces sp. NBC_00180']	extrachromosomal
+CP108137	['NBC_00184']	['Streptomyces sp. NBC 00184']	chromosome
+CP108138	['NBC_00184']	['Streptomyces sp. NBC 00184']	plasmid
+CP108139	['NBC_00184']	['Streptomyces sp. NBC 00184']	plasmid
+CP108135	['NBC_00185']	['[Kitasatospora] papulosa']	chromosome
+CP108136	['NBC_00185']	['[Kitasatospora] papulosa']	plasmid
+CP108134	['NBC_00186']	['Streptomyces phaeochromogenes']	chromosome
+CP108333	['NBC_00187']	['Streptomyces phaeochromogenes']	chromosome
+CP108133	['NBC_00189']	['Streptomyces tauricus']	chromosome
+CP108131	['NBC_00190']	['Streptomyces sp. NBC_00190']	chromosome
+CP108132	['NBC_00190']	['Streptomyces sp. NBC_00190']	plasmid
+CP108130	['NBC_00191']	['Streptomyces sp. NBC 00191']	chromosome
+CP108129	['NBC_00196']	['Microbispora hainanensis']	chromosome
+CP108128	['NBC_00197']	['Streptomyces sp. NBC 00197']	chromosome
+CP108127	['NBC_00200']	['Streptomyces mirabilis']	chromosome
+CP108126	['NBC_00203']	['Streptomyces sp. NBC 00203']	chromosome
+CP108125	['NBC_00206']	['Streptomyces nigra']	chromosome
+CP108124	['NBC_00207']	['Streptomyces sp. NBC_00207']	chromosome
+CP130715	['NBC_00207']	['Streptomyces sp. NBC_00207']	chromosome
+CP108123	['NBC_00208']	['Streptomyces sp. NBC 00208']	chromosome
+CP108121	['NBC_00209']	['Streptomyces sp. NBC 00209']	chromosome
+CP108122	['NBC_00209']	['Streptomyces sp. NBC 00209']	plasmid
+CP108120	['NBC_00210']	['Streptomyces sp. NBC_00210']	chromosome
+CP108118	['NBC_00211']	['Streptomyces sp. NBC 00211']	chromosome
+CP108119	['NBC_00211']	['Streptomyces sp. NBC 00211']	plasmid
+CP108115	['NBC_00212']	['Streptomyces sp. NBC 00212']	chromosome
+CP108116	['NBC_00212']	['Streptomyces sp. NBC 00212']	plasmid
+CP108117	['NBC_00212']	['Streptomyces sp. NBC 00212']	plasmid
+CP108114	['NBC_00215']	['Streptomyces chartreusis']	chromosome
+CP108113	['NBC_00217']	['Streptomyces achromogenes']	chromosome
+CP108111	['NBC_00220']	['Streptomyces virginiae']	chromosome
+CP108112	['NBC_00220']	['Streptomyces virginiae']	plasmid
+CP108345	['NBC_00221']	['Streptomyces phaeochromogenes']	chromosome
+CP108110	['NBC_00222']	['Kitasatospora purpeofusca']	chromosome
+CP108109	['NBC_00223']	['Streptomyces sp. NBC 00223']	chromosome
+CP108106	['NBC 00224']	['Streptomyces sp. NBC 00224']	chromosome
+CP108107	['NBC 00224']	['Streptomyces sp. NBC 00224']	plasmid
+CP108108	['NBC 00224']	['Streptomyces sp. NBC 00224']	extrachromosomal
+CP108105	['NBC_00225']	['Streptomyces canus']	chromosome
+CP108103	['NBC 00226']	['Streptomyces virginiae']	chromosome
+CP108104	['NBC 00226']	['Streptomyces virginiae']	extrachromosomal
+CP108102	['NBC_00228']	['Streptomyces sp. NBC_00228']	chromosome
+CP108101	['NBC_00234']	['Streptomyces sp. NBC_00234']	chromosome
+CP108100	['NBC_00236']	['Streptomyces sp. NBC_00236']	chromosome
+CP108344	['NBC_00238']	['Streptomyces gancidicus']	chromosome
+CP108095	['NBC_00239']	['Streptomyces sp. NBC_00239']	chromosome
+CP108096	['NBC_00239']	['Streptomyces sp. NBC_00239']	plasmid
+CP108097	['NBC_00239']	['Streptomyces sp. NBC_00239']	plasmid
+CP108098	['NBC_00239']	['Streptomyces sp. NBC_00239']	plasmid
+CP108099	['NBC_00239']	['Streptomyces sp. NBC_00239']	plasmid
+CP108094	['NBC_00243']	['Streptomyces sp. NBC 00243']	chromosome
+CP108093	['NBC_00247']	['Streptomyces sp. NBC 00247']	chromosome
+CP108090	['NBC_00248']	['Streptomyces virginiae']	chromosome
+CP108091	['NBC_00248']	['Streptomyces virginiae']	plasmid
+CP108092	['NBC_00248']	['Streptomyces virginiae']	plasmid
+CP108088	['NBC_00250']	['Streptomyces sp. NBC_00250']	chromosome
+CP108089	['NBC_00250']	['Streptomyces sp. NBC_00250']	plasmid
+CP108087	['NBC_00252']	['Streptomyces sp. NBC 00252']	chromosome
+CP108086	['NBC_00253']	['Microbispora hainanensis']	chromosome
+CP108085	['NBC_00254']	['Microbispora hainanensis']	chromosome
+CP108084	['NBC_00256']	['Micromonospora globbae']	chromosome
+CP108082	['NBC_00257']	['Streptomyces sp. NBC 00257']	chromosome
+CP108083	['NBC_00257']	['Streptomyces sp. NBC 00257']	plasmid
+CP108081	['NBC_00258']	['Streptomyces sp. NBC_00258']	chromosome
+CP108080	['NBC_00259']	['Streptomyces sp. NBC_00259']	chromosome
+CP108079	['NBC_00261']	['Streptomyces europaeiscabiei']	chromosome
+CP108076	['NBC_00267']	['Streptomyces sp. NBC 00267']	chromosome
+CP108077	['NBC_00267']	['Streptomyces sp. NBC 00267']	plasmid
+CP108078	['NBC_00267']	['Streptomyces sp. NBC 00267']	plasmid
+CP108075	['NBC_00269']	['Streptomyces sp. NBC 00269']	chromosome
+CP108073	['NBC_00270']	['Streptomyces caniferus']	chromosome
+CP108074	['NBC_00270']	['Streptomyces caniferus']	plasmid
+CP108070	['NBC_00271']	['Streptomyces sp. NBC 00271']	chromosome
+CP108071	['NBC_00271']	['Streptomyces sp. NBC 00271']	plasmid
+CP108072	['NBC_00271']	['Streptomyces sp. NBC 00271']	plasmid
+CP108068	['NBC_00272']	['Streptomyces sp. NBC 00272']	chromosome
+CP108069	['NBC_00272']	['Streptomyces sp. NBC 00272']	plasmid
+CP108067	['NBC_00273']	['Streptomyces sp. NBC_00273']	chromosome
+CP108065	['NBC_00277']	['Streptomyces canus']	chromosome
+CP108066	['NBC_00277']	['Streptomyces canus']	plasmid
+CP108062	['NBC 00278']	['Streptomyces zaomyceticus']	chromosome
+CP108063	['NBC 00278']	['Streptomyces zaomyceticus']	plasmid
+CP108064	['NBC 00278']	['Streptomyces zaomyceticus']	extrachromosomal
+CP108059	['NBC 00280']	['Streptomyces sp. NBC 00280']	chromosome
+CP108060	['NBC 00280']	['Streptomyces sp. NBC 00280']	plasmid
+CP108061	['NBC 00280']	['Streptomyces sp. NBC 00280']	extrachromosomal
+CP108057	['NBC_00283']	['Streptomyces goshikiensis']	chromosome
+CP108058	['NBC_00283']	['Streptomyces goshikiensis']	plasmid
+CP108055	['NBC_00285']	['Streptomyces sp. NBC 00285']	chromosome
+CP108056	['NBC_00285']	['Streptomyces sp. NBC 00285']	plasmid
+CP108054	['NBC_00286']	['Streptomyces sp. NBC 00286']	chromosome
+CP108053	['NBC_00287']	['Streptomyces sp. NBC 00287']	chromosome
+CP108052	['NBC_00288']	['Streptomyces virginiae']	chromosome
+CP108046	['NBC 00289']	['Streptomyces sp. NBC 00289']	chromosome
+CP108047	['NBC 00289']	['Streptomyces sp. NBC 00289']	plasmid
+CP108048	['NBC 00289']	['Streptomyces sp. NBC 00289']	plasmid
+CP108049	['NBC 00289']	['Streptomyces sp. NBC 00289']	plasmid
+CP108050	['NBC 00289']	['Streptomyces sp. NBC 00289']	plasmid
+CP108051	['NBC 00289']	['Streptomyces sp. NBC 00289']	extrachromosomal
+CP108342	['NBC_00293']	['Streptomyces violaceus']	chromosome
+CP108043	['NBC_00294']	['Rhodococcus sp. NBC 00294']	chromosome
+CP108044	['NBC_00294']	['Rhodococcus sp. NBC 00294']	plasmid
+CP108045	['NBC_00294']	['Rhodococcus sp. NBC 00294']	plasmid
+CP108332	['NBC_00295']	['Micromonospora chokoriensis']	chromosome
+CP108041	['NBC_00297']	['Rhodococcus sp. NBC 00297']	chromosome
+CP108042	['NBC_00297']	['Rhodococcus sp. NBC 00297']	plasmid
+CP108039	['NBC_00299']	['Streptomyces sp. NBC 00299']	chromosome
+CP108040	['NBC_00299']	['Streptomyces sp. NBC 00299']	plasmid
+CP108038	['NBC_00302']	['Streptomyces bobili']	chromosome
+CP108036	['NBC_00303']	['Streptomyces erythrochromogenes']	chromosome
+CP108037	['NBC_00303']	['Streptomyces erythrochromogenes']	plasmid
+CP108033	['NBC_00304']	['Streptomyces sp. NBC 00304']	chromosome
+CP108034	['NBC_00304']	['Streptomyces sp. NBC 00304']	plasmid
+CP108035	['NBC_00304']	['Streptomyces sp. NBC 00304']	plasmid
+CP108032	['NBC_00306']	['Streptomyces sp. NBC 00306']	chromosome
+CP130714	['NBC_00310']	['Streptomyces sp. NBC_00310']	chromosome
+CP108031	['NBC_00310']	['Streptomyces sp. NBC_00310']	chromosome
+CP108030	['NBC_00311']	['Streptomyces sp. NBC 00311']	chromosome
+CP108029	['NBC_00314']	['Streptomyces caniferus']	chromosome
+CP108025	['NBC 00315']	['Kitasatospora sp. NBC 00315']	chromosome
+CP108026	['NBC 00315']	['Kitasatospora sp. NBC 00315']	plasmid
+CP108027	['NBC 00315']	['Kitasatospora sp. NBC 00315']	plasmid
+CP108028	['NBC 00315']	['Kitasatospora sp. NBC 00315']	extrachromosomal
+CP108023	['NBC_00316']	['Streptomyces sp. NBC 00316']	chromosome
+CP108024	['NBC_00316']	['Streptomyces sp. NBC 00316']	plasmid
+CP108022	['NBC_00317']	['Micromonospora zamorensis']	chromosome
+CP108021	['NBC_00319']	['Williamsia herbipolensis']	chromosome
+CP108020	['NBC_00321']	['Nocardia salmonicida']	chromosome
+CP108019	['NBC_00322']	['Streptomyces sp. NBC 00322']	chromosome
+CP108016	['NBC 00324']	['Streptomyces virginiae']	chromosome
+CP108017	['NBC 00324']	['Streptomyces virginiae']	extrachromosomal
+CP108018	['NBC 00324']	['Streptomyces virginiae']	extrachromosomal
+CP108014	['NBC_00326']	['Nocardia salmonicida']	chromosome
+CP108015	['NBC_00326']	['Nocardia salmonicida']	plasmid
+CP108013	['NBC_00328']	['Streptomyces sp. NBC_00328']	chromosome
+CP108012	['NBC_00330']	['Micromonospora sp. NBC_00330']	chromosome
+CP108011	['NBC_00333']	['Streptomyces phaeochromogenes']	chromosome
+CP108008	['NBC_00334']	['Streptomyces sp. NBC 00334']	chromosome
+CP108009	['NBC_00334']	['Streptomyces sp. NBC 00334']	plasmid
+CP108010	['NBC_00334']	['Streptomyces sp. NBC 00334']	plasmid
+CP108006	['NBC_00335']	['Streptomyces sp. NBC 00335']	chromosome
+CP108007	['NBC_00335']	['Streptomyces sp. NBC 00335']	plasmid
+CP108005	['NBC_00337']	['Streptomyces caniferus']	chromosome
+CP108002	['NBC 00341']	['Streptomyces sp. NBC 00341']	chromosome
+CP108003	['NBC 00341']	['Streptomyces sp. NBC 00341']	plasmid
+CP108004	['NBC 00341']	['Streptomyces sp. NBC 00341']	extrachromosomal
+CP107999	['NBC_00342']	['Streptomyces sp. NBC 00342']	chromosome
+CP108000	['NBC_00342']	['Streptomyces sp. NBC 00342']	plasmid
+CP108001	['NBC_00342']	['Streptomyces sp. NBC 00342']	plasmid
+CP107998	['NBC_00343']	['Streptomyces sp. NBC 00343']	chromosome
+CP107996	['NBC_00344']	['Streptomyces sp. NBC 00344']	chromosome
+CP107997	['NBC_00344']	['Streptomyces sp. NBC 00344']	plasmid
+CP107995	['NBC_00345']	['Amycolatopsis sp. NBC 00345']	chromosome
+CP107994	['NBC_00348']	['Amycolatopsis sp. NBC 00348']	chromosome
+CP107989	['NBC 00349']	['Streptomyces canus']	chromosome
+CP107990	['NBC 00349']	['Streptomyces canus']	plasmid
+CP107991	['NBC 00349']	['Streptomyces canus']	plasmid
+CP107992	['NBC 00349']	['Streptomyces canus']	extrachromosomal
+CP107993	['NBC 00349']	['Streptomyces canus']	plasmid
+CP107986	['NBC_00350']	['Streptomyces canus']	chromosome
+CP107987	['NBC_00350']	['Streptomyces canus']	plasmid
+CP107988	['NBC_00350']	['Streptomyces canus']	plasmid
+CP107985	['NBC_00353']	['Streptomyces sp. NBC 00353']	chromosome
+CP107983	['NBC_00354']	['Streptomyces sp. NBC 00354']	chromosome
+CP107984	['NBC_00354']	['Streptomyces sp. NBC 00354']	plasmid
+CP107982	['NBC_00355']	['Amycolatopsis sp. NBC 00355']	chromosome
+CP107981	['NBC_00356']	['Streptomyces sp. NBC 00356']	chromosome
+CP107977	['NBC_00357']	['Streptomyces coelicoflavus']	chromosome
+CP107978	['NBC_00357']	['Streptomyces coelicoflavus']	plasmid
+CP107979	['NBC_00357']	['Streptomyces coelicoflavus']	plasmid
+CP107980	['NBC_00357']	['Streptomyces coelicoflavus']	plasmid
+CP107976	['NBC_00358']	['Streptomyces sp. NBC 00358']	chromosome
+CP107975	['NBC_00359']	['Kribbella sp. NBC 00359']	chromosome
+CP107974	['NBC_00361']	['Micromonospora zamorensis']	chromosome
+CP107972	['NBC_00363']	['Streptomyces europaeiscabiei']	chromosome
+CP107973	['NBC_00363']	['Streptomyces europaeiscabiei']	plasmid
+CP107971	['NBC_00366']	['Streptomyces sp. NBC 00366']	chromosome
+CP107970	['NBC_00368']	['Nocardioides sp. NBC 00368']	chromosome
+CP107969	['NBC_00369']	['Nocardia cyriacigeorgica']	chromosome
+CP107968	['NBC_00370']	['Streptomyces sp. NBC 00370']	chromosome
+CP107967	['NBC_00371']	['Streptomyces sp. NBC 00371']	chromosome
+CP107964	['NBC 00374']	['Kitasatospora sp. NBC 00374']	chromosome
+CP107965	['NBC 00374']	['Kitasatospora sp. NBC 00374']	plasmid
+CP107966	['NBC 00374']	['Kitasatospora sp. NBC 00374']	extrachromosomal
+CP107963	['NBC_00375']	['Streptomyces platensis']	chromosome
+CP107960	['NBC_00376']	['Streptomyces sp. NBC 00376']	chromosome
+CP107961	['NBC_00376']	['Streptomyces sp. NBC 00376']	plasmid
+CP107962	['NBC_00376']	['Streptomyces sp. NBC 00376']	plasmid
+CP107958	['NBC_00377']	['Streptomyces sp. NBC 00377']	chromosome
+CP107959	['NBC_00377']	['Streptomyces sp. NBC 00377']	plasmid
+CP107957	['NBC_00379']	['Streptomyces mirabilis']	chromosome
+CP107956	['NBC_00380']	['Kribbella soli']	chromosome
+CP107955	['NBC_00381']	['Streptomyces mirabilis']	chromosome
+CP107954	['NBC_00382']	['Kribbella sp. NBC 00382']	chromosome
+CP107952	['NBC 00383']	['Streptomyces tubercidicus']	chromosome
+CP107953	['NBC 00383']	['Streptomyces tubercidicus']	extrachromosomal
+CP107951	['NBC_00385']	['Streptomyces sp. NBC 00385']	chromosome
+CP107950	['NBC_00386']	['Streptomyces sp. NBC 00386']	chromosome
+CP107948	['NBC_00388']	['Streptomyces sp. NBC 00388']	chromosome
+CP107949	['NBC_00388']	['Streptomyces sp. NBC 00388']	plasmid
+CP107947	['NBC_00389']	['Micromonospora sp. NBC_00389']	chromosome
+CP107945	['NBC_00390']	['Streptomyces sp. NBC 00390']	chromosome
+CP107946	['NBC_00390']	['Streptomyces sp. NBC 00390']	plasmid
+CP107944	['NBC_00391']	['Streptomyces sp. NBC_00391']	chromosome
+CP107943	['NBC_00392']	['Nocardia puris']	chromosome
+CP107942	['NBC_00393']	['Actinoplanes sp. NBC 00393']	chromosome
+CP107941	['NBC_00396']	['Micromonospora zamorensis']	chromosome
+CP108331	['NBC_00399']	['Actinomadura citrea']	chromosome
+CP107940	['NBC_00400']	['Streptomyces sp. NBC 00400']	chromosome
+CP107939	['NBC_00403']	['Nocardia sp. NBC 00403']	chromosome
+CP107938	['NBC_00405']	['Actinomycetospora sp. NBC 00405']	chromosome
+CP107936	['NBC_00407']	['Micromonospora zamorensis']	chromosome
+CP107937	['NBC_00407']	['Micromonospora zamorensis']	plasmid
+CP107935	['NBC_00414']	['Streptomyces sp. NBC 00414']	chromosome
+CP107933	['NBC_00415']	['Streptomyces zaomyceticus']	chromosome
+CP107934	['NBC_00415']	['Streptomyces zaomyceticus']	plasmid
+CP107932	['NBC_00416']	['Nocardia sp. NBC 00416']	chromosome
+CP107931	['NBC_00419']	['Mycobacterium sp. NBC 00419']	chromosome
+CP107930	['NBC_00420']	['Kineococcus sp. NBC_00420']	chromosome
+CP107929	['NBC_00421']	['Micromonospora sp. NBC 00421']	chromosome
+CP107928	['NBC_00425']	['Streptomyces sp. NBC 00425']	chromosome
+CP107927	['NBC_00431']	['Spirillospora sp. NBC 00431']	chromosome
+CP107926	['NBC_00433']	['Streptomyces sp. NBC 00433']	chromosome
+CP107924	['NBC_00435']	['Streptomyces sp. NBC_00435']	chromosome
+CP107925	['NBC_00435']	['Streptomyces sp. NBC_00435']	plasmid
+CP107923	['NBC_00438']	['Amycolatopsis sp. NBC_00438']	chromosome
+CP107921	['NBC_00440']	['Streptomyces sp. NBC 00440']	chromosome
+CP107922	['NBC_00440']	['Streptomyces sp. NBC 00440']	plasmid
+CP107919	['NBC_00441']	['Streptomyces sp. NBC 00441']	chromosome
+CP107920	['NBC_00441']	['Streptomyces sp. NBC 00441']	plasmid
+CP107918	['NBC_00442']	['Streptomyces sp. NBC_00442']	chromosome
+CP107917	['NBC_00443']	['Streptomyces sp. NBC 00443']	chromosome
+CP107916	['NBC_00444']	['Streptomyces sp. NBC 00444']	chromosome
+CP107914	['NBC_00445']	['Streptomyces sp. NBC 00445']	chromosome
+CP107915	['NBC_00445']	['Streptomyces sp. NBC 00445']	plasmid
+CP107913	['NBC_00448']	['Streptomyces sp. NBC_00448']	chromosome
+CP107911	['NBC_00450']	['Streptomyces violaceus']	chromosome
+CP107912	['NBC_00450']	['Streptomyces violaceus']	plasmid
+CP107910	['NBC_00453']	['Streptomyces sp. NBC_00453']	chromosome
+CP107907	['NBC 00454']	['Streptomyces sp. NBC 00454']	chromosome
+CP107908	['NBC 00454']	['Streptomyces sp. NBC 00454']	plasmid
+CP107909	['NBC 00454']	['Streptomyces sp. NBC 00454']	extrachromosomal
+CP109337	['NBC_00455']	['Streptomyces sp. NBC_00455']	chromosome
+CP109338	['NBC_00455']	['Streptomyces sp. NBC_00455']	plasmid
+CP107906	['NBC_00456']	['Streptomyces violaceus']	chromosome
+CP107905	['NBC_00457']	['Streptomyces sp. NBC 00457']	chromosome
+CP107904	['NBC_00458']	['Kitasatospora sp. NBC_00458']	chromosome
+CP107903	['NBC_00459']	['Streptomyces sp. NBC 00459']	chromosome
+CP107902	['NBC_00461']	['Streptomyces sp. NBC 00461']	chromosome
+CP107899	['NBC_00464']	['Streptomyces sp. NBC 00464']	chromosome
+CP107900	['NBC_00464']	['Streptomyces sp. NBC 00464']	plasmid
+CP107901	['NBC_00464']	['Streptomyces sp. NBC 00464']	plasmid
+CP107896	['NBC 00466']	['Streptomyces sp. NBC_00466']	chromosome
+CP107897	['NBC 00466']	['Streptomyces sp. NBC_00466']	plasmid
+CP107898	['NBC 00466']	['Streptomyces sp. NBC_00466']	extrachromosomal
+CP107894	['NBC_00467']	['Streptomyces sp. NBC 00467']	chromosome
+CP107895	['NBC_00467']	['Streptomyces sp. NBC 00467']	plasmid
+CP107893	['NBC_00468']	['Micromonospora aurantiaca']	chromosome
+CP107892	['NBC_00469']	['Micromonospora zamorensis']	chromosome
+CP107889	['NBC 00470']	['Streptomyces sp. NBC 00470']	chromosome
+CP107890	['NBC 00470']	['Streptomyces sp. NBC 00470']	plasmid
+CP107891	['NBC 00470']	['Streptomyces sp. NBC 00470']	extrachromosomal
+CP107887	['NBC_00471']	['Streptomyces nojiriensis']	chromosome
+CP107888	['NBC_00471']	['Streptomyces nojiriensis']	plasmid
+CP107885	['NBC_00472']	['Streptomyces decoyicus']	chromosome
+CP107886	['NBC_00472']	['Streptomyces decoyicus']	plasmid
+CP107884	['NBC_00475']	['Streptomyces tubercidicus']	chromosome
+CP108343	['NBC_00478']	['Streptomyces jietaisiensis']	chromosome
+CP107883	['NBC_00480']	['Streptomyces europaeiscabiei']	chromosome
+CP107882	['NBC_00481']	['Streptomyces sp. NBC 00481']	chromosome
+CP107881	['NBC_00482']	['Kribbella sp. NBC 00482']	chromosome
+CP107880	['NBC_00483']	['Streptomyces sp. NBC 00483']	chromosome
+CP107879	['NBC_00484']	['Streptomyces sp. NBC 00484']	chromosome
+CP107878	['NBC_00485']	['Streptomyces sp. NBC 00485']	chromosome
+CP107877	['NBC_00487']	['Streptomyces sp. NBC_00487']	chromosome
+CP107871	['NBC 00488']	['Streptomyces virginiae']	chromosome
+CP107872	['NBC 00488']	['Streptomyces virginiae']	plasmid
+CP107873	['NBC 00488']	['Streptomyces virginiae']	plasmid
+CP107874	['NBC 00488']	['Streptomyces virginiae']	plasmid
+CP107875	['NBC 00488']	['Streptomyces virginiae']	extrachromosomal
+CP107876	['NBC 00488']	['Streptomyces virginiae']	plasmid
+CP108330	['NBC_00489']	['Streptomyces jietaisiensis']	chromosome
+CP107869	['NBC_00490']	['Streptomyces sp. NBC_00490']	chromosome
+CP107870	['NBC_00490']	['Streptomyces sp. NBC_00490']	plasmid
+CP107867	['NBC_00493']	['Streptomyces sp. NBC 00493']	chromosome
+CP107868	['NBC_00493']	['Streptomyces sp. NBC 00493']	plasmid
+CP107866	['NBC_00494']	['Streptomyces europaeiscabiei']	chromosome
+CP107865	['NBC_00496']	['Streptomyces sp. NBC_00496']	chromosome
+CP107863	['NBC_00497']	['Streptomyces europaeiscabiei']	chromosome
+CP107864	['NBC_00497']	['Streptomyces europaeiscabiei']	plasmid
+CP107862	['NBC_00498']	['Streptomyces sp. NBC 00498']	chromosome
+CP107861	['NBC_00499']	['Streptomyces sp. NBC 00499']	chromosome
+CP107860	['NBC_00500']	['Streptomyces sp. NBC 00500']	chromosome
+CP107858	['NBC_00501']	['Streptomyces anulatus']	chromosome
+CP107859	['NBC_00501']	['Streptomyces anulatus']	plasmid
+CP107857	['NBC_00502']	['Streptomyces anulatus']	chromosome
+CP107855	['NBC_00503']	['Streptomyces sp. NBC_00503']	chromosome
+CP107856	['NBC_00503']	['Streptomyces sp. NBC_00503']	plasmid
+CP108329	['NBC_00504']	['Streptomyces jietaisiensis']	chromosome
+CP107853	['NBC_00507']	['Nonomuraea sp. NBC 00507']	chromosome
+CP107854	['NBC_00507']	['Nonomuraea sp. NBC 00507']	plasmid
+CP107852	['NBC_00508']	['Nocardia sp. NBC 00508']	chromosome
+CP107851	['NBC_00510']	['Streptomyces sp. NBC 00510']	chromosome
+CP107849	['NBC_00511']	['Nocardia sp. NBC_00511']	chromosome
+CP107850	['NBC_00511']	['Nocardia sp. NBC_00511']	plasmid
+CP107845	['NBC 00513']	['Streptomyces sp. NBC 00513']	chromosome
+CP107846	['NBC 00513']	['Streptomyces sp. NBC 00513']	plasmid
+CP107847	['NBC 00513']	['Streptomyces sp. NBC 00513']	plasmid
+CP107848	['NBC 00513']	['Streptomyces sp. NBC 00513']	extrachromosomal
+CP107844	['NBC_00514']	['Streptomyces europaeiscabiei']	chromosome
+CP107841	['NBC_00515']	['Streptomyces europaeiscabiei']	chromosome
+CP107842	['NBC_00515']	['Streptomyces europaeiscabiei']	plasmid
+CP107843	['NBC_00515']	['Streptomyces europaeiscabiei']	plasmid
+CP107840	['NBC_00516']	['Lentzea sp. NBC_00516']	chromosome
+CP107839	['NBC_00519']	['Streptomyces sp. NBC 00519']	chromosome
+CP107838	['NBC_00520']	['Streptomyces murinus']	chromosome
+CP108326	['NBC_00521']	['Streptomyces jietaisiensis']	chromosome
+CP108327	['NBC_00521']	['Streptomyces jietaisiensis']	plasmid
+CP108328	['NBC_00521']	['Streptomyces jietaisiensis']	plasmid
+CP108325	['NBC_00522']	['Streptomyces jietaisiensis']	chromosome
+CP107836	['NBC_00523']	['Streptomyces sp. NBC 00523']	chromosome
+CP107837	['NBC_00523']	['Streptomyces sp. NBC 00523']	plasmid
+CP107834	['NBC_00525']	['Streptomyces sp. NBC_00525']	chromosome
+CP107835	['NBC_00525']	['Streptomyces sp. NBC_00525']	plasmid
+CP107823	['NBC_00535']	['Streptomyces anulatus']	chromosome
+CP107824	['NBC_00535']	['Streptomyces anulatus']	plasmid
+CP107819	['NBC_00536']	['Streptomyces sp. NBC 00536']	chromosome
+CP107820	['NBC_00536']	['Streptomyces sp. NBC 00536']	plasmid
+CP107821	['NBC_00536']	['Streptomyces sp. NBC 00536']	plasmid
+CP107822	['NBC_00536']	['Streptomyces sp. NBC 00536']	plasmid
+CP107813	['NBC 00538']	['Streptomyces longwoodensis']	chromosome
+CP107814	['NBC 00538']	['Streptomyces longwoodensis']	plasmid
+CP107815	['NBC 00538']	['Streptomyces longwoodensis']	plasmid
+CP107816	['NBC 00538']	['Streptomyces longwoodensis']	extrachromosomal
+CP107817	['NBC 00538']	['Streptomyces longwoodensis']	plasmid
+CP107818	['NBC 00538']	['Streptomyces longwoodensis']	plasmid
+CP107811	['NBC_00539']	['Streptomyces sp. NBC 00539']	chromosome
+CP107812	['NBC_00539']	['Streptomyces sp. NBC 00539']	plasmid
+CP107810	['NBC_00540']	['Streptomyces longwoodensis']	chromosome
+CP107809	['NBC_00541']	['Streptomyces longwoodensis']	chromosome
+CP107799	['NBC 00554']	['Streptomyces sp. NBC_00554']	chromosome
+CP107800	['NBC 00554']	['Streptomyces sp. NBC_00554']	extrachromosomal
+CP107798	['NBC_00556']	['Streptomyces cellulosae']	chromosome
+CP107796	['NBC_00557']	['Streptomyces sp. NBC 00557']	chromosome
+CP107797	['NBC_00557']	['Streptomyces sp. NBC 00557']	plasmid
+CP107793	['NBC_00558']	['Streptomyces clavifer']	chromosome
+CP107794	['NBC_00558']	['Streptomyces clavifer']	plasmid
+CP107795	['NBC_00558']	['Streptomyces clavifer']	plasmid
+CP107791	['NBC_00562']	['Streptomyces sp. NBC 00562']	chromosome
+CP107792	['NBC_00562']	['Streptomyces sp. NBC 00562']	plasmid
+CP107786	['NBC 00564']	['Streptomyces sp. NBC_00564']	chromosome
+CP107787	['NBC 00564']	['Streptomyces sp. NBC_00564']	plasmid
+CP107788	['NBC 00564']	['Streptomyces sp. NBC_00564']	extrachromosomal
+CP107789	['NBC 00564']	['Streptomyces sp. NBC_00564']	extrachromosomal
+CP107790	['NBC 00564']	['Streptomyces sp. NBC_00564']	extrachromosomal
+CP107785	['NBC_00565']	['Nocardia sp. NBC 00565']	chromosome
+CP107784	['NBC_00566']	['Streptomyces sp. NBC 00566']	chromosome
+CP107783	['NBC_00569']	['Streptomyces sp. NBC 00569']	chromosome
+CP107782	['NBC_00573']	['Streptomyces platensis']	chromosome
+CP107780	['NBC_00576']	['Streptomyces sp. NBC_00576']	chromosome
+CP107781	['NBC_00576']	['Streptomyces sp. NBC_00576']	plasmid
+CP107772	['NBC_00582']	['Streptomyces sp. NBC 00582']	chromosome
+CP107773	['NBC_00582']	['Streptomyces sp. NBC 00582']	plasmid
+CP107768	['NBC_00586']	['Streptomyces griseorubiginosus']	chromosome
+CP107769	['NBC_00586']	['Streptomyces griseorubiginosus']	plasmid
+CP107770	['NBC_00586']	['Streptomyces griseorubiginosus']	plasmid
+CP107771	['NBC_00586']	['Streptomyces griseorubiginosus']	plasmid
+CP107766	['NBC_00587']	['Streptomyces griseorubiginosus']	chromosome
+CP107767	['NBC_00587']	['Streptomyces griseorubiginosus']	plasmid
+CP107765	['NBC_00588']	['Streptomyces sp. NBC 00588']	chromosome
+CP107764	['NBC_00589']	['Streptomyces sp. NBC 00589']	chromosome
+CP107762	['NBC_00590']	['Streptomyces chartreusis']	chromosome
+CP107763	['NBC_00590']	['Streptomyces chartreusis']	plasmid
+CP107761	['NBC_00591']	['Streptomyces platensis']	chromosome
+CP107760	['NBC_00594']	['Streptomyces longwoodensis']	chromosome
+CP108324	['NBC_00595']	['Streptomyces jietaisiensis']	chromosome
+CP107757	['NBC 00597']	['Streptomyces sp. NBC 00597']	chromosome
+CP107758	['NBC 00597']	['Streptomyces sp. NBC 00597']	plasmid
+CP107759	['NBC 00597']	['Streptomyces sp. NBC 00597']	extrachromosomal
+CP107755	['NBC_00598']	['Streptomyces pseudovenezuelae']	chromosome
+CP107756	['NBC_00598']	['Streptomyces pseudovenezuelae']	plasmid
+CP107753	['NBC 00607']	['Streptomyces clavifer']	chromosome
+CP107754	['NBC 00607']	['Streptomyces clavifer']	extrachromosomal
+CP108323	['NBC_00616']	['Streptomyces jietaisiensis']	chromosome
+CP107751	['NBC_00617']	['Micromonospora sp. NBC_00617']	chromosome
+CP107750	['NBC_00618']	['Streptomyces sp. NBC 00618']	chromosome
+CP107749	['NBC_00622']	['Streptomyces sp. NBC 00622']	chromosome
+CP107748	['NBC_00623']	['Streptomyces sp. NBC 00623']	chromosome
+CP107746	['NBC_00624']	['Streptomyces sp. NBC 00624']	chromosome
+CP107747	['NBC_00624']	['Streptomyces sp. NBC 00624']	plasmid
+CP107742	['NBC 00625']	['Streptomyces tubercidicus']	chromosome
+CP107743	['NBC 00625']	['Streptomyces tubercidicus']	plasmid
+CP107744	['NBC 00625']	['Streptomyces tubercidicus']	extrachromosomal
+CP107745	['NBC 00625']	['Streptomyces tubercidicus']	extrachromosomal
+CP107741	['NBC_00626']	['Streptomyces sp. NBC 00626']	chromosome
+CP107735	['NBC 00630']	['Streptomyces longwoodensis']	chromosome
+CP107736	['NBC 00630']	['Streptomyces longwoodensis']	plasmid
+CP107737	['NBC 00630']	['Streptomyces longwoodensis']	plasmid
+CP107738	['NBC 00630']	['Streptomyces longwoodensis']	plasmid
+CP107739	['NBC 00630']	['Streptomyces longwoodensis']	extrachromosomal
+CP107740	['NBC 00630']	['Streptomyces longwoodensis']	plasmid
+CP107734	['NBC_00631']	['Streptomyces sp. NBC 00631']	chromosome
+CP107733	['NBC_00632']	['Streptomyces canus']	chromosome
+CP107731	['NBC_00633']	['Streptomyces canus']	chromosome
+CP107732	['NBC_00633']	['Streptomyces canus']	plasmid
+CP107730	['NBC_00634']	['Streptomyces canus']	chromosome
+CP107729	['NBC_00635']	['Streptomyces longwoodensis']	chromosome
+CP130731	['NBC_00635']	['Streptomyces longwoodensis']	chromosome
+CP109050	['NBC 00636']	['Streptomyces canus']	chromosome
+CP109046	['NBC 00637']	['Streptomyces sp. NBC_00637']	chromosome
+CP109047	['NBC 00637']	['Streptomyces sp. NBC_00637']	plasmid
+CP109048	['NBC 00637']	['Streptomyces sp. NBC_00637']	plasmid
+CP109049	['NBC 00637']	['Streptomyces sp. NBC_00637']	plasmid
+CP109044	['NBC 00641']	['Streptomyces halstedii']	chromosome
+CP109045	['NBC 00641']	['Streptomyces halstedii']	plasmid
+CP109043	['NBC 00642']	['Streptomyces longwoodensis']	chromosome
+CP130729	['NBC 00642']	['Streptomyces longwoodensis']	chromosome
+CP109042	['NBC 00643']	['Streptomyces longwoodensis']	chromosome
+CP130728	['NBC 00643']	['Streptomyces longwoodensis']	chromosome
+CP109041	['NBC 00645']	['Streptomyces sp. NBC 00645']	chromosome
+CP109040	['NBC 00647']	['Streptomyces sp. NBC 00647']	chromosome
+CP109038	['NBC 00648']	['Streptomyces sp. NBC 00648']	chromosome
+CP109039	['NBC 00648']	['Streptomyces sp. NBC 00648']	plasmid
+CP109037	['NBC 00649']	['Streptomyces sp. NBC 00649']	chromosome
+CP109034	['NBC 00651']	['Streptomyces longwoodensis']	chromosome
+CP109035	['NBC 00651']	['Streptomyces longwoodensis']	plasmid
+CP109036	['NBC 00651']	['Streptomyces longwoodensis']	plasmid
+CP109033	['NBC 00656']	['Streptomyces sp. NBC_00656']	chromosome
+CP109032	['NBC 00658']	['Streptomyces sp. NBC 00658']	chromosome
+CP109031	['NBC 00659']	['Streptomyces sp. NBC_00659']	chromosome
+CP109030	['NBC 00661']	['Streptomyces pseudovenezuelae']	chromosome
+CP109029	['NBC 00662']	['Kribbella sp. NBC 00662']	chromosome
+CP109027	['NBC_00663']	['Streptomyces sp. NBC 00663']	chromosome
+CP109028	['NBC_00663']	['Streptomyces sp. NBC 00663']	plasmid
+CP109025	['NBC_00664']	['Streptomyces sp. NBC 00664']	chromosome
+CP109026	['NBC_00664']	['Streptomyces sp. NBC 00664']	plasmid
+CP109024	['NBC_00666']	['Streptomyces pseudovenezuelae']	chromosome
+CP109022	['NBC_00667']	['Streptomyces sp. NBC 00667']	chromosome
+CP109023	['NBC_00667']	['Streptomyces sp. NBC 00667']	plasmid
+CP109019	['NBC_00668']	['Streptomyces melanogenes']	chromosome
+CP109020	['NBC_00668']	['Streptomyces melanogenes']	plasmid
+CP109021	['NBC_00668']	['Streptomyces melanogenes']	plasmid
+CP109018	['NBC_00669']	['Streptomyces sp. NBC 00669']	chromosome
+CP109017	['NBC_00670']	['Streptomyces sp. NBC 00670']	chromosome
+CP109013	['NBC_00683']	['Streptomyces sp. NBC_00683']	chromosome
+CP109012	['NBC_00685']	['Streptomyces canus']	chromosome
+CP109011	['NBC_00686']	['Streptomyces pseudovenezuelae']	chromosome
+CP109009	['NBC_00690']	['Streptomyces sp. NBC 00690']	chromosome
+CP109010	['NBC_00690']	['Streptomyces sp. NBC 00690']	plasmid
+CP109007	['NBC_00691']	['Streptomyces sp. NBC_00691']	chromosome
+CP109008	['NBC_00691']	['Streptomyces sp. NBC_00691']	plasmid
+CP109004	['NBC_00696']	['Streptomyces sp. NBC_00696']	chromosome
+CP109003	['NBC_00701']	['Streptomyces virginiae']	chromosome
+CP109000	['NBC_00704']	['Streptomyces sp. NBC 00704']	chromosome
+CP109001	['NBC_00704']	['Streptomyces sp. NBC 00704']	plasmid
+CP109002	['NBC_00704']	['Streptomyces sp. NBC 00704']	plasmid
+CP108997	['NBC_00708']	['Streptomyces sp. NBC 00708']	chromosome
+CP108998	['NBC_00708']	['Streptomyces sp. NBC 00708']	plasmid
+CP108999	['NBC_00708']	['Streptomyces sp. NBC 00708']	plasmid
+CP108996	['NBC_00709']	['Kribbella sp. NBC 00709']	chromosome
+CP108995	['NBC_00710']	['Streptomyces canus']	chromosome
+CP108994	['NBC_00711']	['Streptomyces luteogriseus']	chromosome
+CP108993	['NBC_00712']	['Streptomyces luteogriseus']	chromosome
+CP108992	['NBC_00713']	['Streptomyces pseudovenezuelae']	chromosome
+CP108990	['NBC_00715']	['Streptomyces sp. NBC 00715']	chromosome
+CP108991	['NBC_00715']	['Streptomyces sp. NBC 00715']	plasmid
+CP108989	['NBC_00722']	['Streptomyces lydicus']	chromosome
+CP108987	['NBC_00723']	['Streptomyces sp. NBC_00723']	chromosome
+CP108988	['NBC_00723']	['Streptomyces sp. NBC_00723']	plasmid
+CP108985	['NBC_00724']	['Streptomyces sp. NBC 00724']	chromosome
+CP108986	['NBC_00724']	['Streptomyces sp. NBC 00724']	plasmid
+CP108983	['NBC_00726']	['Streptomyces sp. NBC_00726']	chromosome
+CP108984	['NBC_00726']	['Streptomyces sp. NBC_00726']	plasmid
+CP108981	['NBC_00727']	['Streptomyces sp. NBC_00727']	chromosome
+CP108982	['NBC_00727']	['Streptomyces sp. NBC_00727']	plasmid
+CP108980	['NBC_00728']	['Streptomyces sp. NBC_00728']	chromosome
+CP108978	['NBC_00731']	['Streptomyces longwoodensis']	chromosome
+CP108979	['NBC_00731']	['Streptomyces longwoodensis']	plasmid
+CP108974	['NBC_00734']	['Streptomyces platensis']	chromosome
+CP108975	['NBC_00734']	['Streptomyces platensis']	plasmid
+CP108971	['NBC_00735']	['Streptomyces longwoodensis']	chromosome
+CP108972	['NBC_00735']	['Streptomyces longwoodensis']	plasmid
+CP108973	['NBC_00735']	['Streptomyces longwoodensis']	plasmid
+CP108938	['NBC_00775']	['Streptomyces sp. NBC 00775']	chromosome
+CP108927	['NBC_00781']	['Kocuria rhizophila']	chromosome
+CP108895	['NBC_00805']	['Streptomyces jietaisiensis']	chromosome
+CP108894	['NBC_00806']	['Micromonospora zamorensis']	chromosome
+CP108882	['NBC_00820']	['Streptomyces sp. NBC 00820']	chromosome
+CP108880	['NBC_00821']	['Micromonospora sp. NBC 00821']	chromosome
+CP108881	['NBC_00821']	['Micromonospora sp. NBC 00821']	plasmid
+CP108878	['NBC_00822']	['Streptomyces sp. NBC 00822']	chromosome
+CP108879	['NBC_00822']	['Streptomyces sp. NBC 00822']	plasmid
+CP108876	['NBC_00825']	['Streptomyces sp. NBC 00825']	chromosome
+CP108877	['NBC_00825']	['Streptomyces sp. NBC 00825']	plasmid
+CP108873	['NBC_00826']	['Streptomyces sp. NBC 00826']	chromosome
+CP108874	['NBC_00826']	['Streptomyces sp. NBC 00826']	plasmid
+CP108875	['NBC_00826']	['Streptomyces sp. NBC 00826']	plasmid
+CP108872	['NBC_00827']	['Streptomyces sp. NBC_00827']	chromosome
+CP108870	['NBC_00828']	['Streptomyces sp. NBC_00828']	chromosome
+CP108871	['NBC_00828']	['Streptomyces sp. NBC_00828']	extrachromosomal
+CP130727	['NBC_00828']	['Streptomyces sp. NBC_00828']	chromosome
+CP108867	['NBC_00829']	['Streptomyces sp. NBC_00829']	chromosome
+CP108868	['NBC_00829']	['Streptomyces sp. NBC_00829']	plasmid
+CP108869	['NBC_00829']	['Streptomyces sp. NBC_00829']	plasmid
+CP108866	['NBC_00830']	['Streptomyces sp. NBC 00830']	chromosome
+CP108864	['NBC_00831']	['Streptomyces virginiae']	chromosome
+CP108865	['NBC_00831']	['Streptomyces virginiae']	plasmid
+CP108863	['NBC_00832']	['Streptomyces avidinii']	chromosome
+CP108861	['NBC_00835']	['Streptomyces cyaneofuscatus']	chromosome
+CP108862	['NBC_00835']	['Streptomyces cyaneofuscatus']	plasmid
+CP108858	['NBC_00836']	['Streptomyces antimycoticus']	chromosome
+CP108859	['NBC_00836']	['Streptomyces antimycoticus']	plasmid
+CP108860	['NBC_00836']	['Streptomyces antimycoticus']	extrachromosomal
+CP108857	['NBC_00838']	['Streptomyces sp. NBC_00838']	chromosome
+CP108856	['NBC_00839']	['Streptomyces antimycoticus']	chromosome
+CP108853	['NBC_00841']	['Streptomyces sp. NBC 00841']	chromosome
+CP108854	['NBC_00841']	['Streptomyces sp. NBC 00841']	plasmid
+CP108855	['NBC_00841']	['Streptomyces sp. NBC 00841']	plasmid
+CP108850	['NBC_00842']	['Streptomyces sp. NBC 00842']	chromosome
+CP108851	['NBC_00842']	['Streptomyces sp. NBC 00842']	plasmid
+CP108852	['NBC_00842']	['Streptomyces sp. NBC 00842']	plasmid
+CP108824	['NBC_00863']	['Kocuria rhizophila']	chromosome
+CP108849	['NBC_00843']	['Streptomyces niveus']	chromosome
+CP109061	['NBC_00845']	['Kitasatospora purpeofusca']	chromosome
+CP108846	['NBC_00846']	['Streptomyces sp. NBC 00846']	chromosome
+CP108847	['NBC_00846']	['Streptomyces sp. NBC 00846']	plasmid
+CP108848	['NBC_00846']	['Streptomyces sp. NBC 00846']	plasmid
+CP108845	['NBC_00850']	['Nocardioides sp. NBC 00850']	chromosome
+CP108840	['NBC_00851']	['Streptomyces chartreusis']	chromosome
+CP108841	['NBC_00851']	['Streptomyces chartreusis']	plasmid
+CP108842	['NBC_00851']	['Streptomyces chartreusis']	plasmid
+CP108843	['NBC_00851']	['Streptomyces chartreusis']	plasmid
+CP108844	['NBC_00851']	['Streptomyces chartreusis']	plasmid
+CP108837	['NBC_00853']	['Streptomyces sp. NBC_00853']	chromosome
+CP108838	['NBC_00853']	['Streptomyces sp. NBC_00853']	extrachromosomal
+CP108839	['NBC_00853']	['Streptomyces sp. NBC_00853']	plasmid
+CP108833	['NBC_00855']	['Micromonospora sp. NBC 00855']	chromosome
+CP108834	['NBC_00855']	['Micromonospora sp. NBC 00855']	plasmid
+CP108835	['NBC_00855']	['Micromonospora sp. NBC 00855']	extrachromosomal
+CP108836	['NBC_00855']	['Micromonospora sp. NBC 00855']	extrachromosomal
+CP108832	['NBC_00856']	['Streptomyces phaeochromogenes']	chromosome
+CP108829	['NBC_00857']	['Streptomyces sp. NBC 00857']	chromosome
+CP108830	['NBC_00857']	['Streptomyces sp. NBC 00857']	plasmid
+CP108831	['NBC_00857']	['Streptomyces sp. NBC 00857']	extrachromosomal
+CP108828	['NBC_00858']	['Micromonospora sp. NBC 00858']	chromosome
+CP108826	['NBC_00859']	['Streptomyces sp. NBC_00859']	chromosome
+CP108827	['NBC_00859']	['Streptomyces sp. NBC_00859']	plasmid
+CP108825	['NBC_00860']	['Micromonospora sp. NBC 00860']	chromosome
+CP108820	['NBC_00865']	['Streptomyces chartreusis']	chromosome
+CP108821	['NBC_00865']	['Streptomyces chartreusis']	plasmid
+CP108822	['NBC_00865']	['Streptomyces chartreusis']	plasmid
+CP108823	['NBC_00865']	['Streptomyces chartreusis']	plasmid
+CP108818	['NBC_00866']	['Streptomyces canus']	chromosome
+CP108819	['NBC_00866']	['Streptomyces canus']	plasmid
+CP108817	['NBC_00867']	['[Kitasatospora] papulosa']	chromosome
+CP108814	['NBC_00868']	['Streptomyces sp. NBC_00868']	chromosome
+CP108815	['NBC_00868']	['Streptomyces sp. NBC_00868']	plasmid
+CP108816	['NBC_00868']	['Streptomyces sp. NBC_00868']	plasmid
+CP108812	['NBC_00869']	['Streptomyces sp. NBC_00869']	chromosome
+CP108813	['NBC_00869']	['Streptomyces sp. NBC_00869']	plasmid
+CP108810	['NBC_00870']	['Streptomyces sp. NBC_00870']	chromosome
+CP108811	['NBC_00870']	['Streptomyces sp. NBC_00870']	plasmid
+CP108808	['NBC_00871']	['Streptomyces canus']	chromosome
+CP108809	['NBC_00871']	['Streptomyces canus']	extrachromosomal
+CP108806	['NBC_00872']	['Streptomyces sp. NBC_00872']	chromosome
+CP108807	['NBC_00872']	['Streptomyces sp. NBC_00872']	plasmid
+CP108803	['NBC_00873']	['Streptomyces sp. NBC 00873']	chromosome
+CP108804	['NBC_00873']	['Streptomyces sp. NBC 00873']	plasmid
+CP108805	['NBC_00873']	['Streptomyces sp. NBC 00873']	plasmid
+CP108802	['NBC_00874']	['Kocuria rhizophila']	chromosome
+CP108800	['NBC_00876']	['Streptomyces sp. NBC 00876']	chromosome
+CP108801	['NBC_00876']	['Streptomyces sp. NBC 00876']	plasmid
+CP108799	['NBC_00879']	['Streptomyces sp. NBC 00879']	chromosome
+CP108798	['NBC_00881']	['Nocardia sp. NBC 00881']	chromosome
+CP108797	['NBC_00882']	['Streptomyces sp. NBC 00882']	chromosome
+CP108796	['NBC_00885']	['Streptomyces sp. NBC 00885']	chromosome
+CP108792	['NBC_00886']	['Streptomyces sp. NBC 00886']	chromosome
+CP108793	['NBC_00886']	['Streptomyces sp. NBC 00886']	extrachromosomal
+CP108794	['NBC_00886']	['Streptomyces sp. NBC 00886']	extrachromosomal
+CP108795	['NBC_00886']	['Streptomyces sp. NBC 00886']	extrachromosomal
+CP108788	['NBC_00887']	['Streptomyces sp. NBC 00887']	chromosome
+CP108789	['NBC_00887']	['Streptomyces sp. NBC 00887']	plasmid
+CP108790	['NBC_00887']	['Streptomyces sp. NBC 00887']	plasmid
+CP108791	['NBC_00887']	['Streptomyces sp. NBC 00887']	plasmid
+CP108784	['NBC_00888']	['Embleya sp. NBC 00888']	chromosome
+CP108785	['NBC_00888']	['Embleya sp. NBC 00888']	plasmid
+CP108786	['NBC_00888']	['Embleya sp. NBC 00888']	plasmid
+CP108787	['NBC_00888']	['Embleya sp. NBC 00888']	plasmid
+CP108783	['NBC_00889']	['Kribbella sp. NBC 00889']	chromosome
+CP108781	['NBC_00890']	['Streptomyces sp. NBC_00890']	chromosome
+CP108782	['NBC_00890']	['Streptomyces sp. NBC_00890']	plasmid
+CP108779	['NBC_00891']	['Streptomyces sp. NBC 00891']	chromosome
+CP108780	['NBC_00891']	['Streptomyces sp. NBC 00891']	plasmid
+CP108776	['NBC_00896']	['Embleya sp. NBC 00896']	chromosome
+CP108777	['NBC_00896']	['Embleya sp. NBC 00896']	plasmid
+CP108778	['NBC_00896']	['Embleya sp. NBC 00896']	plasmid
+CP108775	['NBC_00898']	['Micromonospora sp. NBC 00898']	chromosome
+CP108773	['NBC_00899']	['Streptomyces sp. NBC 00899']	chromosome
+CP108774	['NBC_00899']	['Streptomyces sp. NBC 00899']	extrachromosomal
+CP108768	['NBC_00909']	['Streptomyces goshikiensis']	chromosome
+CP108769	['NBC_00909']	['Streptomyces goshikiensis']	plasmid
+CP108770	['NBC_00909']	['Streptomyces goshikiensis']	plasmid
+CP108771	['NBC_00909']	['Streptomyces goshikiensis']	plasmid
+CP108772	['NBC_00909']	['Streptomyces goshikiensis']	plasmid
+CP108765	['NBC_00932']	['Streptomyces sp. NBC_00932']	chromosome
+CP108745	['NBC_00963']	['Streptomyces sp. NBC_00963']	chromosome
+CP108746	['NBC_00963']	['Streptomyces sp. NBC_00963']	plasmid
+CP108743	['NBC_00972']	['Streptomyces halstedii']	chromosome
+CP108741	['NBC_00974']	['Streptomyces sp. NBC_00974']	chromosome
+CP108742	['NBC_00974']	['Streptomyces sp. NBC_00974']	extrachromosomal
+CP108737	['NBC_00975']	['Streptomyces tubercidicus']	chromosome
+CP108738	['NBC_00975']	['Streptomyces tubercidicus']	plasmid
+CP108739	['NBC_00975']	['Streptomyces tubercidicus']	extrachromosomal
+CP108740	['NBC_00975']	['Streptomyces tubercidicus']	extrachromosomal
+CP108734	['NBC_00984']	['Streptomyces sp. NBC_00984']	chromosome
+CP108735	['NBC_00984']	['Streptomyces sp. NBC_00984']	plasmid
+CP108736	['NBC_00984']	['Streptomyces sp. NBC_00984']	plasmid
+CP108733	['NBC_00986']	['Streptomyces sp. NBC_00986']	chromosome
+CP108731	['NBC_00987']	['Streptomyces sp. NBC_00987']	chromosome
+CP108732	['NBC_00987']	['Streptomyces sp. NBC_00987']	plasmid
+CP108730	['NBC_00988']	['Streptomyces sp. NBC_00988']	chromosome
+CP108728	['NBC_00989']	['Streptomyces sp. NBC_00989']	chromosome
+CP108729	['NBC_00989']	['Streptomyces sp. NBC_00989']	plasmid
+CP108726	['NBC_00990']	['Streptomyces anulatus']	chromosome
+CP108727	['NBC_00990']	['Streptomyces anulatus']	plasmid
+CP108724	['NBC_00995']	['Streptomyces sp. NBC_00995']	chromosome
+CP108725	['NBC_00995']	['Streptomyces sp. NBC_00995']	extrachromosomal
+CP108723	['NBC_00996']	['Streptomyces sp. NBC_00996']	chromosome
+CP108720	['NBC_00998']	['Streptomyces sp. NBC_00998']	chromosome
+CP108721	['NBC_00998']	['Streptomyces sp. NBC_00998']	plasmid
+CP108722	['NBC_00998']	['Streptomyces sp. NBC_00998']	extrachromosomal
+CP108718	['NBC_00999']	['Streptomyces platensis']	chromosome
+CP108719	['NBC_00999']	['Streptomyces platensis']	plasmid
+CP108711	['NBC_01001']	['Streptomyces sp. NBC_01001']	chromosome
+CP108712	['NBC_01001']	['Streptomyces sp. NBC_01001']	plasmid
+CP108713	['NBC_01001']	['Streptomyces sp. NBC_01001']	plasmid
+CP108714	['NBC_01001']	['Streptomyces sp. NBC_01001']	plasmid
+CP108715	['NBC_01001']	['Streptomyces sp. NBC_01001']	extrachromosomal
+CP108716	['NBC_01001']	['Streptomyces sp. NBC_01001']	plasmid
+CP108717	['NBC_01001']	['Streptomyces sp. NBC_01001']	extrachromosomal
+CP108709	['NBC_01002']	['Streptomyces canus']	chromosome
+CP108710	['NBC_01002']	['Streptomyces canus']	plasmid
+CP108707	['NBC_01003']	['Streptomyces sp. NBC_01003']	chromosome
+CP108708	['NBC_01003']	['Streptomyces sp. NBC_01003']	plasmid
+CP109059	['NBC_01004']	['Streptomyces globisporus']	chromosome
+CP109060	['NBC_01004']	['Streptomyces globisporus']	plasmid
+CP108703	['NBC_01005']	['Streptomyces sp. NBC_01005']	chromosome
+CP108704	['NBC_01005']	['Streptomyces sp. NBC_01005']	plasmid
+CP108705	['NBC_01005']	['Streptomyces sp. NBC_01005']	plasmid
+CP108706	['NBC_01005']	['Streptomyces sp. NBC_01005']	plasmid
+CP108700	['NBC_01006']	['Streptomyces sp. NBC_01006']	chromosome
+CP108701	['NBC_01006']	['Streptomyces sp. NBC_01006']	plasmid
+CP108702	['NBC_01006']	['Streptomyces sp. NBC_01006']	plasmid
+CP108696	['NBC_01007']	['Streptomyces sp. NBC 01007']	chromosome
+CP108697	['NBC_01007']	['Streptomyces sp. NBC 01007']	plasmid
+CP108698	['NBC_01007']	['Streptomyces sp. NBC 01007']	extrachromosomal
+CP108699	['NBC_01007']	['Streptomyces sp. NBC 01007']	extrachromosomal
+CP108695	['NBC_01009']	['Nocardia sp. NBC 01009']	chromosome
+CP108692	['NBC_01010']	['Streptomyces anulatus']	chromosome
+CP108693	['NBC_01010']	['Streptomyces anulatus']	plasmid
+CP108694	['NBC_01010']	['Streptomyces anulatus']	plasmid
+CP108690	['NBC_01011']	['Streptomyces phaeochromogenes']	chromosome
+CP108691	['NBC_01011']	['Streptomyces phaeochromogenes']	plasmid
+CP108688	['NBC_01012']	['Streptomyces sp. NBC_01012']	chromosome
+CP108689	['NBC_01012']	['Streptomyces sp. NBC_01012']	plasmid
+CP108687	['NBC_01013']	['Streptomyces sp. NBC_01013']	chromosome
+CP108685	['NBC_01014']	['Streptomyces sp. NBC_01014']	chromosome
+CP108686	['NBC_01014']	['Streptomyces sp. NBC_01014']	plasmid
+CP108684	['NBC_01015']	['Streptomyces decoyicus']	chromosome
+CP108683	['NBC_01017']	['Streptomyces sp. NBC_01017']	chromosome
+CP108682	['NBC_01018']	['Streptomyces fimicarius']	chromosome
+CP108681	['NBC_01020']	['Streptomyces sp. NBC_01020']	chromosome
+CP108676	['NBC_01021']	['Streptomyces prunicolor']	chromosome
+CP108674	['NBC_01022']	['Streptomyces sp. NBC_01022']	chromosome
+CP108675	['NBC_01022']	['Streptomyces sp. NBC_01022']	plasmid
+CP108671	['NBC_01023']	['Streptomyces sp. NBC_01023']	chromosome
+CP108672	['NBC_01023']	['Streptomyces sp. NBC_01023']	plasmid
+CP108673	['NBC_01023']	['Streptomyces sp. NBC_01023']	plasmid
+CP108670	['NBC_01069']	['Streptomyces anulatus']	chromosome
+CP108669	['NBC_01077']	['Streptomyces sp. NBC_01077']	chromosome
+CP108664	['NBC_01078']	['Streptomyces globisporus']	chromosome
+CP108665	['NBC_01078']	['Streptomyces globisporus']	plasmid
+CP108666	['NBC_01078']	['Streptomyces globisporus']	plasmid
+CP108667	['NBC_01078']	['Streptomyces globisporus']	plasmid
+CP108668	['NBC_01078']	['Streptomyces globisporus']	plasmid
+CP108661	['NBC_01080']	['Streptomyces anulatus']	chromosome
+CP108662	['NBC_01080']	['Streptomyces anulatus']	plasmid
+CP108663	['NBC_01080']	['Streptomyces anulatus']	extrachromosomal
+CP108660	['NBC_01089']	['Streptomyces sp. NBC_01089']	chromosome
+CP108659	['NBC_01092']	['Streptomyces sp. NBC_01092']	chromosome
+CP108654	['NBC_01102']	['Streptomyces sp. NBC_01102']	chromosome
+CP108655	['NBC_01102']	['Streptomyces sp. NBC_01102']	plasmid
+CP108656	['NBC_01102']	['Streptomyces sp. NBC_01102']	plasmid
+CP108657	['NBC_01102']	['Streptomyces sp. NBC_01102']	plasmid
+CP108658	['NBC_01102']	['Streptomyces sp. NBC_01102']	plasmid
+CP108653	['NBC_01103']	['Streptomyces gougerotii']	chromosome
+CP108652	['NBC_01104']	['Streptomyces sp. NBC_01104']	chromosome
+CP108651	['NBC_01106']	['Streptomyces anulatus']	chromosome
+CP108649	['NBC_01108']	['Streptomyces sp. NBC_01108']	chromosome
+CP108650	['NBC_01108']	['Streptomyces sp. NBC_01108']	plasmid
+CP108647	['NBC_01110']	['Streptomyces albidoflavus']	chromosome
+CP108648	['NBC_01110']	['Streptomyces albidoflavus']	plasmid
+CP108644	['NBC_01116']	['Streptomyces sp. NBC_01116']	chromosome
+CP108645	['NBC_01116']	['Streptomyces sp. NBC_01116']	plasmid
+CP108646	['NBC_01116']	['Streptomyces sp. NBC_01116']	extrachromosomal
+CP108643	['NBC_01124']	['Streptomyces sp. NBC_01124']	chromosome
+CP108642	['NBC_01127']	['Streptomyces erythrochromogenes']	chromosome
+CP108640	['NBC_01134']	['Streptomyces anulatus']	chromosome
+CP108641	['NBC_01134']	['Streptomyces anulatus']	plasmid
+CP108638	['NBC_01135']	['Streptomyces uncialis']	chromosome
+CP108639	['NBC_01135']	['Streptomyces uncialis']	plasmid
+CP108632	['NBC_01136']	['Streptomyces sp. NBC_01136']	chromosome
+CP108633	['NBC_01136']	['Streptomyces sp. NBC_01136']	plasmid
+CP108634	['NBC_01136']	['Streptomyces sp. NBC_01136']	plasmid
+CP108635	['NBC_01136']	['Streptomyces sp. NBC_01136']	plasmid
+CP108636	['NBC_01136']	['Streptomyces sp. NBC_01136']	plasmid
+CP108637	['NBC_01136']	['Streptomyces sp. NBC_01136']	plasmid
+CP108627	['NBC_01137']	['Streptomyces xanthophaeus']	chromosome
+CP108628	['NBC_01137']	['Streptomyces xanthophaeus']	plasmid
+CP108629	['NBC_01137']	['Streptomyces xanthophaeus']	plasmid
+CP108630	['NBC_01137']	['Streptomyces xanthophaeus']	plasmid
+CP108631	['NBC_01137']	['Streptomyces xanthophaeus']	plasmid
+CP108625	['NBC_01139']	['Streptomyces rubiginosohelvolus']	chromosome
+CP108626	['NBC_01139']	['Streptomyces rubiginosohelvolus']	plasmid
+CP108621	['NBC_01147']	['Streptomyces xanthophaeus']	chromosome
+CP108622	['NBC_01147']	['Streptomyces xanthophaeus']	plasmid
+CP108623	['NBC_01147']	['Streptomyces xanthophaeus']	plasmid
+CP108624	['NBC_01147']	['Streptomyces xanthophaeus']	plasmid
+CP108616	['NBC_01157']	['Streptomyces avidinii']	chromosome
+CP108617	['NBC_01157']	['Streptomyces avidinii']	plasmid
+CP108618	['NBC_01157']	['Streptomyces avidinii']	plasmid
+CP108619	['NBC_01157']	['Streptomyces avidinii']	plasmid
+CP108620	['NBC_01157']	['Streptomyces avidinii']	plasmid
+CP108613	['NBC_01166']	['Streptomyces sp. NBC_01166']	chromosome
+CP108614	['NBC_01166']	['Streptomyces sp. NBC_01166']	plasmid
+CP108615	['NBC_01166']	['Streptomyces sp. NBC_01166']	plasmid
+CP108612	['NBC_01167']	['Streptomyces sp. NBC_01167']	chromosome
+CP108611	['NBC_01168']	['Streptomyces microflavus']	chromosome
+CP108610	['NBC_01170']	['Streptomyces albidoflavus']	chromosome
+CP108609	['NBC_01171']	['Streptomyces sp. NBC_01171']	chromosome
+CP108605	['NBC_01174']	['Streptomyces sp. NBC_01174']	chromosome
+CP108606	['NBC_01174']	['Streptomyces sp. NBC_01174']	plasmid
+CP108607	['NBC_01174']	['Streptomyces sp. NBC_01174']	plasmid
+CP108608	['NBC_01174']	['Streptomyces sp. NBC_01174']	plasmid
+CP108602	['NBC_01175']	['Streptomyces sp. NBC_01175']	chromosome
+CP108603	['NBC_01175']	['Streptomyces sp. NBC_01175']	plasmid
+CP108604	['NBC_01175']	['Streptomyces sp. NBC_01175']	extrachromosomal
+CP108600	['NBC_01176']	['Streptomyces sp. NBC_01176']	chromosome
+CP108601	['NBC_01176']	['Streptomyces sp. NBC_01176']	plasmid
+CP108595	['NBC_01177']	['Streptomyces sp. NBC_01177']	chromosome
+CP108596	['NBC_01177']	['Streptomyces sp. NBC_01177']	plasmid
+CP108597	['NBC_01177']	['Streptomyces sp. NBC_01177']	extrachromosomal
+CP108598	['NBC_01177']	['Streptomyces sp. NBC_01177']	extrachromosomal
+CP108599	['NBC_01177']	['Streptomyces sp. NBC_01177']	extrachromosomal
+CP108592	['NBC_01178']	['Streptomyces sp. NBC_01178']	chromosome
+CP108593	['NBC_01178']	['Streptomyces sp. NBC_01178']	plasmid
+CP108594	['NBC_01178']	['Streptomyces sp. NBC_01178']	plasmid
+CP108591	['NBC_01180']	['Streptomyces sp. NBC_01180']	chromosome
+CP108589	['NBC_01183']	['Streptomyces phaeochromogenes']	chromosome
+CP108590	['NBC_01183']	['Streptomyces phaeochromogenes']	plasmid
+CP108588	['NBC_01184']	['Streptomyces microflavus']	chromosome
+CP108587	['NBC_01185']	['Streptomyces sp. NBC_01185']	chromosome
+CP108585	['NBC_01186']	['Streptomyces sp. NBC_01186']	chromosome
+CP108586	['NBC_01186']	['Streptomyces sp. NBC_01186']	plasmid
+CP108582	['NBC_01187']	['Streptomyces sp. NBC_01187']	chromosome
+CP108583	['NBC_01187']	['Streptomyces sp. NBC_01187']	plasmid
+CP108584	['NBC_01187']	['Streptomyces sp. NBC_01187']	plasmid
+CP108581	['NBC_01189']	['Microbispora sp. NBC_01189']	chromosome
+CP108580	['NBC_01190']	['Streptomyces sp. NBC_01190']	chromosome
+CP108577	['NBC_01191']	['Streptomyces goshikiensis']	chromosome
+CP108578	['NBC_01191']	['Streptomyces goshikiensis']	plasmid
+CP108579	['NBC_01191']	['Streptomyces goshikiensis']	plasmid
+CP108575	['NBC_01194']	['Streptomyces microflavus']	chromosome
+CP108576	['NBC_01194']	['Streptomyces microflavus']	plasmid
+CP108573	['NBC_01195']	['Streptomyces erythrochromogenes']	chromosome
+CP108574	['NBC_01195']	['Streptomyces erythrochromogenes']	plasmid
+CP108571	['NBC_01196']	['Streptomyces anulatus']	chromosome
+CP108572	['NBC_01196']	['Streptomyces anulatus']	plasmid
+CP108569	['NBC_01197']	['Streptomyces sp. NBC_01197']	chromosome
+CP108570	['NBC_01197']	['Streptomyces sp. NBC_01197']	plasmid
+CP108568	['NBC_01198']	['Streptomyces sp. NBC_01198']	chromosome
+CP108567	['NBC_01199']	['Micromonospora ureilytica']	chromosome
+CP108565	['NBC_01201']	['Streptomyces sp. NBC_01201']	chromosome
+CP108566	['NBC_01201']	['Streptomyces sp. NBC_01201']	plasmid
+CP108562	['NBC_01202']	['Kitasatospora purpeofusca']	chromosome
+CP108563	['NBC_01202']	['Kitasatospora purpeofusca']	plasmid
+CP108564	['NBC_01202']	['Kitasatospora purpeofusca']	plasmid
+CP108561	['NBC_01203']	['Kitasatospora purpeofusca']	chromosome
+CP108557	['NBC_01205']	['Streptomyces sp. NBC_01205']	chromosome
+CP108558	['NBC_01205']	['Streptomyces sp. NBC_01205']	plasmid
+CP108559	['NBC_01205']	['Streptomyces sp. NBC_01205']	plasmid
+CP108560	['NBC_01205']	['Streptomyces sp. NBC_01205']	plasmid
+CP108554	['NBC_01207']	['Streptomyces sp. NBC_01207']	chromosome
+CP108555	['NBC_01207']	['Streptomyces sp. NBC_01207']	plasmid
+CP108556	['NBC_01207']	['Streptomyces sp. NBC_01207']	plasmid
+CP108551	['NBC_01208']	['Streptomyces sp. NBC_01208']	chromosome
+CP108552	['NBC_01208']	['Streptomyces sp. NBC_01208']	plasmid
+CP108553	['NBC_01208']	['Streptomyces sp. NBC_01208']	plasmid
+CP108549	['NBC_01210']	['Streptomyces sp. NBC_01210']	chromosome
+CP108550	['NBC_01210']	['Streptomyces sp. NBC_01210']	plasmid
+CP108546	['NBC_01211']	['Streptomyces globisporus']	chromosome
+CP108547	['NBC_01211']	['Streptomyces globisporus']	plasmid
+CP108548	['NBC_01211']	['Streptomyces globisporus']	plasmid
+CP108545	['NBC_01212']	['Streptomyces sp. NBC_01212']	chromosome
+CP108541	['NBC_01213']	['Streptomyces sp. NBC_01213']	chromosome
+CP108542	['NBC_01213']	['Streptomyces sp. NBC_01213']	plasmid
+CP108543	['NBC_01213']	['Streptomyces sp. NBC_01213']	plasmid
+CP108544	['NBC_01213']	['Streptomyces sp. NBC_01213']	extrachromosomal
+CP108540	['NBC_01215']	['Streptomyces xinghaiensis']	chromosome
+CP108677	['NBC_01216']	['Streptomyces sp. NBC_01216']	chromosome
+CP108678	['NBC_01216']	['Streptomyces sp. NBC_01216']	plasmid
+CP108679	['NBC_01216']	['Streptomyces sp. NBC_01216']	plasmid
+CP108680	['NBC_01216']	['Streptomyces sp. NBC_01216']	plasmid
+CP108538	['NBC_01217']	['Streptomyces sp. NBC_01217']	chromosome
+CP108539	['NBC_01217']	['Streptomyces sp. NBC_01217']	plasmid
+CP108536	['NBC_01218']	['Streptomyces sp. NBC_01218']	chromosome
+CP108537	['NBC_01218']	['Streptomyces sp. NBC_01218']	plasmid
+CP108531	['NBC_01220']	['Streptomyces sp. NBC_01220']	chromosome
+CP108532	['NBC_01220']	['Streptomyces sp. NBC_01220']	plasmid
+CP108533	['NBC_01220']	['Streptomyces sp. NBC_01220']	plasmid
+CP108534	['NBC_01220']	['Streptomyces sp. NBC_01220']	plasmid
+CP108535	['NBC_01220']	['Streptomyces sp. NBC_01220']	extrachromosomal
+CP108529	['NBC_01224']	['Streptomyces sp. NBC_01224']	chromosome
+CP108530	['NBC_01224']	['Streptomyces sp. NBC_01224']	plasmid
+CP108528	['NBC_01227']	['Kocuria rhizophila']	chromosome
+CP108524	['NBC_01228']	['Streptomyces zaomyceticus']	chromosome
+CP108525	['NBC_01228']	['Streptomyces zaomyceticus']	plasmid
+CP108526	['NBC_01228']	['Streptomyces zaomyceticus']	plasmid
+CP108527	['NBC_01228']	['Streptomyces zaomyceticus']	plasmid
+CP108522	['NBC_01230']	['Streptomyces sp. NBC_01230']	chromosome
+CP108523	['NBC_01230']	['Streptomyces sp. NBC_01230']	plasmid
+CP108521	['NBC_01231']	['Streptomyces sp. NBC_01231']	chromosome
+CP108518	['NBC_01232']	['Streptomyces sp. NBC_01232']	chromosome
+CP108519	['NBC_01232']	['Streptomyces sp. NBC_01232']	plasmid
+CP108520	['NBC_01232']	['Streptomyces sp. NBC_01232']	plasmid
+CP108514	['NBC_01233']	['Streptomyces sp. NBC_01233']	chromosome
+CP108515	['NBC_01233']	['Streptomyces sp. NBC_01233']	plasmid
+CP108516	['NBC_01233']	['Streptomyces sp. NBC_01233']	plasmid
+CP108517	['NBC_01233']	['Streptomyces sp. NBC_01233']	plasmid
+CP108513	['NBC_01235']	['Streptomyces sp. NBC_01235']	chromosome
+CP108512	['NBC_01236']	['Streptomyces sp. NBC_01236']	chromosome
+CP108508	['NBC_01237']	['Streptomyces sp. NBC_01237']	chromosome
+CP108509	['NBC_01237']	['Streptomyces sp. NBC_01237']	plasmid
+CP108510	['NBC_01237']	['Streptomyces sp. NBC_01237']	plasmid
+CP108511	['NBC_01237']	['Streptomyces sp. NBC_01237']	plasmid
+CP108501	['NBC_01238']	['Streptomyces sp. NBC_01238']	chromosome
+CP108502	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108503	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108504	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108505	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108506	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108507	['NBC_01238']	['Streptomyces sp. NBC_01238']	extrachromosomal
+CP130722	['NBC_01238']	['Streptomyces sp. NBC_01238']	chromosome
+CP130723	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP130724	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP130725	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP130726	['NBC_01238']	['Streptomyces sp. NBC_01238']	plasmid
+CP108497	['NBC_01240']	['Streptomyces sp. NBC_01240']	chromosome
+CP108498	['NBC_01240']	['Streptomyces sp. NBC_01240']	plasmid
+CP108499	['NBC_01240']	['Streptomyces sp. NBC_01240']	plasmid
+CP108500	['NBC_01240']	['Streptomyces sp. NBC_01240']	plasmid
+CP108494	['NBC_01241']	['Streptomyces sp. NBC_01241']	chromosome
+CP108495	['NBC_01241']	['Streptomyces sp. NBC_01241']	plasmid
+CP108496	['NBC_01241']	['Streptomyces sp. NBC_01241']	extrachromosomal
+CP108491	['NBC_01243']	['Streptomyces sp. NBC_01243']	chromosome
+CP108492	['NBC_01243']	['Streptomyces sp. NBC_01243']	plasmid
+CP108493	['NBC_01243']	['Streptomyces sp. NBC_01243']	plasmid
+CP108488	['NBC_01244']	['Streptomyces sp. NBC_01244']	chromosome
+CP108489	['NBC_01244']	['Streptomyces sp. NBC_01244']	plasmid
+CP108490	['NBC_01244']	['Streptomyces sp. NBC_01244']	plasmid
+CP108487	['NBC_01245']	['Kribbella sp. NBC_01245']	chromosome
+CP108484	['NBC_01246']	['Kitasatospora sp. NBC_01246']	chromosome
+CP108485	['NBC_01246']	['Kitasatospora sp. NBC_01246']	plasmid
+CP108486	['NBC_01246']	['Kitasatospora sp. NBC_01246']	plasmid
+CP108482	['NBC_01247']	['Kitasatospora herbaricolor']	chromosome
+CP108483	['NBC_01247']	['Kitasatospora herbaricolor']	plasmid
+CP108477	['NBC_01248']	['Streptomyces mirabilis']	chromosome
+CP108478	['NBC_01248']	['Streptomyces mirabilis']	plasmid
+CP108479	['NBC_01248']	['Streptomyces mirabilis']	extrachromosomal
+CP108480	['NBC_01248']	['Streptomyces mirabilis']	extrachromosomal
+CP108481	['NBC_01248']	['Streptomyces mirabilis']	plasmid
+CP108476	['NBC_01250']	['Kitasatospora sp. NBC_01250']	chromosome
+CP108474	['NBC_01255']	['Streptomyces sp. NBC_01255']	chromosome
+CP108475	['NBC_01255']	['Streptomyces sp. NBC_01255']	plasmid
+CP108473	['NBC_01256']	['Streptomyces caniferus']	chromosome
+CP108472	['NBC_01257']	['Streptomyces sp. NBC_01257']	chromosome
+CP108467	['NBC_01259']	['Streptomyces sp. NBC_01259']	chromosome
+CP108468	['NBC_01259']	['Streptomyces sp. NBC_01259']	plasmid
+CP108469	['NBC_01259']	['Streptomyces sp. NBC_01259']	plasmid
+CP108470	['NBC_01259']	['Streptomyces sp. NBC_01259']	plasmid
+CP108471	['NBC_01259']	['Streptomyces sp. NBC_01259']	extrachromosomal
+CP108464	['NBC_01260']	['Streptomyces sp. NBC_01260']	chromosome
+CP108465	['NBC_01260']	['Streptomyces sp. NBC_01260']	plasmid
+CP108466	['NBC_01260']	['Streptomyces sp. NBC_01260']	plasmid
+CP108463	['NBC_01261']	['Streptomyces sp. NBC_01261']	chromosome
+CP108462	['NBC_01262']	['Streptomyces sp. NBC_01262']	chromosome
+CP108460	['NBC_01265']	['Kitasatospora herbaricolor']	chromosome
+CP108461	['NBC_01265']	['Kitasatospora herbaricolor']	plasmid
+CP108458	['NBC_01266']	['Kitasatospora sp. NBC_01266']	chromosome
+CP108459	['NBC_01266']	['Kitasatospora sp. NBC_01266']	plasmid
+CP108455	['NBC_01267']	['Streptomyces sp. NBC_01267']	chromosome
+CP108456	['NBC_01267']	['Streptomyces sp. NBC_01267']	plasmid
+CP108457	['NBC_01267']	['Streptomyces sp. NBC_01267']	plasmid
+CP108454	['NBC_01268']	['Streptomyces sp. NBC_01268']	chromosome
+CP108452	['NBC_01269']	['[Kitasatospora] papulosa']	chromosome
+CP108453	['NBC_01269']	['[Kitasatospora] papulosa']	plasmid
+CP108451	['NBC_01270']	['Streptomyces albidoflavus']	chromosome
+CP108450	['NBC_01271']	['Streptomyces albidoflavus']	chromosome
+CP108447	['NBC_01274']	['Streptomyces albidoflavus']	chromosome
+CP108448	['NBC_01274']	['Streptomyces albidoflavus']	extrachromosomal
+CP108449	['NBC_01274']	['Streptomyces albidoflavus']	extrachromosomal
+CP108442	['NBC_01276']	['Streptomyces sp. NBC_01276']	chromosome
+CP108443	['NBC_01276']	['Streptomyces sp. NBC_01276']	plasmid
+CP108444	['NBC_01276']	['Streptomyces sp. NBC_01276']	plasmid
+CP108445	['NBC_01276']	['Streptomyces sp. NBC_01276']	plasmid
+CP108446	['NBC_01276']	['Streptomyces sp. NBC_01276']	extrachromosomal
+CP108439	['NBC_01278']	['Streptomyces sp. NBC_01278']	chromosome
+CP108440	['NBC_01278']	['Streptomyces sp. NBC_01278']	plasmid
+CP108441	['NBC_01278']	['Streptomyces sp. NBC_01278']	plasmid
+CP108438	['NBC_01280']	['Streptomyces sp. NBC_01280']	chromosome
+CP108435	['NBC_01281']	['Streptomyces sp. NBC_01281']	chromosome
+CP108436	['NBC_01281']	['Streptomyces sp. NBC_01281']	plasmid
+CP108437	['NBC_01281']	['Streptomyces sp. NBC_01281']	plasmid
+CP108430	['NBC_01283']	['Streptomyces sp. NBC_01283']	chromosome
+CP108431	['NBC_01283']	['Streptomyces sp. NBC_01283']	extrachromosomal
+CP108432	['NBC_01283']	['Streptomyces sp. NBC_01283']	extrachromosomal
+CP108433	['NBC_01283']	['Streptomyces sp. NBC_01283']	extrachromosomal
+CP108434	['NBC_01283']	['Streptomyces sp. NBC_01283']	extrachromosomal
+CP108428	['NBC_01286']	['Amycolatopsis sp. NBC_01286']	chromosome
+CP108429	['NBC_01286']	['Amycolatopsis sp. NBC_01286']	plasmid
+CP108427	['NBC_01288']	['Streptomyces sp. NBC_01288']	chromosome
+CP108426	['NBC_01289']	['Micromonospora zamorensis']	chromosome
+CP108425	['NBC_01290']	['Micromonospora maris']	chromosome
+CP108423	['NBC_01294']	['Streptomyces sp. NBC_01294']	chromosome
+CP108424	['NBC_01294']	['Streptomyces sp. NBC_01294']	plasmid
+CP108422	['NBC_01295']	['[Kitasatospora] papulosa']	chromosome
+CP130720	['NBC_01296']	['Streptomyces sp. NBC_01296']	chromosome
+CP130721	['NBC_01296']	['Streptomyces sp. NBC_01296']	plasmid
+CP108420	['NBC_01296']	['Streptomyces sp. NBC_01296']	chromosome
+CP108421	['NBC_01296']	['Streptomyces sp. NBC_01296']	plasmid
+CP108419	['NBC_01297']	['Streptomyces tubercidicus']	chromosome
+CP108414	['NBC_01298']	['Streptomyces sp. NBC_01298']	chromosome
+CP108415	['NBC_01298']	['Streptomyces sp. NBC_01298']	plasmid
+CP108416	['NBC_01298']	['Streptomyces sp. NBC_01298']	plasmid
+CP108417	['NBC_01298']	['Streptomyces sp. NBC_01298']	plasmid
+CP108418	['NBC_01298']	['Streptomyces sp. NBC_01298']	plasmid
+CP108413	['NBC_01299']	['Streptomyces celluloflavus']	chromosome
+CP108408	['NBC_01300']	['Kitasatospora sp. NBC_01300']	chromosome
+CP108409	['NBC_01300']	['Kitasatospora sp. NBC_01300']	plasmid
+CP108410	['NBC_01300']	['Kitasatospora sp. NBC_01300']	plasmid
+CP108411	['NBC_01300']	['Kitasatospora sp. NBC_01300']	plasmid
+CP108412	['NBC_01300']	['Kitasatospora sp. NBC_01300']	extrachromosomal
+CP108404	['NBC_01302']	['Kitasatospora sp. NBC_01302']	chromosome
+CP108405	['NBC_01302']	['Kitasatospora sp. NBC_01302']	plasmid
+CP108406	['NBC_01302']	['Kitasatospora sp. NBC_01302']	plasmid
+CP108407	['NBC_01302']	['Kitasatospora sp. NBC_01302']	plasmid
+CP109055	['NBC_01304']	['Streptomyces sp. NBC_01304']	chromosome
+CP109056	['NBC_01304']	['Streptomyces sp. NBC_01304']	plasmid
+CP109057	['NBC_01304']	['Streptomyces sp. NBC_01304']	plasmid
+CP109058	['NBC_01304']	['Streptomyces sp. NBC_01304']	plasmid
+CP108403	['NBC_01307']	['Amycolatopsis sp. NBC_01307']	chromosome
+CP108400	['NBC_01309']	['Streptomycetaceae']	chromosome
+CP108401	['NBC_01309']	['Streptomycetaceae']	plasmid
+CP108402	['NBC_01309']	['Streptomycetaceae']	plasmid
+CP108396	['NBC_01310']	['Streptomyces sp. NBC_01310']	chromosome
+CP108397	['NBC_01310']	['Streptomyces sp. NBC_01310']	plasmid
+CP108398	['NBC_01310']	['Streptomyces sp. NBC_01310']	plasmid
+CP108399	['NBC_01310']	['Streptomyces sp. NBC_01310']	plasmid
+CP108394	['NBC_01314']	['Streptomyces sp. NBC_01314']	chromosome
+CP108395	['NBC_01314']	['Streptomyces sp. NBC_01314']	extrachromosomal
+CP108393	['NBC_01317']	['Streptomyces sp. NBC_01317']	chromosome
+CP108392	['NBC_01318']	['Streptomyces sp. NBC_01318']	chromosome
+CP108390	['NBC_01320']	['Streptomyces sp. NBC_01320']	chromosome
+CP108391	['NBC_01320']	['Streptomyces sp. NBC_01320']	plasmid
+CP108388	['NBC_01321']	['Streptomyces sp. NBC_01321']	chromosome
+CP108389	['NBC_01321']	['Streptomyces sp. NBC_01321']	plasmid
+CP108385	['NBC_01324']	['Streptomyces sp. NBC_01324']	chromosome
+CP108386	['NBC_01324']	['Streptomyces sp. NBC_01324']	plasmid
+CP108387	['NBC_01324']	['Streptomyces sp. NBC_01324']	plasmid
+CP109051	['NBC_01325']	['Streptomyces subrutilus']	chromosome
+CP109052	['NBC_01325']	['Streptomyces subrutilus']	plasmid
+CP109053	['NBC_01325']	['Streptomyces subrutilus']	plasmid
+CP109054	['NBC_01325']	['Streptomyces subrutilus']	plasmid
+CP108383	['NBC_01327']	['Nocardia sp. NBC_01327']	chromosome
+CP108384	['NBC_01327']	['Nocardia sp. NBC_01327']	plasmid
+CP108382	['NBC_01328']	['Streptomyces phaeochromogenes']	chromosome
+CP108381	['NBC_01329']	['Nocardia sp. NBC_01329']	chromosome
+CP108379	['NBC_01331']	['Streptomyces albidoflavus']	chromosome
+CP108380	['NBC_01331']	['Streptomyces albidoflavus']	plasmid
+CP108378	['NBC_01332']	['Streptomyces murinus']	chromosome
+CP108376	['NBC_01333']	['Streptomyces anulatus']	chromosome
+CP108377	['NBC_01333']	['Streptomyces anulatus']	plasmid
+CP130718	['NBC_01334']	['Streptomyces sp. NBC_01334']	chromosome
+CP130719	['NBC_01334']	['Streptomyces sp. NBC_01334']	plasmid
+CP108374	['NBC_01334']	['Streptomyces sp. NBC_01334']	chromosome
+CP108375	['NBC_01334']	['Streptomyces sp. NBC_01334']	plasmid
+CP108370	['NBC_01335']	['Streptomyces sp. NBC_01335']	chromosome
+CP108371	['NBC_01335']	['Streptomyces sp. NBC_01335']	plasmid
+CP108372	['NBC_01335']	['Streptomyces sp. NBC_01335']	plasmid
+CP108373	['NBC_01335']	['Streptomyces sp. NBC_01335']	plasmid
+CP108369	['NBC_01336']	['Streptomyces sp. NBC_01336']	chromosome
+CP108368	['NBC_01337']	['Streptomyces platensis']	chromosome
+CP108367	['NBC_01338']	['Streptomyces cyaneofuscatus']	chromosome
+CP108365	['NBC_01340']	['Streptomyces sp. NBC_01340']	chromosome
+CP108366	['NBC_01340']	['Streptomyces sp. NBC_01340']	plasmid
+CP108364	['NBC_01341']	['Streptomyces sp. NBC_01341']	chromosome
+CP108362	['NBC_01343']	['Streptomyces sp. NBC_01343']	chromosome
+CP108363	['NBC_01343']	['Streptomyces sp. NBC_01343']	plasmid
+CP108361	['NBC_01344']	['[Kitasatospora] papulosa']	chromosome
+CP108360	['NBC_01346']	['Streptomyces microflavus']	chromosome
+CP108359	['NBC_01347']	['[Kitasatospora] papulosa']	chromosome
+CP108356	['NBC_01351']	['Streptomyces sp. NBC_01351']	chromosome
+CP108357	['NBC_01351']	['Streptomyces sp. NBC_01351']	plasmid
+CP108358	['NBC_01351']	['Streptomyces sp. NBC_01351']	plasmid
+CP108354	['NBC_01352']	['Streptomyces sp. NBC_01352']	chromosome
+CP108355	['NBC_01352']	['Streptomyces sp. NBC_01352']	plasmid
+CP108352	['NBC_01353']	['Streptomyces sp. NBC_01353']	chromosome
+CP108353	['NBC_01353']	['Streptomyces sp. NBC_01353']	plasmid
+CP108351	['NBC_01355']	['[Kitasatospora] papulosa']	chromosome
+CP108350	['NBC_01356']	['Streptomyces sp. NBC_01356']	chromosome
+CP108349	['NBC_01358']	['Streptomyces sp. NBC_01358']	chromosome
+CP108347	['NBC_01359']	['Streptomyces decoyicus']	chromosome
+CP108348	['NBC_01359']	['Streptomyces decoyicus']	plasmid
+CP108346	['NBC_01360']	['Streptomyces canus']	chromosome
+CP109589	['NBC_01361']	['Streptomyces sp. NBC_01361']	chromosome
+CP109590	['NBC_01361']	['Streptomyces sp. NBC_01361']	plasmid
+CP109591	['NBC_01361']	['Streptomyces sp. NBC_01361']	plasmid
+CP109586	['NBC_01362']	['Streptomyces sp. NBC_01362']	chromosome
+CP109587	['NBC_01362']	['Streptomyces sp. NBC_01362']	plasmid
+CP109588	['NBC_01362']	['Streptomyces sp. NBC_01362']	plasmid
+CP109583	['NBC_01365']	['Streptomyces uncialis']	chromosome
+CP109584	['NBC_01365']	['Streptomyces uncialis']	plasmid
+CP109585	['NBC_01365']	['Streptomyces uncialis']	plasmid
+CP109581	['NBC_01366']	['Streptomyces griseoaurantiacus']	chromosome
+CP109582	['NBC_01366']	['Streptomyces griseoaurantiacus']	extrachromosomal
+CP109580	['NBC_01367']	['Streptomyces sp. NBC_01367']	chromosome
+CP109575	['NBC_01369']	['Streptomyces sp. NBC_01369']	chromosome
+CP109576	['NBC_01369']	['Streptomyces sp. NBC_01369']	plasmid
+CP109577	['NBC_01369']	['Streptomyces sp. NBC_01369']	plasmid
+CP109578	['NBC_01369']	['Streptomyces sp. NBC_01369']	plasmid
+CP109579	['NBC_01369']	['Streptomyces sp. NBC_01369']	plasmid
+CP109574	['NBC_01370']	['Streptomyces canus']	chromosome
+CP109571	['NBC_01372']	['Streptomyces anthocyanicus']	chromosome
+CP109572	['NBC_01372']	['Streptomyces anthocyanicus']	plasmid
+CP109573	['NBC_01372']	['Streptomyces anthocyanicus']	plasmid
+CP109570	['NBC_01374']	['Streptomyces albidoflavus']	chromosome
+CP109566	['NBC_01377']	['Nocardia sp. NBC_01377']	chromosome
+CP109567	['NBC_01377']	['Nocardia sp. NBC_01377']	plasmid
+CP109568	['NBC_01377']	['Nocardia sp. NBC_01377']	plasmid
+CP109569	['NBC_01377']	['Nocardia sp. NBC_01377']	plasmid
+CP109565	['NBC_01378']	['Streptomyces sp. NBC_01378']	chromosome
+CP109561	['NBC_01383']	['Streptomyces sp. NBC_01383']	chromosome
+CP109562	['NBC_01383']	['Streptomyces sp. NBC_01383']	plasmid
+CP109563	['NBC_01383']	['Streptomyces sp. NBC_01383']	plasmid
+CP109564	['NBC_01383']	['Streptomyces sp. NBC_01383']	plasmid
+CP109559	['NBC_01384']	['Streptomyces sp. NBC_01384']	chromosome
+CP109560	['NBC_01384']	['Streptomyces sp. NBC_01384']	plasmid
+CP109558	['NBC_01386']	['Streptomyces sp. NBC_01386']	chromosome
+CP109556	['NBC_01387']	['Streptomyces sp. NBC_01387']	chromosome
+CP109557	['NBC_01387']	['Streptomyces sp. NBC_01387']	plasmid
+CP109553	['NBC_01388']	['Nocardia sp. NBC_01388']	chromosome
+CP109554	['NBC_01388']	['Nocardia sp. NBC_01388']	plasmid
+CP109555	['NBC_01388']	['Nocardia sp. NBC_01388']	plasmid
+CP109552	['NBC_01389']	['Microbispora sp. NBC_01389']	chromosome
+CP109551	['NBC_01390']	['Streptomyces sp. NBC_01390']	chromosome
+CP109550	['NBC_01391']	['Streptomyces microflavus']	chromosome
+CP109549	['NBC_01392']	['Micromonospora sp. NBC_01392']	chromosome
+CP109546	['NBC_01393']	['Streptomyces sp. NBC_01393']	chromosome
+CP109547	['NBC_01393']	['Streptomyces sp. NBC_01393']	extrachromosomal
+CP109548	['NBC_01393']	['Streptomyces sp. NBC_01393']	extrachromosomal
+CP109545	['NBC_01396']	['Streptomyces sp. NBC_01396']	chromosome
+CP109538	['NBC_01397']	['Streptomyces sp. NBC_01397']	chromosome
+CP109539	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109540	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109541	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109542	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109543	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109544	['NBC_01397']	['Streptomyces sp. NBC_01397']	extrachromosomal
+CP109535	['NBC_01401']	['Streptomyces sp. NBC_01401']	chromosome
+CP109536	['NBC_01401']	['Streptomyces sp. NBC_01401']	plasmid
+CP109537	['NBC_01401']	['Streptomyces sp. NBC_01401']	extrachromosomal
+CP109534	['NBC_01403']	['Sphaerisporangium sp. NBC_01403']	chromosome
+CP109532	['NBC_01405']	['Micromonospora sp. NBC_01405']	chromosome
+CP109533	['NBC_01405']	['Micromonospora sp. NBC_01405']	plasmid
+CP109531	['NBC_01409']	['Streptomyces phaeochromogenes']	chromosome
+CP109530	['NBC_01410']	['Streptomyces sp. NBC_01410']	chromosome
+CP109529	['NBC_01411']	['Streptomyces sp. NBC_01411']	chromosome
+CP109528	['NBC_01412']	['Micromonospora sp. NBC_01412']	chromosome
+CP109527	['NBC_01413']	['Nocardia salmonicida']	chromosome
+CP109522	['NBC_01414']	['Streptomyces anulatus']	chromosome
+CP109523	['NBC_01414']	['Streptomyces anulatus']	plasmid
+CP109524	['NBC_01414']	['Streptomyces anulatus']	plasmid
+CP109525	['NBC_01414']	['Streptomyces anulatus']	plasmid
+CP109526	['NBC_01414']	['Streptomyces anulatus']	plasmid
+CP109518	['NBC_01417']	['Streptomyces anulatus']	chromosome
+CP109519	['NBC_01417']	['Streptomyces anulatus']	plasmid
+CP109520	['NBC_01417']	['Streptomyces anulatus']	plasmid
+CP109521	['NBC_01417']	['Streptomyces anulatus']	plasmid
+CP109517	['NBC_01418']	['Streptomyces anulatus']	chromosome
+CP109515	['NBC_01419']	['Streptomyces anulatus']	chromosome
+CP109516	['NBC_01419']	['Streptomyces anulatus']	plasmid
+CP109513	['NBC_01420']	['Streptomyces sp. NBC_01420']	chromosome
+CP109514	['NBC_01420']	['Streptomyces sp. NBC_01420']	plasmid
+CP109511	['NBC_01421']	['Streptomyces anulatus']	chromosome
+CP109512	['NBC_01421']	['Streptomyces anulatus']	plasmid
+CP109508	['NBC_01422']	['Streptomyces sp. NBC_01422']	chromosome
+CP109509	['NBC_01422']	['Streptomyces sp. NBC_01422']	plasmid
+CP109510	['NBC_01422']	['Streptomyces sp. NBC_01422']	plasmid
+CP109506	['NBC_01423']	['Streptomyces sp. NBC_01423']	chromosome
+CP109507	['NBC_01423']	['Streptomyces sp. NBC_01423']	plasmid
+CP109500	['NBC_01426']	['Streptomyces sp. NBC 01426']	chromosome
+CP109501	['NBC_01426']	['Streptomyces sp. NBC 01426']	plasmid
+CP109502	['NBC_01426']	['Streptomyces sp. NBC 01426']	plasmid
+CP109503	['NBC_01426']	['Streptomyces sp. NBC 01426']	plasmid
+CP109504	['NBC_01426']	['Streptomyces sp. NBC 01426']	plasmid
+CP109505	['NBC_01426']	['Streptomyces sp. NBC 01426']	plasmid
+CP109499	['NBC_01428']	['Streptomyces sp. NBC_01428']	chromosome
+CP109599	['NBC_01429']	['Streptomyces sp. NBC_01429']	chromosome
+CP109496	['NBC_01431']	['Streptomyces sp. NBC_01431']	chromosome
+CP109497	['NBC_01431']	['Streptomyces sp. NBC_01431']	plasmid
+CP109498	['NBC_01431']	['Streptomyces sp. NBC_01431']	plasmid
+CP109495	['NBC_01432']	['Streptomyces niveus']	chromosome
+CP109492	['NBC_01435']	['Streptomyces sp. NBC_01435']	chromosome
+CP109493	['NBC_01435']	['Streptomyces sp. NBC_01435']	plasmid
+CP109494	['NBC_01435']	['Streptomyces sp. NBC_01435']	plasmid
+CP109491	['NBC_01436']	['Streptomyces anulatus']	chromosome
+CP109490	['NBC_01437']	['Streptomyces anulatus']	chromosome
+CP109488	['NBC_01438']	['Streptomyces sp. NBC_01438']	chromosome
+CP109489	['NBC_01438']	['Streptomyces sp. NBC_01438']	extrachromosomal
+CP109487	['NBC_01439']	['Streptomyces sp. NBC_01439']	chromosome
+CP109485	['NBC_01445']	['Streptomyces sp. NBC_01445']	chromosome
+CP109486	['NBC_01445']	['Streptomyces sp. NBC_01445']	plasmid
+CP109483	['NBC_01447']	['Streptomyces niveus']	chromosome
+CP109484	['NBC_01447']	['Streptomyces niveus']	plasmid
+CP109480	['NBC_01450']	['Streptomyces sp. NBC_01450']	chromosome
+CP109481	['NBC_01450']	['Streptomyces sp. NBC_01450']	plasmid
+CP109482	['NBC_01450']	['Streptomyces sp. NBC_01450']	plasmid
+CP109479	['NBC_01451']	['Streptomyces sp. NBC_01451']	chromosome
+CP109478	['NBC_01453']	['Streptomyces sp. NBC_01453']	chromosome
+CP109460	['NBC_01454']	['Streptomyces sp. NBC 01454']	chromosome
+CP109461	['NBC_01454']	['Streptomyces sp. NBC 01454']	plasmid
+CP109462	['NBC_01454']	['Streptomyces sp. NBC 01454']	plasmid
+CP109463	['NBC_01454']	['Streptomyces sp. NBC 01454']	plasmid
+CP109464	['NBC_01454']	['Streptomyces sp. NBC 01454']	plasmid
+CP109475	['NBC_01455']	['Streptomyces sp. NBC_01455']	chromosome
+CP109476	['NBC_01455']	['Streptomyces sp. NBC_01455']	plasmid
+CP109477	['NBC_01455']	['Streptomyces sp. NBC_01455']	plasmid
+CP109455	['NBC_01456']	['Streptomyces sp. NBC 01456']	chromosome
+CP109456	['NBC_01456']	['Streptomyces sp. NBC 01456']	plasmid
+CP109457	['NBC_01456']	['Streptomyces sp. NBC 01456']	plasmid
+CP109458	['NBC_01456']	['Streptomyces sp. NBC 01456']	plasmid
+CP109459	['NBC_01456']	['Streptomyces sp. NBC 01456']	plasmid
+CP109473	['NBC_01460']	['Streptomyces sp. NBC_01460']	chromosome
+CP109474	['NBC_01460']	['Streptomyces sp. NBC_01460']	plasmid
+CP109472	['NBC_01461']	['Micromonospora rifamycinica']	chromosome
+CP109470	['NBC_01462']	['Streptomyces sp. NBC_01462']	chromosome
+CP109471	['NBC_01462']	['Streptomyces sp. NBC_01462']	plasmid
+CP109468	['NBC_01463']	['Streptomyces sp. NBC_01463']	chromosome
+CP109469	['NBC_01463']	['Streptomyces sp. NBC_01463']	plasmid
+CP109467	['NBC_01465']	['Streptomyces sp. NBC_01465']	chromosome
+CP109465	['NBC_01469']	['Streptosporangium sp. NBC_01469']	chromosome
+CP109466	['NBC_01469']	['Streptosporangium sp. NBC_01469']	plasmid
+CP109450	['NBC_01471']	['Streptomyces sp. NBC_01471']	chromosome
+CP109451	['NBC_01471']	['Streptomyces sp. NBC_01471']	plasmid
+CP109452	['NBC_01471']	['Streptomyces sp. NBC_01471']	extrachromosomal
+CP109449	['NBC_01474']	['Streptomyces sp. NBC_01474']	chromosome
+CP109447	['NBC_01475']	['Streptomyces canus']	chromosome
+CP109448	['NBC_01475']	['Streptomyces canus']	plasmid
+CP109446	['NBC_01476']	['Streptomyces sp. NBC_01476']	chromosome
+CP109445	['NBC_01477']	['Streptomyces sp. NBC 01477']	chromosome
+CP109444	['NBC_01478']	['Streptomyces sp. NBC_01478']	chromosome
+CP109442	['NBC_01480']	['Amycolatopsis sp. NBC_01480']	chromosome
+CP109443	['NBC_01480']	['Amycolatopsis sp. NBC_01480']	plasmid
+CP109441	['NBC_01482']	['Nocardia vinacea']	chromosome
+CP109438	['NBC_01483']	['Streptomyces sp. NBC_01483']	chromosome
+CP109439	['NBC_01483']	['Streptomyces sp. NBC_01483']	plasmid
+CP109440	['NBC_01483']	['Streptomyces sp. NBC_01483']	plasmid
+CP109437	['NBC_01484']	['Kribbella sp. NBC_01484']	chromosome
+CP109435	['NBC_01485']	['Streptomyces sp. NBC_01485']	chromosome
+CP109436	['NBC_01485']	['Streptomyces sp. NBC_01485']	plasmid
+CP109434	['NBC_01488']	['Amycolatopsis sp. NBC_01488']	chromosome
+CP109433	['NBC_01490']	['Actinoallomurus sp. NBC_01490']	chromosome
+CP109432	['NBC_01491']	['Spirillospora sp. NBC 01491']	chromosome
+CP109430	['NBC_01495']	['Streptosporangium sp. NBC_01495']	chromosome
+CP109431	['NBC_01495']	['Streptosporangium sp. NBC_01495']	plasmid
+CP109429	['NBC_01496']	['Streptomyces brevispora']	chromosome
+CP109427	['NBC_01497']	['Streptomyces sp. NBC_01497']	chromosome
+CP109428	['NBC_01497']	['Streptomyces sp. NBC_01497']	plasmid
+CP109598	['NBC_01498']	['Streptomyces sp. NBC 01498']	chromosome
+CP109426	['NBC_01499']	['Nocardia sp. NBC_01499']	chromosome
+CP109596	['NBC_01503']	['Nocardia sp. NBC 01503']	chromosome
+CP109597	['NBC_01503']	['Nocardia sp. NBC 01503']	plasmid
+CP109425	['NBC_01505']	['Kribbella sp. NBC_01505']	chromosome
+CP109422	['NBC_01506']	['Streptomyces sp. NBC_01506']	chromosome
+CP109423	['NBC_01506']	['Streptomyces sp. NBC_01506']	plasmid
+CP109424	['NBC_01506']	['Streptomyces sp. NBC_01506']	plasmid
+CP109421	['NBC_01507']	['Streptomyces niveus']	chromosome
+CP109419	['NBC_01508']	['Streptomyces sp. NBC_01508']	chromosome
+CP109420	['NBC_01508']	['Streptomyces sp. NBC_01508']	plasmid
+CP109418	['NBC_01510']	['Kribbella sp. NBC_01510']	chromosome
+CP109417	['NBC_01511']	['Streptomyces sp. NBC_01511']	chromosome
+CP109416	['NBC_01515']	['Streptomyces sp. NBC_01515']	chromosome
+CP109413	['NBC_01516']	['Streptomyces anulatus']	chromosome
+CP109414	['NBC_01516']	['Streptomyces anulatus']	plasmid
+CP109415	['NBC_01516']	['Streptomyces anulatus']	plasmid
+CP130730	['NBC_01518']	['Streptomyces sp. NBC_01518']	chromosome
+CP109412	['NBC_01518']	['Streptomyces sp. NBC_01518']	chromosome
+CP109407	['NBC_01519']	['Kitasatospora sp. NBC_01519']	chromosome
+CP109408	['NBC_01519']	['Kitasatospora sp. NBC_01519']	plasmid
+CP109409	['NBC_01519']	['Kitasatospora sp. NBC_01519']	extrachromosomal
+CP109410	['NBC_01519']	['Kitasatospora sp. NBC_01519']	extrachromosomal
+CP109411	['NBC_01519']	['Kitasatospora sp. NBC_01519']	extrachromosomal
+CP109404	['NBC_01520']	['Streptomyces sp. NBC_01520']	chromosome
+CP109405	['NBC_01520']	['Streptomyces sp. NBC_01520']	plasmid
+CP109406	['NBC_01520']	['Streptomyces sp. NBC_01520']	plasmid
+CP109403	['NBC_01522']	['Streptomyces anulatus']	chromosome
+CP109400	['NBC_01523']	['Streptomyces anulatus']	chromosome
+CP109401	['NBC_01523']	['Streptomyces anulatus']	plasmid
+CP109402	['NBC_01523']	['Streptomyces anulatus']	plasmid
+CP109397	['NBC_01525']	['Streptomyces sp. NBC_01525']	chromosome
+CP109398	['NBC_01525']	['Streptomyces sp. NBC_01525']	plasmid
+CP109399	['NBC_01525']	['Streptomyces sp. NBC_01525']	plasmid
+CP109395	['NBC_01527']	['Streptomyces sp. NBC_01527']	chromosome
+CP109396	['NBC_01527']	['Streptomyces sp. NBC_01527']	plasmid
+CP109394	['NBC 01530']	['Streptomyces sp. NBC_01530']	chromosome
+CP109393	['NBC 01536']	['Streptomyces niveus']	chromosome
+CP109392	['NBC 01537']	['Streptomyces sp. NBC_01537']	chromosome
+CP109391	['NBC 01538']	['Streptomyces sp. NBC_01538']	chromosome
+CP109390	['NBC 01539']	['Kitasatospora sp. NBC_01539']	chromosome
+CP109389	['NBC 01542']	['Streptomyces niveus']	chromosome
+CP109387	['NBC 01543']	['Streptomyces anulatus']	chromosome
+CP109388	['NBC 01543']	['Streptomyces anulatus']	plasmid
+CP109384	['NBC 01544']	['Streptomyces sp. NBC 01544']	chromosome
+CP109385	['NBC 01544']	['Streptomyces sp. NBC 01544']	plasmid
+CP109386	['NBC 01544']	['Streptomyces sp. NBC 01544']	plasmid
+CP109381	['NBC 01545']	['Streptomyces atratus']	chromosome
+CP109382	['NBC 01545']	['Streptomyces atratus']	plasmid
+CP109383	['NBC 01545']	['Streptomyces atratus']	plasmid
+CP109379	['NBC 01546']	['Streptomyces sp. NBC 01546']	chromosome
+CP109380	['NBC 01546']	['Streptomyces sp. NBC 01546']	plasmid
+CP109377	['NBC 01547']	['Streptomyces sp. NBC 01547']	chromosome
+CP109378	['NBC 01547']	['Streptomyces sp. NBC 01547']	plasmid
+CP109376	['NBC 01550']	['Streptomyces sp. NBC 01550']	chromosome
+CP109375	['NBC 01552']	['[Kitasatospora] papulosa']	chromosome
+CP109370	['NBC 01553']	['Streptomyces sp. NBC 01553']	chromosome
+CP109371	['NBC 01553']	['Streptomyces sp. NBC 01553']	plasmid
+CP109372	['NBC 01553']	['Streptomyces sp. NBC 01553']	plasmid
+CP109373	['NBC 01553']	['Streptomyces sp. NBC 01553']	extrachromosomal
+CP109374	['NBC 01553']	['Streptomyces sp. NBC 01553']	extrachromosomal
+CP109369	['NBC 01555']	['Kitasatospora purpeofusca']	chromosome
+CP109368	['NBC 01556']	['Streptomyces anulatus']	chromosome
+CP109365	['NBC 01558']	['Streptomyces sp. NBC 01558']	chromosome
+CP109366	['NBC 01558']	['Streptomyces sp. NBC 01558']	plasmid
+CP109367	['NBC 01558']	['Streptomyces sp. NBC 01558']	plasmid
+CP109364	['NBC 01560']	['Kitasatospora sp. NBC 01560']	chromosome
+CP109356	['NBC 01562']	['Streptomyces sp. NBC 01562']	chromosome
+CP109357	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109358	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109359	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109360	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109361	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109362	['NBC 01562']	['Streptomyces sp. NBC 01562']	extrachromosomal
+CP109363	['NBC 01562']	['Streptomyces sp. NBC 01562']	plasmid
+CP109354	['NBC 01563']	['Streptomyces sp. NBC 01563']	chromosome
+CP109355	['NBC 01563']	['Streptomyces sp. NBC 01563']	plasmid
+CP109352	['NBC 01564']	['[Kitasatospora] papulosa']	chromosome
+CP109353	['NBC 01564']	['[Kitasatospora] papulosa']	plasmid
+CP109349	['NBC 01568']	['Streptomyces sp. NBC 01568']	chromosome
+CP109350	['NBC 01568']	['Streptomyces sp. NBC 01568']	plasmid
+CP109351	['NBC 01568']	['Streptomyces sp. NBC 01568']	plasmid
+CP109347	['NBC 01576']	['Streptomyces anulatus']	chromosome
+CP109348	['NBC 01576']	['Streptomyces anulatus']	plasmid
+CP109346	['NBC 01578']	['Streptomyces sp. NBC 01578']	chromosome
+CP109344	['NBC_01579']	['Streptomyces sp. NBC 01579']	chromosome
+CP109345	['NBC_01579']	['Streptomyces sp. NBC 01579']	plasmid
+CP109343	['NBC_01581']	['Streptomyces glauciniger']	chromosome
+CP109341	['NBC_01582']	['Streptomyces anulatus']	chromosome
+CP109342	['NBC_01582']	['Streptomyces anulatus']	plasmid
+CP109339	['NBC_01584']	['Streptomyces decoyicus']	chromosome
+CP109340	['NBC_01584']	['Streptomyces decoyicus']	plasmid
+CP109335	['NBC_01585']	['Streptomyces canus']	chromosome
+CP109336	['NBC_01585']	['Streptomyces canus']	plasmid
+CP109334	['NBC_01586']	['Streptomyces decoyicus']	chromosome
+CP109333	['NBC_01589']	['Streptomyces sp. NBC 01589']	chromosome
+CP109330	['NBC_01590']	['Streptomyces sp. NBC 01590']	chromosome
+CP109331	['NBC_01590']	['Streptomyces sp. NBC 01590']	plasmid
+CP109332	['NBC_01590']	['Streptomyces sp. NBC 01590']	plasmid
+CP109327	['NBC_01591']	['Streptomyces sp. NBC 01591']	chromosome
+CP109328	['NBC_01591']	['Streptomyces sp. NBC 01591']	plasmid
+CP109329	['NBC_01591']	['Streptomyces sp. NBC 01591']	plasmid
+CP109323	['NBC_01592']	['Streptomyces sp. NBC 01592']	chromosome
+CP109324	['NBC_01592']	['Streptomyces sp. NBC 01592']	plasmid
+CP109325	['NBC_01592']	['Streptomyces sp. NBC 01592']	plasmid
+CP109326	['NBC_01592']	['Streptomyces sp. NBC 01592']	extrachromosomal
+CP109322	['NBC_01594']	['Streptomyces sp. NBC 01594']	chromosome
+CP109320	['NBC_01595']	['Streptomyces microflavus']	chromosome
+CP109321	['NBC_01595']	['Streptomyces microflavus']	plasmid
+CP109319	['NBC_01597']	['Streptomyces sp. NBC 01597']	chromosome
+CP109317	['NBC_01598']	['Streptomyces anulatus']	chromosome
+CP109318	['NBC_01598']	['Streptomyces anulatus']	plasmid
+CP109314	['NBC_01601']	['Streptomyces sp. NBC 01601']	chromosome
+CP109315	['NBC_01601']	['Streptomyces sp. NBC 01601']	plasmid
+CP109316	['NBC_01601']	['Streptomyces sp. NBC 01601']	plasmid
+CP109313	['NBC_01602']	['Streptomyces sp. NBC 01602']	chromosome
+CP109312	['NBC_01604']	['Streptomyces sp. NBC 01604']	chromosome
+CP109309	['NBC_01606']	['Streptomyces cyaneofuscatus']	chromosome
+CP109310	['NBC_01606']	['Streptomyces cyaneofuscatus']	plasmid
+CP109311	['NBC_01606']	['Streptomyces cyaneofuscatus']	plasmid
+CP109308	['NBC_01607']	['Streptomyces cellulosae']	chromosome
+CP109307	['NBC_01609']	['Micromonospora globbae']	chromosome
+CP109306	['NBC_01611']	['Micromonospora zamorensis']	chromosome
+CP109304	['NBC_01612']	['Streptomyces sp. NBC 01612']	chromosome
+CP109305	['NBC_01612']	['Streptomyces sp. NBC 01612']	extrachromosomal
+CP109303	['NBC_01613']	['Streptomyces sp. NBC 01613']	chromosome
+CP109302	['NBC_01614']	['Streptomyces sp. NBC 01614']	chromosome
+CP109301	['NBC_01615']	['Streptomyces sp. NBC 01615']	chromosome
+CP109299	['NBC_01616']	['Streptomyces albidoflavus']	chromosome
+CP109300	['NBC_01616']	['Streptomyces albidoflavus']	extrachromosomal
+CP109298	['NBC_01617']	['Streptomyces sp. NBC 01617']	chromosome
+CP109297	['NBC_01618']	['Streptomyces sp. NBC 01618']	chromosome
+CP109296	['NBC_01620']	['Streptomyces sp. NBC 01620']	chromosome
+CP109294	['NBC_01621']	['Streptomyces albidoflavus']	chromosome
+CP109295	['NBC_01621']	['Streptomyces albidoflavus']	plasmid
+CP109293	['NBC_01622']	['Streptomyces sp. NBC 01622']	chromosome
+CP109290	['NBC 01624']	['Streptomyces uncialis']	chromosome
+CP109291	['NBC 01624']	['Streptomyces uncialis']	plasmid
+CP109292	['NBC 01624']	['Streptomyces uncialis']	plasmid
+CP109287	['NBC 01625']	['Streptomyces anulatus']	chromosome
+CP109288	['NBC 01625']	['Streptomyces anulatus']	plasmid
+CP109289	['NBC 01625']	['Streptomyces anulatus']	plasmid
+CP109283	['NBC 01626']	['Streptomyces anulatus']	chromosome
+CP109284	['NBC 01626']	['Streptomyces anulatus']	plasmid
+CP109285	['NBC 01626']	['Streptomyces anulatus']	plasmid
+CP109286	['NBC 01626']	['Streptomyces anulatus']	extrachromosomal
+CP109281	['NBC 01627']	['Streptomyces albidoflavus']	chromosome
+CP109282	['NBC 01627']	['Streptomyces albidoflavus']	plasmid
+CP109280	['NBC 01629']	['Streptomyces thermoviolaceus']	chromosome
+CP109279	['NBC 01630']	['Streptomyces griseus']	chromosome
+CP109277	['NBC 01635']	['Streptomyces sp. NBC 01635']	chromosome
+CP109278	['NBC 01635']	['Streptomyces sp. NBC 01635']	plasmid
+CP109275	['NBC 01636']	['Streptomyces anthocyanicus']	chromosome
+CP109276	['NBC 01636']	['Streptomyces anthocyanicus']	plasmid
+CP109274	['NBC 01637']	['Streptomyces sp. NBC 01637']	chromosome
+CP109273	['NBC 01638']	['Micromonospora sp. NBC 01638']	chromosome
+CP109272	['NBC 01639']	['Streptosporangium sp. NBC 01639']	chromosome
+CP109270	['NBC 01640']	['Streptomyces albidoflavus']	chromosome
+CP109271	['NBC 01640']	['Streptomyces albidoflavus']	plasmid
+CP109268	['NBC 01641']	['Streptomyces anulatus']	chromosome
+CP109269	['NBC 01641']	['Streptomyces anulatus']	plasmid
+CP109266	['NBC 01643']	['Streptomyces sp. NBC 01643']	chromosome
+CP109267	['NBC 01643']	['Streptomyces sp. NBC 01643']	plasmid
+CP109264	['NBC 01646']	['Streptomyces hirsutus']	chromosome
+CP109265	['NBC 01646']	['Streptomyces hirsutus']	plasmid
+CP109262	['NBC 01648']	['Streptomyces anulatus']	chromosome
+CP109263	['NBC 01648']	['Streptomyces anulatus']	plasmid
+CP109258	['NBC 01650']	['Streptomyces sp. NBC 01650']	chromosome
+CP109259	['NBC 01650']	['Streptomyces sp. NBC 01650']	plasmid
+CP109260	['NBC 01650']	['Streptomyces sp. NBC 01650']	plasmid
+CP109261	['NBC 01650']	['Streptomyces sp. NBC 01650']	plasmid
+CP109256	['NBC 01651']	['Streptomyces anulatus']	chromosome
+CP109257	['NBC 01651']	['Streptomyces anulatus']	plasmid
+CP109255	['NBC 01652']	['Streptomyces griseus']	chromosome
+CP109254	['NBC 01653']	['Streptomyces sp. NBC 01653']	chromosome
+CP109252	['NBC 01654']	['Streptomyces anulatus']	chromosome
+CP109253	['NBC 01654']	['Streptomyces anulatus']	plasmid
+CP109249	['NBC 01657']	['Streptomyces cellulosae']	chromosome
+CP109250	['NBC 01657']	['Streptomyces cellulosae']	plasmid
+CP109251	['NBC 01657']	['Streptomyces cellulosae']	plasmid
+CP109245	['NBC 01658']	['Streptomyces albidoflavus']	chromosome
+CP109246	['NBC 01658']	['Streptomyces albidoflavus']	plasmid
+CP109247	['NBC 01658']	['Streptomyces albidoflavus']	plasmid
+CP109248	['NBC 01658']	['Streptomyces albidoflavus']	plasmid
+CP109243	['NBC 01661']	['Streptomyces albidoflavus']	chromosome
+CP109244	['NBC 01661']	['Streptomyces albidoflavus']	plasmid
+CP109242	['NBC 01662']	['Streptomyces anthocyanicus']	chromosome
+CP109238	['NBC 01664']	['Streptomyces albidoflavus']	chromosome
+CP109239	['NBC 01664']	['Streptomyces albidoflavus']	plasmid
+CP109240	['NBC 01664']	['Streptomyces albidoflavus']	plasmid
+CP109241	['NBC 01664']	['Streptomyces albidoflavus']	extrachromosomal
+CP109235	['NBC 01665']	['Streptomyces albidoflavus']	chromosome
+CP109236	['NBC 01665']	['Streptomyces albidoflavus']	plasmid
+CP109237	['NBC 01665']	['Streptomyces albidoflavus']	plasmid
+CP109234	['NBC 01666']	['Streptomyces althioticus']	chromosome
+CP109233	['NBC 01667']	['Streptomyces cellulosae']	chromosome
+CP109228	['NBC 01668']	['Streptomyces anthocyanicus']	chromosome
+CP109229	['NBC 01668']	['Streptomyces anthocyanicus']	plasmid
+CP109230	['NBC 01668']	['Streptomyces anthocyanicus']	plasmid
+CP109231	['NBC 01668']	['Streptomyces anthocyanicus']	plasmid
+CP109232	['NBC 01668']	['Streptomyces anthocyanicus']	extrachromosomal
+CP109226	['NBC 01671']	['Streptomyces albidoflavus']	chromosome
+CP109227	['NBC 01671']	['Streptomyces albidoflavus']	plasmid
+CP109225	['NBC 01672']	['Streptomyces althioticus']	chromosome
+CP109224	['NBC 01673']	['Streptomyces albidoflavus']	chromosome
+CP109594	['NBC 01675']	['Streptomyces albidoflavus']	chromosome
+CP109595	['NBC 01675']	['Streptomyces albidoflavus']	plasmid
+CP109222	['NBC 01676']	['Streptomyces cellulosae']	chromosome
+CP109223	['NBC 01676']	['Streptomyces cellulosae']	plasmid
+CP109220	['NBC 01677']	['Streptomyces cellulosae']	chromosome
+CP109221	['NBC 01677']	['Streptomyces cellulosae']	plasmid
+CP109453	['NBC 01678']	['Streptomyces cellulosae']	chromosome
+CP109454	['NBC 01678']	['Streptomyces cellulosae']	plasmid
+CP109215	['NBC 01679']	['Streptomyces althioticus']	chromosome
+CP109216	['NBC 01679']	['Streptomyces althioticus']	plasmid
+CP109217	['NBC 01679']	['Streptomyces althioticus']	plasmid
+CP109218	['NBC 01679']	['Streptomyces althioticus']	plasmid
+CP109219	['NBC 01679']	['Streptomyces althioticus']	plasmid
+CP109212	['NBC 01680']	['Streptomyces cellulosae']	chromosome
+CP109213	['NBC 01680']	['Streptomyces cellulosae']	plasmid
+CP109214	['NBC 01680']	['Streptomyces cellulosae']	plasmid
+CP109211	['NBC 01683']	['Streptomyces microflavus']	chromosome
+CP109210	['NBC 01684']	['Streptomyces microflavus']	chromosome
+CP109209	['NBC 01685']	['Streptomyces sp. NBC 01685']	chromosome
+CP109207	['NBC 01686']	['Streptomyces althioticus']	chromosome
+CP109208	['NBC 01686']	['Streptomyces althioticus']	plasmid
+CP109205	['NBC 01687']	['Streptomyces anthocyanicus']	chromosome
+CP109206	['NBC 01687']	['Streptomyces anthocyanicus']	plasmid
+CP109592	['NBC 01689']	['Streptomyces sp. NBC 01689']	chromosome
+CP109593	['NBC 01689']	['Streptomyces sp. NBC 01689']	plasmid
+CP109203	['NBC 01692']	['Streptomyces albidoflavus']	chromosome
+CP109204	['NBC 01692']	['Streptomyces albidoflavus']	extrachromosomal
+CP109202	['NBC 01693']	['Streptomyces sp. NBC 01693']	chromosome
+CP109201	['NBC 01694']	['Streptomyces glauciniger']	chromosome
+CP109200	['NBC 01696']	['Streptomyces sp. NBC 01696']	chromosome
+CP109199	['NBC 01699']	['Micromonospora sp. NBC 01699']	chromosome
+CP109197	['NBC 01701']	['Streptomyces cellulosae']	chromosome
+CP109198	['NBC 01701']	['Streptomyces cellulosae']	plasmid
+CP109194	['NBC 01703']	['Streptomyces cellulosae']	chromosome
+CP109195	['NBC 01703']	['Streptomyces cellulosae']	plasmid
+CP109196	['NBC 01703']	['Streptomyces cellulosae']	plasmid
+CP109193	['NBC 01706']	['Streptomyces cellulosae']	chromosome
+CP109190	['NBC 01707']	['Streptomyces sp. NBC 01707']	chromosome
+CP109191	['NBC 01707']	['Streptomyces sp. NBC 01707']	plasmid
+CP109192	['NBC 01707']	['Streptomyces sp. NBC 01707']	extrachromosomal
+CP109188	['NBC 01708']	['Streptomyces sp. NBC 01708']	chromosome
+CP109189	['NBC 01708']	['Streptomyces sp. NBC 01708']	plasmid
+CP109184	['NBC 01711']	['Streptomyces cellulosae']	chromosome
+CP109185	['NBC 01711']	['Streptomyces cellulosae']	plasmid
+CP109186	['NBC 01711']	['Streptomyces cellulosae']	plasmid
+CP109187	['NBC 01711']	['Streptomyces cellulosae']	plasmid
+CP109183	['NBC 01714']	['Streptomyces mirabilis']	chromosome
+CP109182	['NBC 01715']	['Streptomyces sp. NBC 01715']	chromosome
+CP109181	['NBC 01716']	['Streptomyces sp. NBC 01716']	chromosome
+CP109178	['NBC 01717']	['Streptomyces sp. NBC 01717']	chromosome
+CP109179	['NBC 01717']	['Streptomyces sp. NBC 01717']	plasmid
+CP109180	['NBC 01717']	['Streptomyces sp. NBC 01717']	plasmid
+CP109174	['NBC 01718']	['Streptomyces sp. NBC 01718']	chromosome
+CP109175	['NBC 01718']	['Streptomyces sp. NBC 01718']	plasmid
+CP109176	['NBC 01718']	['Streptomyces sp. NBC 01718']	plasmid
+CP109177	['NBC 01718']	['Streptomyces sp. NBC 01718']	extrachromosomal
+CP109173	['NBC 01722']	['Streptomyces albidoflavus']	chromosome
+CP109171	['NBC 01723']	['Streptomyces sp. NBC 01723']	chromosome
+CP109172	['NBC 01723']	['Streptomyces sp. NBC 01723']	plasmid
+CP109169	['NBC 01724']	['Streptomyces sp. NBC 01724']	chromosome
+CP109170	['NBC 01724']	['Streptomyces sp. NBC 01724']	plasmid
+CP109167	['NBC 01725']	['Streptomyces sp. NBC 01725']	chromosome
+CP109168	['NBC 01725']	['Streptomyces sp. NBC 01725']	plasmid
+CP109166	['NBC 01726']	['Nonomuraea glycinis']	chromosome
+CP109163	['NBC 01727']	['Streptomyces sp. NBC 01727']	chromosome
+CP109164	['NBC 01727']	['Streptomyces sp. NBC 01727']	plasmid
+CP109165	['NBC 01727']	['Streptomyces sp. NBC 01727']	plasmid
+CP109162	['NBC 01730']	['Nocardia sp. NBC 01730']	chromosome
+CP109157	['NBC 01732']	['Streptomyces sp. NBC 01732']	chromosome
+CP109158	['NBC 01732']	['Streptomyces sp. NBC 01732']	plasmid
+CP109159	['NBC 01732']	['Streptomyces sp. NBC 01732']	plasmid
+CP109160	['NBC 01732']	['Streptomyces sp. NBC 01732']	plasmid
+CP109161	['NBC 01732']	['Streptomyces sp. NBC 01732']	extrachromosomal
+CP109156	['NBC 01734']	['Micromonospora ureilytica']	chromosome
+CP109154	['NBC 01735']	['Streptomyces europaeiscabiei']	chromosome
+CP109155	['NBC 01735']	['Streptomyces europaeiscabiei']	plasmid
+CP109153	['NBC 01737']	['Dactylosporangium sp. NBC 01737']	chromosome
+CP109152	['NBC 01738']	['Nonomuraea sp. NBC 01738']	chromosome
+CP109151	['NBC 01739']	['Micromonospora sp. NBC 01739']	chromosome
+CP109150	['NBC 01740']	['Micromonospora sp. NBC 01740']	chromosome
+CP109149	['NBC 01743']	['Nocardia vinacea']	chromosome
+CP109148	['NBC 01744']	['Streptomyces sp. NBC 01744']	chromosome
+CP109146	['NBC 01745']	['Streptomyces globisporus']	chromosome
+CP109147	['NBC 01745']	['Streptomyces globisporus']	plasmid
+CP109144	['NBC 01746']	['Streptomyces glauciniger']	chromosome
+CP109145	['NBC 01746']	['Streptomyces glauciniger']	plasmid
+CP109142	['NBC 01747']	['Streptomyces albidoflavus']	chromosome
+CP109143	['NBC 01747']	['Streptomyces albidoflavus']	extrachromosomal
+CP109140	['NBC 01749']	['Streptomyces cyaneofuscatus']	chromosome
+CP109141	['NBC 01749']	['Streptomyces cyaneofuscatus']	plasmid
+CP109137	['NBC 01750']	['Streptomyces sp. NBC 01750']	chromosome
+CP109138	['NBC 01750']	['Streptomyces sp. NBC 01750']	plasmid
+CP109139	['NBC 01750']	['Streptomyces sp. NBC 01750']	plasmid
+CP109136	['NBC 01751']	['Streptomyces sp. NBC 01751']	chromosome
+CP109135	['NBC 01752']	['Streptomyces phaeochromogenes']	chromosome
+CP109134	['NBC 01753']	['Streptomyces hirsutus']	chromosome
+CP109132	['NBC 01754']	['Streptomyces sp. NBC 01754']	chromosome
+CP109133	['NBC 01754']	['Streptomyces sp. NBC 01754']	plasmid
+CP109131	['NBC 01755']	['Streptosporangium sp. NBC 01755']	chromosome
+CP109130	['NBC 01756']	['Streptosporangium sp. NBC 01756']	chromosome
+CP109127	['NBC 01758']	['Streptomyces virginiae']	chromosome
+CP109128	['NBC 01758']	['Streptomyces virginiae']	plasmid
+CP109129	['NBC 01758']	['Streptomyces virginiae']	plasmid
+CP109125	['NBC 01759']	['Streptomyces anulatus']	chromosome
+CP109126	['NBC 01759']	['Streptomyces anulatus']	plasmid
+CP109124	['NBC 01760']	['Streptomyces sp. NBC 01760']	chromosome
+CP109123	['NBC 01761']	['Streptomyces sp. NBC 01761']	chromosome
+CP109122	['NBC 01762']	['Streptomyces sp. NBC 01762']	chromosome
+CP109121	['NBC 01763']	['Streptomyces sp. NBC 01763']	chromosome
+CP109118	['NBC 01766']	['Streptomyces sp. NBC 01766']	chromosome
+CP109119	['NBC 01766']	['Streptomyces sp. NBC 01766']	plasmid
+CP109120	['NBC 01766']	['Streptomyces sp. NBC 01766']	plasmid
+CP109115	['NBC 01768']	['Streptomyces sp. NBC 01768']	chromosome
+CP109116	['NBC 01768']	['Streptomyces sp. NBC 01768']	plasmid
+CP109117	['NBC 01768']	['Streptomyces sp. NBC 01768']	plasmid
+CP109114	['NBC 01769']	['Streptomyces brevispora']	chromosome
+CP109112	['NBC 01770']	['Streptomyces scopuliridis']	chromosome
+CP109113	['NBC 01770']	['Streptomyces scopuliridis']	plasmid
+CP109109	['NBC 01771']	['Streptomyces scopuliridis']	chromosome
+CP109110	['NBC 01771']	['Streptomyces scopuliridis']	plasmid
+CP109111	['NBC 01771']	['Streptomyces scopuliridis']	plasmid
+CP109108	['NBC 01772']	['Streptomyces cellulosae']	chromosome
+CP109107	['NBC 01773']	['Streptomyces cellulosae']	chromosome
+CP109106	['NBC 01774']	['Streptomyces decoyicus']	chromosome
+CP109104	['NBC 01775']	['Streptomyces sp. NBC 01775']	chromosome
+CP109105	['NBC 01775']	['Streptomyces sp. NBC 01775']	plasmid
+CP109102	['NBC 01777']	['Streptomyces anthocyanicus']	chromosome
+CP109103	['NBC 01777']	['Streptomyces anthocyanicus']	plasmid
+CP109097	['NBC 01778']	['Streptomyces cellulosae']	chromosome
+CP109098	['NBC 01778']	['Streptomyces cellulosae']	plasmid
+CP109099	['NBC 01778']	['Streptomyces cellulosae']	plasmid
+CP109100	['NBC 01778']	['Streptomyces cellulosae']	plasmid
+CP109101	['NBC 01778']	['Streptomyces cellulosae']	extrachromosomal
+CP109095	['NBC 01779']	['Streptomyces cellulosae']	chromosome
+CP109096	['NBC 01779']	['Streptomyces cellulosae']	plasmid
+CP109094	['NBC 01780']	['Streptomyces cellulosae']	chromosome
+CP109091	['NBC 01786']	['Streptomyces scopuliridis']	chromosome
+CP109092	['NBC 01786']	['Streptomyces scopuliridis']	plasmid
+CP109093	['NBC 01786']	['Streptomyces scopuliridis']	plasmid
+CP109090	['NBC 01788']	['Streptomyces sp. NBC 01788']	chromosome
+CP109088	['NBC 01790']	['Streptomyces albidoflavus']	chromosome
+CP109089	['NBC 01790']	['Streptomyces albidoflavus']	extrachromosomal
+CP109085	['NBC 01791']	['Streptomyces albidoflavus']	chromosome
+CP109086	['NBC 01791']	['Streptomyces albidoflavus']	plasmid
+CP109087	['NBC 01791']	['Streptomyces albidoflavus']	extrachromosomal
+CP109083	['NBC 01792']	['Streptomyces cyaneofuscatus']	chromosome
+CP109084	['NBC 01792']	['Streptomyces cyaneofuscatus']	plasmid
+CP109081	['NBC 01794']	['Streptomyces sp. NBC 01794']	chromosome
+CP109082	['NBC 01794']	['Streptomyces sp. NBC 01794']	extrachromosomal
+CP109079	['NBC 01795']	['Streptomyces sp. NBC 01795']	chromosome
+CP109080	['NBC 01795']	['Streptomyces sp. NBC 01795']	plasmid
+CP109078	['NBC 01796']	['Micromonospora sp. NBC 01796']	chromosome
+CP109077	['NBC 01798']	['Streptomyces microflavus']	chromosome
+CP109076	['NBC 01799']	['Streptomyces sp. NBC 01799']	chromosome
+CP109075	['NBC 01800']	['Streptomyces sp. NBC 01800']	chromosome
+CP109074	['NBC 01801']	['Nonomuraea fuscirosea']	chromosome
+CP109073	['NBC 01803']	['Streptomyces sp. NBC 01803']	chromosome
+CP109072	['NBC 01808']	['Streptomyces sp. NBC 01808']	chromosome
+CP109071	['NBC 01809']	['Micromonospora peucetia']	chromosome
+CP109070	['NBC 01810']	['Streptosporangium sp. NBC 01810']	chromosome
+CP109068	['NBC 01811']	['Streptosporangium subroseum']	chromosome
+CP109069	['NBC 01811']	['Streptosporangium subroseum']	extrachromosomal
+CP109067	['NBC 01813']	['Micromonospora sp. NBC 01813']	chromosome
