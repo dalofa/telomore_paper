@@ -13,7 +13,7 @@ col_info = []
 log_start=False
 
 # Parse Illumina log files
-with open("ill_logs_with_header.txt") as log_file:
+with open("ill_logs_with_header2.txt") as log_file:
     for line in log_file.readlines():
         
         # get strain_name
@@ -50,7 +50,7 @@ ill_ext = pd.DataFrame(col_info,
                                   "left_ext",
                                   "right_ext"])
 
-ill_ext.to_csv(path_or_buf = "ill_ext_header.tsv",
+ill_ext.to_csv(path_or_buf = "ill_ext_header2.tsv",
                sep="\t",
                index=False)
 
@@ -64,7 +64,7 @@ col_info = []
 log_start=False
 
 # Parse Illumina log files
-with open("np_logs_with_header.txt") as log_file:
+with open("np_logs_with_header2.txt") as log_file:
     for line in log_file.readlines():
         
         # get strain_name
@@ -101,7 +101,7 @@ NP_ext = pd.DataFrame(col_info,
                                   "left_ext",
                                   "right_ext"])
 
-NP_ext.to_csv(path_or_buf = "NP_ext_header.tsv",
+NP_ext.to_csv(path_or_buf = "NP_ext_header2.tsv",
                sep="\t",
                index=False)
 
@@ -133,7 +133,7 @@ for strain in merged_df.iterrows():
 merged_df = merged_df.rename(columns={"strain_x": "strain"})
 merged_df = merged_df.drop(["strain_y"], axis=1)
 
-merged_df.to_csv(path_or_buf="comb_NP_and_ill.tsv",
+merged_df.to_csv(path_or_buf="comb_NP_and_ill2.tsv",
                  sep="\t",
                  index=False)
 
