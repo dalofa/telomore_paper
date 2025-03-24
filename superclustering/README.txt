@@ -1,6 +1,6 @@
-#Megaclustering was made to group similar teloclusters
+#Superclustering was made to group similar teloclusters
 #A multiple alignment of 90nt centroids from teloclusters (4+ members, gap open=10, gap extend=1, end gap=as any other, very accurate) in CLC was converted to a Pairwise comparison and the identity% and distance was plotted. 
-#Megaclusters A-G were then manually assigned based on the identity%
+#Superclusters A-G were then manually assigned based on the identity%
 #Note that not all telogroups were assigned megaclusters
 #telocluster	accession	side	linenumber	Supercluster  Supercluster_telocluster
 0	AB088224	left	9	A	A0
