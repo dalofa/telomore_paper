@@ -1,0 +1,7 @@
+protein_name	protein_description	prot_accession	nuc_accession	exp_evidence	free_description
+Tpg	terminal protein	CAC22742.1	AL645882.2	https://doi.org/10.1046/j.1365-2958.2002.02760.x	Tpg shown to expressed and binding to telomeres in S. Coelicolor
+Tap	telomere-associated protein	CAC22741.1	AB088224.2	https://doi.org/10.1111/mmi.12904	Tap found in S. coelicolor identical to active tap described by Bao et al.
+Tpc	SCP1  terminal protein	CAC36648.1	AL589148	https://doi.org/10.1111/j.1365-2958.2007.05616.x	Tpc was shown to maintain SCP1 sepeately from chromsomally encoded Tpg
+Tac	SCP1 telomere-associate protein	CAC36646.1	AL589148	https://doi.org/10.1111/j.1365-2958.2007.05616.x	Tpc was shown to maintain SCP1 sepeately from chromsomally encoded Tap
+GtpA	S. griseus terminal protein	BAG16926	AP009493.1	https://doi.org/10.1271/bbb.80454	Atypical terminal protein identified in S. griseus IFO1335
+GtpB	S. griseus telomere-associated protein	BAG16927	AP009493.1	https://doi.org/10.1271/bbb.80454	Atypical telomere-associated protein identified in S. griseus IFO1335
