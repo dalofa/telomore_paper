@@ -76,7 +76,7 @@ for system in repair_systems:
     prot2 = system.split("_")[1]
     
     gather_proteins(pair_file = table_file,
-                       col_proteins="NBC_collected_proteins.faa",
+                       col_proteins="results/NBC_collected_proteins.faa",
                        protein_1=prot1,
                        protein_2=prot2,
                        output_dir=output_dir
