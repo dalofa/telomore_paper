@@ -1,0 +1,7 @@
+rep_type	data_type	avg	median	Std Dev	Q1	Q2	Q3
+chromosome	Ill	 20,24108	12	  29,58969	11	12	15
+chromosome	ONT	553,07794	 5	2016,57111	 1	 5	29
+extrachromosomal	Ill	  74,67347	106	  51,72241	13	106	 118,5
+extrachromosomal	ONT	3621,93878	 14	8363,80649	 0	 14	1516,5
+plasmid	Ill	  25,43723	13	  34,79741	11	13	16,00
+plasmid	ONT	1568,82128	 4	6801,76590	 0	 4	29,25

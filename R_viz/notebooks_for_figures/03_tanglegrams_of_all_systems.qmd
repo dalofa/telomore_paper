@@ -1,0 +1,338 @@
+---
+title: "Figures: Tangelgrams of the paper"
+author: "David Faurdal (dalofa)"
+format: html
+editor: visual
+---
+
+## Initialize
+
+```{r}
+library(ggtree)
+library(tangler)
+library(ggnewscale)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+
+library(readr)
+library(tibble)
+
+library(phytools)
+library(paco)
+library(plotly)
+library(viridis)
+library(svglite)
+library(wesanderson)
+
+library(rcartocolor)
+library(Polychrome)
+
+
+
+```
+
+The tanglegrams are produced using co-located pairs of tap/tpg, tac/tpc and gtpA/gtpB, based on the intergenic distance being 300 bp or less.
+
+# Tap/Tpg-tanglegram
+
+Intially, a cophylo object is created. This takes a while so try not to run the code block too often.
+
+```{r}
+# load trees, root by midpoint and ladderize
+tree_1 <- read.tree("../data/colocated_TM/tap_tree.nwk")
+tree_1 <- phangorn::midpoint(tree_1)
+tree_1 <- ladderize(reorder(tree_1))
+
+
+tree_2 <- read.tree("../data/colocated_TM/tpg_tree.nwk")
+tree_2 <- phangorn::midpoint(tree_2)
+tree_2 <- ladderize(reorder(tree_2))
+
+# tree_1 <- reorder(tree_1, "postorder")  # Or another consistent order
+# tree_2 <- reorder(tree_2, "postorder")
+
+
+# load meta data
+meta=read.csv("../data/colocated_TM/tap_tpg_colocal_metadata.csv", header=T)
+meta <- meta |>
+  select(-X) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n()) |>
+  ungroup() |>
+  mutate(total_entries = n()) |>
+  mutate(clust_num = factor(clust_num, levels = unique(clust_num))) |>
+  mutate(perc_of_total=cluster_size/total_entries) |>
+  mutate(color_clust = case_when(perc_of_total<0.02 ~ "Other",
+                                 perc_of_total>=0.02 ~ clust_num)) |>
+  mutate(color_clust = factor(color_clust, levels = unique(color_clust)))
+
+
+# build links, here it mapped the same ACCESSION name
+links <- cbind(tree_1$tip, tree_1$tip)
+obj <- cophylo(tree_1, tree_2, links, rotate = TRUE)
+```
+
+The layout and coloring of the tree is then plotted.
+
+```{r}
+library(RColorBrewer)
+# Create a unique color for each family category.
+clust_num_levels <- unique(meta$color_clust)
+colors <- brewer.pal(n = length(clust_num_levels), name = "Set3")
+clust_colors <- setNames(colors, clust_num_levels)
+
+# Find the sup_cluster for each tip_label.
+# Crucially they are then sorted according to the tip_label order.
+tip_clust_num_1 <- meta |>
+  filter(result %in% obj$trees[[1]]$tip.label) |>
+  arrange(match(result, obj$trees[[1]]$tip.label)) |>
+  pull(color_clust)
+
+tip_colors1 <- clust_colors[tip_clust_num_1]
+
+tip_clust_num_2 <- meta |>
+  filter(result %in% obj$trees[[2]]$tip.label) |>
+  arrange(match(result, obj$trees[[2]]$tip.label)) |>
+  pull(color_clust)
+
+tip_colors2 <- clust_colors[tip_clust_num_2]
+
+
+# Look up the sup_cluster color of the link
+link_family <- meta$color_clust[match(links[,1], meta$result)]
+link_colors <- clust_colors[link_family]
+
+# Actual plot thing
+output = "tap_tpg_tanglegram.svg"
+#pdf("tanglegram.pdf", width=16, height=24)
+svglite(output, width = 16, height = 16)
+# draw the cophylo
+plot.cophylo(obj,
+             link.type="curved",
+             link.lwd=2,
+             link.lty="solid",
+             fsize=c(0.1,0.1),
+             pts=FALSE,
+             link.col = make.transparent(link_colors, 0.5))
+
+## add tip label colors
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors1,
+                  cex=0.8)
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors2,
+                  which="right",
+                  cex=0.8)
+
+legend("topright",                            
+       legend = names(clust_colors),       
+       fill = clust_colors,                
+       title = "Cluster Number",               
+       cex = 0.8,                              
+       border = "black",                       
+       bty = "o")                              
+```
+
+# Tac/Tpc-tanglegram
+
+```{r}
+# load trees, root by midpoint and ladderize
+tree_1 <- read.tree("../data/colocated_TM/tac_tree.nwk")
+tree_1 <- phangorn::midpoint(tree_1)
+tree_1 <- ladderize(reorder(tree_1))
+
+
+tree_2 <- read.tree("../data/colocated_TM/tpc_tree.nwk")
+tree_2 <- phangorn::midpoint(tree_2)
+tree_2 <- ladderize(reorder(tree_2))
+
+
+# load meta data
+# load meta data
+meta=read.csv("../data/colocated_TM/tac_tpc_colocal_metadata.csv", header=T)
+meta <- meta |>
+  select(-X) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n()) |>
+  ungroup() |>
+  mutate(total_entries = n()) |>
+  mutate(clust_num = factor(clust_num, levels = unique(clust_num))) |>
+  mutate(perc_of_total=cluster_size/total_entries) |>
+  mutate(color_clust = case_when(perc_of_total<0.03 ~ "Other",
+                                 perc_of_total>=0.03 ~ clust_num)) |>
+  mutate(color_clust = factor(color_clust, levels = unique(color_clust)))
+
+
+# build links, here it mapped the same ACCESSION name
+links <- cbind(tree_1$tip, tree_1$tip)
+obj <- cophylo(tree_1, tree_2, links, rotate = TRUE)
+```
+
+```{r}
+library(RColorBrewer)
+# Create a unique color for each family category.
+clust_num_levels <- unique(meta$color_clust)
+colors <- brewer.pal(n = length(clust_num_levels), name = "Set3")
+clust_colors <- setNames(colors, clust_num_levels)
+
+# Find the sup_cluster for each tip_label.
+# Crucially they are then sorted according to the tip_label order.
+tip_clust_num_1 <- meta |>
+  filter(result %in% obj$trees[[1]]$tip.label) |>
+  arrange(match(result, obj$trees[[1]]$tip.label)) |>
+  pull(color_clust)
+
+tip_colors1 <- clust_colors[tip_clust_num_1]
+
+tip_clust_num_2 <- meta |>
+  filter(result %in% obj$trees[[2]]$tip.label) |>
+  arrange(match(result, obj$trees[[2]]$tip.label)) |>
+  pull(color_clust)
+
+tip_colors2 <- clust_colors[tip_clust_num_2]
+
+
+# Look up the sup_cluster color of the link
+link_family <- meta$color_clust[match(links[,1], meta$result)]
+link_colors <- clust_colors[link_family]
+
+# Actual plot thing
+output = "tac_tpc_tanglegram.svg"
+#pdf("tanglegram.pdf", width=16, height=24)
+svglite(output, width = 16, height = 16)
+# draw the cophylo
+plot.cophylo(obj,
+             link.type="curved",
+             link.lwd=2,
+             link.lty="solid",
+             fsize=c(0.1,0.1),
+             pts=FALSE,
+             link.col = make.transparent(link_colors, 0.5))
+
+## add tip label colors
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors1,
+                  cex=0.8)
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors2,
+                  which="right",
+                  cex=0.8)
+
+legend("topright",                            
+       legend = names(clust_colors),       
+       fill = clust_colors,                
+       title = "Cluster Number",               
+       cex = 0.8,                              
+       border = "black",                       
+       bty = "o")      
+```
+
+# GtpA/GtpB-tanglegram
+
+```{r}
+# load trees, root by midpoint and ladderize
+tree_1 <- read.tree("colocated_TM/gtpA_tree.nwk")
+tree_1 <- phangorn::midpoint(tree_1)
+tree_1 <- ladderize(reorder(tree_1))
+
+
+tree_2 <- read.tree("colocated_TM/gtpB_tree.nwk")
+tree_2 <- phangorn::midpoint(tree_2)
+tree_2 <- ladderize(reorder(tree_2))
+
+# tree_1 <- reorder(tree_1, "postorder")  # Or another consistent order
+# tree_2 <- reorder(tree_2, "postorder")
+
+
+# load meta data
+meta=read.csv("colocated_TM/gtpA_gtpB_colocal_metadata.csv", header=T)
+meta <- meta |>
+  select(-X) |>
+  mutate(clust_num = factor(clust_num, levels = unique(clust_num)))
+
+# add group to the metadata
+# Read the file as a single-column tibble
+superclusters <- read_csv("supercluster.txt", col_names = "ID") |>
+  mutate(sup_cluster = str_extract(ID, "^[A-Za-z]+"),  # Extract leading letters
+         clust_num = str_extract(ID, "[0-9]+$")) |> 
+   mutate(sup_cluster = ifelse(is.na(sup_cluster),
+                               "unknown", sup_cluster))
+
+
+meta_full <- inner_join(meta,
+                        superclusters,
+                        by=join_by(clust_num))
+
+# build links, here it mapped the same ACCESSION name
+links <- cbind(tree_1$tip, tree_1$tip)
+obj <- cophylo(tree_1, tree_2, links, rotate = TRUE)
+```
+
+```{r}
+# Create a unique color for each family category.
+#colors <- rainbow(length(clust_num_levels))
+sup_clust_num_levels <- unique(meta_full$sup_cluster)
+#colors <- wes_palette("Zissou1", n = length(clust_num_levels))
+#colors <- viridis(length(clust_num_levels))
+colors <- glasbey.colors(length(sup_clust_num_levels)+1)
+colors <- colors[2:length(colors)]
+# Create a named vector of colors for each family.
+
+# Find the sup_cluster for each tip_label.
+# Crucially they are then sorted according to the tip_label order.
+tip_clust_num_1 <- meta_full |>
+  filter(result %in% obj$trees[[1]]$tip.label) |>
+  arrange(match(result, obj$trees[[1]]$tip.label)) |>
+  pull(sup_cluster)
+
+tip_colors1 <- color_map[tip_clust_num_1]
+
+tip_clust_num_2 <- meta_full |>
+  filter(result %in% obj$trees[[2]]$tip.label) |>
+  arrange(match(result, obj$trees[[2]]$tip.label)) |>
+  pull(sup_cluster)
+
+tip_colors2 <- color_map[tip_clust_num_2]
+
+
+# Look up the sup_cluster color of the link
+link_family <- meta_full$sup_cluster[match(links[,1], meta$result)]
+link_colors <- color_map[link_family]
+
+# Actual plot thing
+output = "gtpA_gtpB_tanglegram.svg"
+#pdf("tanglegram.pdf", width=16, height=24)
+svglite(output, width = 16, height = 16)
+# draw the cophylo
+plot.cophylo(obj,
+             link.type="curved",
+             link.lwd=2,
+             link.lty="solid",
+             fsize=c(0.1,0.1),
+             pts=FALSE,
+             link.col = make.transparent(link_colors, 0.5))
+
+## add tip label colors
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors1,
+                  cex=0.8)
+tiplabels.cophylo(pch=21,
+                  frame="none",
+                  bg=tip_colors2,
+                  which="right",
+                  cex=0.8)
+
+legend("topright",                            
+       legend = names(color_map),       
+       fill = color_map,                
+       title = "Cluster Number",               
+       cex = 0.8,                              
+       border = "black",                       
+       bty = "o")    
+```

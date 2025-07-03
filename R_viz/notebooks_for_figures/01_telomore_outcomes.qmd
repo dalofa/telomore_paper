@@ -1,0 +1,841 @@
+---
+title: "Figures: Telomore"
+author: "David Faurdal, dalofa"
+format: html
+editor: visual
+---
+
+## 0. Init and wrangling
+
+```{r}
+library(tidyverse)
+library(viridisLite)
+library(patchwork)
+#library(fillpattern)
+#library(ggpattern)
+library(scales)
+
+# Load data extension data 
+ext_data <- read_tsv("../data/comb_NP_and_ill2.tsv")
+
+ext_data2 <- ext_data  |>
+  distinct()
+
+# juggle to make them joinable correctly
+ext_data1 <- ext_data |>
+  pivot_longer(cols = matches("^(np|ill)_"),
+    names_to = c("data_type", "side"), 
+    names_sep = "_",
+    values_to = "ext") |>
+  mutate(side=recode(side,
+                     "right"="linear_right")) |>
+    mutate(side=recode(side,
+                     "left"="linear_left")) |>
+  unite("rep_to_join",
+        replicon,
+        side, sep = "_") |>
+  mutate(data_type=recode(data_type,
+         "ill"="Illumina",
+         "np"="ONT")) |>
+  rename(replicon=rep_to_join) |>
+  mutate(ext = case_when(
+    ext == "rejected" ~ 0,
+    ext == "Rejected" ~ 0,
+    TRUE ~ as.numeric(ext))) |>
+  distinct() # To remove duplicated runs from kitasatospora folder
+
+# Load DNA_type data
+rep_type <- read_tsv("../data/rep_type.tsv")
+
+
+
+# Load clustering data
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target"))
+# clust
+# Add cluster_size
+clust_data1 <- clust_data |>
+  select("clust_type",
+         "clust_num",
+         "query") |>
+  filter(clust_type!="C") |>
+  rename(replicon=query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n())
+  
+
+combined_df <- inner_join(x=ext_data1,
+                          y=clust_data1,
+                          by=join_by(replicon))
+
+# Add independent cluster size
+# That is cluster sizes not counting replicons from same
+# strain
+combined_df <- combined_df |>
+  group_by(clust_num) |>
+  mutate(ind_clust_size = n_distinct(strain)) |>
+  ungroup()
+
+rep_to_join <- rep_type|>
+  mutate(left=str_c(contig_name,"linear_left",sep="_"),
+         right=str_c(contig_name,"linear_right",sep="_")) |>
+  select(-contig_name)|>
+  pivot_longer(cols = left:right, names_to = "temp", values_to = "A") |>
+  select(rep_type, A,taxon) |>
+  rename(replicon=A)
+
+
+combined_df_with_rep <- inner_join(combined_df,
+                        rep_to_join,
+                        by=join_by(replicon))
+#
+write_tsv(x = combined_df_with_rep,
+          file = "../tables_and_lists/table_11_ext_by_data_long.tsv")
+  
+  
+
+
+
+  
+
+```
+
+# 1. Double barchart
+
+## Viz: Double barchart
+
+### 1.1 Raw Data
+
+```{r}
+# For y-contious
+common_limits <- c(-200, 100000)
+
+#------------------Juggle data
+combined_np <- combined_df |>
+  filter(data_type=="ONT") |>
+  mutate(ONT_ext=ext) |>
+  select(-ext,-data_type)
+
+combined_ill <- combined_df |>
+  filter(data_type=="Illumina") |>
+  mutate(Ill_ext=ext) |>
+  select(-ext,-data_type,-clust_num,-cluster_size) 
+
+
+plot_data <- inner_join(combined_np,
+           combined_ill,
+           by=join_by(replicon)) |>
+  mutate(Ill_ext=-abs(Ill_ext))
+
+
+
+# juggle to joing with plot data
+rep_to_join <- rep_type|>
+  mutate(left=str_c(contig_name,"linear_left",sep="_"),
+         right=str_c(contig_name,"linear_right",sep="_")) |>
+  select(-contig_name)|>
+  pivot_longer(cols = left:right, names_to = "temp", values_to = "A") |>
+    mutate(taxon = rep_type)|>
+  select(rep_type, A) |>
+  rename(replicon=A)
+
+plot_data <- inner_join(plot_data,
+                        rep_to_join,
+                        by=join_by(replicon))
+
+write_tsv(x = plot_data,
+          file = "../tables_and_lists/table_11_ext_by_data_wide.tsv")
+
+# making replicons a factor allows for secondary sorting
+chr_data <- plot_data |> 
+  filter(rep_type=="chromosome") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())
+
+# Get tick positions every 100 replicons
+chr_breaks <- chr_data$replicon[seq(1, nrow(chr_data), by=100)]
+chr_labels <- seq(0, length(chr_breaks) * 100 - 100, by=100)
+
+# Make subset for each plot
+
+plas_data <- plot_data |> 
+  filter(rep_type=="plasmid") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())  # get number for breaks and labels
+  
+# Get tick positions every 100 replicons
+plas_breaks <- plas_data$replicon[seq(1, nrow(plas_data), by=100)]
+plas_labels <- seq(0, length(plas_breaks) * 100 - 100, by=100)
+
+
+extra_data <- plot_data |> 
+  filter(rep_type=="extrachromosomal") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon)))
+
+
+extra_breaks <- extra_data$replicon[seq(1, nrow(extra_data), by=50)]
+extra_labels <- seq(0, length(extra_breaks) * 50 - 50, by=50)
+
+#-----------------------GENERATE PLOTS WITH NO FILTERING ON CLUSTER NUMBER
+chrom_p <- ggplot(data=chr_data, aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = chr_breaks, labels = chr_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+plas_p <- ggplot(data=plas_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank()) +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+extrachr_p <- ggplot(data=extra_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank(),
+        plot.caption.position = "panel") +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(breaks = extra_breaks, labels = extra_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+
+# Arrange plots
+library(ggpubr)
+fig1 <- ggarrange(chrom_p,
+          plas_p,
+          labels = c("Chromosomes", "Plasmids"),
+          font.label = list(size = 12, color = "black"),
+          hjust=0,
+          ncol = 2,
+          nrow = 1,
+          common.legend = TRUE,
+          align="hv",
+          legend="bottom")
+
+
+ggsave("../figures/figure_1__telomore_outcomes_raw.png",
+       plot=fig1,
+       width = 210,
+       height = 148.5,
+       units = "mm")
+
+fig1
+```
+
+### 1.2 Seperated by clusters
+
+Post-clustering we can visualize the extensions by whether or not the replicon end falls into a tripltone or smaller cluster.
+
+```{r}
+# For y-contious
+common_limits <- c(-200, 100000)
+
+#------------------Juggle data
+combined_np <- combined_df |>
+  filter(data_type=="ONT") |>
+  mutate(ONT_ext=ext) |>
+  select(-ext,-data_type)
+
+combined_ill <- combined_df |>
+  filter(data_type=="Illumina") |>
+  mutate(Ill_ext=ext) |>
+  select(-ext,-data_type,-clust_num,-cluster_size) 
+
+
+plot_data <- inner_join(combined_np,
+           combined_ill,
+           by=join_by(replicon)) |>
+  mutate(Ill_ext=-abs(Ill_ext))
+
+
+
+# juggle to joing with plot data
+rep_to_join <- rep_type|>
+  mutate(left=str_c(contig_name,"linear_left",sep="_"),
+         right=str_c(contig_name,"linear_right",sep="_")) |>
+  select(-contig_name)|>
+  pivot_longer(cols = left:right, names_to = "temp", values_to = "A") |>
+    mutate(taxon = rep_type)|>
+  select(rep_type, A) |>
+  rename(replicon=A)
+
+plot_data <- inner_join(plot_data,
+                        rep_to_join,
+                        by=join_by(replicon))
+
+# making replicons a factor allows for secondary sorting
+chr_data <- plot_data |> 
+  filter(rep_type=="chromosome") |>
+  filter(cluster_size>3)|>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())
+
+# Get tick positions every 100 replicons
+chr_breaks <- chr_data$replicon[seq(1, nrow(chr_data), by=100)]
+chr_labels <- seq(0, length(chr_breaks) * 100 - 100, by=100)
+
+# Make subset for each plot
+
+plas_data <- plot_data |> 
+  filter(rep_type=="plasmid") |>
+  filter(cluster_size>3)|>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())  # get number for breaks and labels
+  
+# Get tick positions every 100 replicons
+plas_breaks <- plas_data$replicon[seq(1, nrow(plas_data), by=100)]
+plas_labels <- seq(0, length(plas_breaks) * 100 - 100, by=100)
+
+
+extra_data <- plot_data |> 
+  filter(rep_type=="extrachromosomal") |>
+  filter(cluster_size>3)|>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon)))
+
+
+extra_breaks <- extra_data$replicon[seq(1, nrow(extra_data), by=50)]
+extra_labels <- seq(0, length(extra_breaks) * 50 - 50, by=50)
+
+#-----------------------GENERATE PLOTS WITH NO FILTERING ON CLUSTER NUMBER
+chrom_p <- ggplot(data=chr_data, aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Chromosomes",
+       subtitle="Single-, double- and tripletons removed") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = chr_breaks, labels = chr_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+plas_p <- ggplot(data=plas_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Plasmids",
+       subtitle="Single-, double- and tripletons removed") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank()) +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+extrachr_p <- ggplot(data=extra_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Extrachromosomal elements",
+       subtitle="Single-, double- and tripletons removed") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank()) +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(breaks = extra_breaks, labels = extra_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#---------------------------TRIPLETONS EXCLUDED
+
+# making replicons a factor allows for secondary sorting
+plas_data_triple <- plot_data |> 
+  filter(rep_type=="plasmid") |>
+  filter(cluster_size<4) |> # now exclude triptlons and smaller
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())  # get number for breaks and labels
+
+chr_data_triple <- plot_data |> 
+  filter(rep_type=="chromosome") |>
+  filter(cluster_size<4) |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())
+
+extra_data_triple <- plot_data |> 
+  filter(rep_type=="extrachromosomal") |>
+  filter(cluster_size<4) |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())
+
+# Get tick positions every 100 replicons
+chr_triple_breaks <- chr_data_triple$replicon[seq(1,
+                                                nrow(chr_data_triple),
+                                                by=100)]
+chr_triple_labels <- seq(0, length(chr_triple_breaks) * 100 - 100, 
+                        by=100)
+
+plas_triple_breaks <- plas_data_triple$replicon[seq(1,
+                                                  nrow(plas_data_triple),
+                                                  by=100)]
+plas_triple_labels <- seq(0, length(plas_triple_breaks) * 100 - 100,
+                         by=100)
+
+extra_triple_breaks <- extra_data_triple$replicon[seq(1, nrow(extra_data_triple), by=25)]
+extra_triple_labels <- seq(0, length(extra_triple_breaks) * 25 - 25, by=25)
+
+
+chrom_triple_p <- ggplot(data=chr_data_triple, 
+                      aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Chromosomes",
+       subtitle="Single-, double- and tripletons") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = chr_triple_breaks, labels = chr_triple_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# EXTRACHR
+extrachr_triple_p <- ggplot(data=extra_data_triple,
+                     aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Extrachromosomal elements",
+       subtitle="Single-, double- and tripletons") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = extra_triple_breaks, labels = extra_triple_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# PLASMIDS
+plas_triple_p <- ggplot(data=plas_data_triple,
+                     aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Plasmids",
+       subtitle="Single-, double- and tripletons") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_triple_breaks, labels = plas_triple_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Arrange plots
+library(ggpubr)
+fig2 <- ggarrange(chrom_triple_p,
+          plas_triple_p,
+          extrachr_triple_p,
+          labels = c("A", "B", "C"),
+          ncol = 3,
+          nrow = 1,
+          common.legend = TRUE,
+          align="hv",
+          legend="bottom")
+
+fig2 <- annotate_figure(fig2, top = text_grob("telomore outcomes: tripletons", 
+               color = "black", face = "bold", size = 32))
+
+ggsave("../figures/supl_figure_1_telomore_outcomes_tripletons.svg",
+       plot=fig2,
+       width = 210,
+       height = 148.5,
+       units = "mm")
+
+fig2
+```
+
+# 2. Statistics
+
+Some basic extensions stats are calculated below:
+
+```{r}
+
+# Extension table
+# Use below 0 for ill as they are coded negative
+ext_table <- plot_data |>
+  mutate(status = case_when(
+    ONT_ext > 0 & Ill_ext < 0 ~ "Both",
+    ONT_ext > 0 ~ "ONT_only",
+    Ill_ext < 0 ~ "Ill_only",
+    TRUE ~ "None"
+  )) |>
+  group_by(rep_type, status) |>
+  summarize(count = n(),) |>
+    pivot_wider(
+    names_from = status,
+    values_from = count,
+    values_fill = 0  # fill in 0 if there's no data for a category
+  ) |>
+  select(Both, ONT_only, Ill_only, None)
+
+
+## Extension table 2
+check <- plot_data |>
+    pivot_longer(
+    cols = ends_with("_ext"),
+    names_to = "data_type",
+    values_to = "ext"
+  ) |>
+  mutate(ext=abs(ext))
+
+
+ext_stats_table  <- plot_data |>
+    pivot_longer(
+    cols = ends_with("_ext"),
+    names_to = "data_type",
+    values_to = "ext"
+  ) |>
+  mutate(ext=abs(ext))|>
+  mutate(data_type = sub("_ext", "", data_type)) |>
+  group_by(rep_type,data_type) |>
+  summarize(avg = mean(ext),
+            median = median(ext),
+            "Std Dev" = sd(ext),
+            Q1 = quantile(ext, 0.25, na.rm = TRUE),
+            Q2 = quantile(ext, 0.50, na.rm = TRUE),  # Median
+            Q3 = quantile(ext, 0.75, na.rm = TRUE))
+
+#
+write_tsv(ext_table,
+          file="../tables_and_lists/table_1_replicon_ends_by_telomore.tsv")
+df_formatted <- ext_stats_table |> dplyr::mutate(across(where(is.numeric), ~ format(., decimal.mark = ",")))
+write_tsv(df_formatted,
+          file="../tables_and_lists/table_2_replicon_ends_stats_by_telomore.tsv")
+```
+
+Some basic stats for the clusters that were eliminated by the clustering is calculated here:
+
+```{r}
+tripletons <- plot_data |> 
+  filter(cluster_size<4) |> # now exclude triptlons and smaller
+  mutate(Ill_ext= -Ill_ext) |>
+  arrange(ONT_ext, desc(Ill_ext)) |>
+    summarize(
+    count = n(),
+    Q0   = quantile(Ill_ext, 0),
+    Q25  = quantile(Ill_ext, 0.25),
+    Q50  = quantile(Ill_ext, 0.5),
+    Q75  = quantile(Ill_ext, 0.75),
+    Q100 = quantile(Ill_ext, 1),
+    avg = mean(Ill_ext),
+    frac_over_100 = mean(Ill_ext > 95, na.rm = TRUE)
+  )
+
+write_tsv(tripletons,
+          file="../tables_and_lists/table_21_tripletons_stats.txt")
+```
+
+# 3. Acquire table of relevant sub-groups
+
+```{r}
+
+# Only extended by ONT
+ONT_only <- plot_data |>
+  filter(Ill_ext==0) |>
+  filter(ONT_ext!=0) |>
+  select(replicon)
+
+non_ext <- plot_data |>
+  filter(Ill_ext==0) |>
+  filter(ONT_ext==0) |>
+  select(replicon)
+
+the_rest <- plot_data |>
+  filter(Ill_ext!=0) |>
+  select(replicon)
+
+the_rest <- plot_data |>
+  filter(Ill_ext!=0) |>
+  select(replicon)
+
+write_tsv(ONT_only,
+          file="../tables_and_lists/list_1_ONT_only_replicons.txt")
+
+write_tsv(non_ext,
+          file="../tables_and_lists/list_2_no_ext_replicons.txt")
+
+write_tsv(the_rest,
+          file="../tables_and_lists/list_3_ill_ext_replicons.txt")
+```
+
+## 3.1 Non-extended
+
+```{r}
+non_extended <- plot_data |>
+  filter(cluster_size<4)
+
+
+non_extender_overextended <- non_extended |>
+  filter(Ill_ext<=(-100)) # Illumina is negative coded
+
+non_extender_not_extended <- non_extended |>
+  filter(Ill_ext==0)
+
+
+```
+
+## 3.2 Prescence of palindrome I
+
+### 3.2 Palindrome I pre- and post-telomore
+
+```{r}
+blast_fmt_6 <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+
+blast_pre <- read_tsv("../data/02_blast_palindrome_bf_af_telomore/pre_telomore.blast.txt",
+                      col_names=blast_fmt_6) 
+
+blast_post <- read_tsv("../data/02_blast_palindrome_bf_af_telomore/post_telomore.blast.txt",
+                      col_names=blast_fmt_6) 
+
+
+# FILTER TO CHECK FOR PALINDROME AT START
+blast_pre_filt <- blast_pre |>
+  filter(length>11) |>
+  filter(sstart<4)
+
+blast_post_filt <- blast_post |>
+  filter(length>11) |>
+  filter(sstart<4)
+
+# create table
+
+num_replicons <- c("Detected","total")
+
+# Thera are 2*1309 replicons= 2618 replicone nds
+
+pre_ext <- c(nrow(blast_pre_filt),2601) # 2618 - 17 from technical artifact filtration
+post_ext <- c(nrow(blast_post_filt), 2601)
+
+filt_table <- tibble(names,pre_ext,post_ext)
+
+write_tsv(x = filt_table,
+          file="../tables_and_lists/table_of_pre_and_post_palindrome_1_detected.tsv")
+```
+
+### 3.2 Palindrome I in Ill-only, ONT-only and non-extenders
+
+```{r}
+
+blast_fmt_6 <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+
+blast_ill_ext <- read_tsv("../data/01_blast_palindrome_res/all_ill_ext.blast.txt",
+                          col_names=blast_fmt_6) 
+
+blast_non_ext <- read_tsv("../data/01_blast_palindrome_res/non_ext.blast.txt",
+                          col_names=blast_fmt_6)
+blast_ONT_ext <- read_tsv("../data/01_blast_palindrome_res/ONT_only.blast.txt",
+                          col_names=blast_fmt_6)
+
+
+# FILTER TO CHECK FOR PALINDROME AT START
+ill_filt <- blast_ill_ext |>
+  filter(length>11) |>
+  filter(sstart<4)
+
+non_ext_filt <- blast_non_ext |>
+  filter(length>11) |>
+  filter(sstart<4)
+
+ont_ext_filt <- blast_ONT_ext |>
+  filter(length>11) |>
+  filter(sstart<4)
+
+# create table
+
+num_replicons <- c("Detected","total")
+
+non_extenders <- c(nrow(non_ext_filt),nrow(non_ext))
+ONT_extenders <- c(nrow(ont_ext_filt), nrow(ONT_only))
+ill_extenders <- c(nrow(ill_filt),nrow(the_rest))
+
+filt_table <- tibble(names,non_extenders,ONT_extenders,ill_extenders)
+
+write_tsv(x = filt_table,
+          file="../tables_and_lists/table_of_palindrome_1_detected.tsv")
+
+```
+
+```{r}
+# checking som shit
+
+exclusion_list <- read_tsv("../data/exclusion_list.txt",
+                           col_names=c("replicon")) |>
+  mutate(reps)
+
+
+a <- inner_join(exclusion_list,
+                plot_data,
+                by=join_by(replicon)
+```

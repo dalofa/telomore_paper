@@ -1,0 +1,2838 @@
+---
+title: "Figures: Telomere maintanance machinery"
+author: "Dalofa"
+format: html
+editor: visual
+---
+
+# 0. Initialization
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(ggbeeswarm)
+library(ggridges)
+library(viridisLite)
+library(patchwork)
+library(fillpattern)
+library(ggpattern)
+library(scales)
+library(eulerr)
+library(svglite)
+library(ggpubr)
+
+library(rsvg)
+library(grid)
+library(gridExtra)
+
+
+palette_1 = c("#00868B","#FF6A00")
+
+palette_2 = c("#00868B","#FF6A00","#C15CCB","#FFC700","#004D99","#2E8B57")
+
+palette_3 = c("#00868B","#FF6A00","#C15CCB","#FFC700","#004D99","#2E8B57", "#D91E36","#009688","#6B728E")
+
+
+```
+
+### Load and wrangle BLAST data
+
+```{r}
+blast_data <- read_tsv("../data/term_prot_BLAST_info.tsv")
+blast_data <- blast_data|>
+  filter(qcov>=40) |> # The Replicase domain in GtpB matches actual replicases below this threshold
+  filter(evalue<=1e-10) |>
+  mutate(protein_match=str_replace_all(protein_match,"TPC","Tpc")) |>
+  mutate(
+  start = str_extract(location, "(?<=\\[)\\d+"),
+  stop = str_extract(location, "(?<=:)\\d+"),
+  strand = str_extract(location, "(?<=\\()\\+|\\-")
+  ) |>
+  select(-location)|>
+  mutate(
+  start = as.numeric(start),
+  stop = as.numeric(stop)
+  ) |>
+  mutate(
+   relative_position=start/DNA_length,
+   relative_position_perc=(start/DNA_length)*100
+) |>
+  mutate(side=case_when(relative_position<0.5 ~ "left",
+                       relative_position>=0.5 ~ "right")) |>
+  mutate(replicon_end=str_c(accession,
+                "linear",
+                side,
+                sep="_"))
+```
+
+# 1. Telomere-maintanance machinery encode by strains/replicons
+
+Intially, we compute the number of strains that have at least a one pair of the three known systems encoded. Note, that these proteins are not necessarily co-located.
+
+```{r}
+# ---------- PARIS IN STRAINS ----------
+# Extract vectors of strain names from each dataset
+tap_tpg_strain <- blast_data |>
+  filter(protein_match %in% c("Tpg", "Tap")) |>      
+  group_by(strain_name) |>                     
+  filter(all(c("Tpg", "Tap") %in% protein_match)) %>% 
+  pull(strain_name) |>                       # Extract strain names as a vector
+  unique()
+
+tac_tpc_strain <- blast_data |>
+  filter(protein_match %in% c("Tac", "Tpc")) |>      
+  group_by(strain_name) |>                      
+  filter(all(c("Tac", "Tpc") %in% protein_match)) %>% 
+  pull(strain_name) |>                       
+  unique()
+
+gtpA_gtpB_strain <- blast_data |>
+  filter(protein_match %in% c("GtpA", "GtpB")) |>      
+  group_by(strain_name) |>                      
+  filter(all(c("GtpA", "GtpB") %in% protein_match)) %>% 
+  pull(strain_name) |>                       
+  unique()
+
+# Combine the lists into a named list
+sets_strains <- list(
+  "Tap/Tpg" = tap_tpg_strain,
+  "Tac/Tpc" = tac_tpc_strain,
+  "GtpA/GtpB" = gtpA_gtpB_strain
+)
+
+# Create an area-proportional Venn diagram using `eulerr`
+venn_data_strain <- euler(sets_strains)
+
+# ---------- PARIS IN REPLICONS ----------
+# Extract vectors of strain names from each dataset
+tap_tpg_acc <- blast_data |>
+  filter(protein_match %in% c("Tpg", "Tap")) |>      
+  group_by(accession) |>                     
+  filter(all(c("Tpg", "Tap") %in% protein_match)) %>% 
+  pull(accession) |>                       # Extract strain names as a vector
+  unique()
+
+tac_tpc_acc <- blast_data |>
+  filter(protein_match %in% c("Tac", "Tpc")) |>      
+  group_by(accession) |>                      
+  filter(all(c("Tac", "Tpc") %in% protein_match)) %>% 
+  pull(accession) |>                       
+  unique()
+
+gtpA_gtpB_acc <- blast_data |>
+  filter(protein_match %in% c("GtpA", "GtpB")) |>      
+  group_by(accession) |>                      
+  filter(all(c("GtpA", "GtpB") %in% protein_match)) %>% 
+  pull(accession) |>                       
+  unique()
+
+# Combine the lists into a named list
+sets_acc <- list(
+  "Tap/Tpg" = tap_tpg_acc,
+  "Tac/Tpc" = tac_tpc_acc,
+  "GtpA/GtpB" = gtpA_gtpB_acc
+)
+
+# Create an area-proportional Venn diagram using `eulerr`
+venn_data_acc <- euler(sets_acc)
+
+# ---------- Plots ----------
+
+# Plot the Venn diagra
+
+svglite("../figures/supl_figure_2_venn_diagram_strain.svg", width = 8, height = 8)
+
+plot(venn_data_strain, quantities = TRUE,
+     fills = c("#C15CCB", "#00868B", "#FF6A00"),
+     labels = TRUE,
+     main="Strains encoding known pairs of telomere machinery")
+dev.off()
+
+svglite("../figures/supl_figure_3_venn_diagram_acc.svg", width = 8, height = 8)
+
+plot(venn_data_acc, quantities = TRUE,
+     fills = c("#C15CCB", "#00868B", "#FF6A00"),
+     labels = TRUE,
+     main="Replicons encoding known pairs of telomere machinery")
+dev.off()
+
+```
+
+```{r}
+library(ggplotify)
+
+venn_strain <- as.ggplot(plot(venn_data_strain, quantities = TRUE,
+      fills = list(fill=c("#D91E36","#009688","#6B728E"),
+              alpha=0.5),
+     labels = TRUE))
+
+venn_acc <-as.ggplot(plot(venn_data_acc, quantities = TRUE,
+     fills = list(fill=c("#D91E36","#009688","#6B728E"),
+                  alpha=0.5),
+     labels = TRUE))
+
+
+venn_acc
+venn_strain
+
+
+```
+
+```{r}
+tac_tpc_strain_df <- blast_data |>
+  filter(protein_match %in% c("Tac", "Tpc")) |>      
+  group_by(strain_name) |>                      
+  filter(all(c("Tac", "Tpc") %in% protein_match))
+```
+
+# 2. Telomere maintanance machinery as a function of genomic location
+
+Intially, we want to plot the telomere maintanance machinery as function of genomic location to see whether it tends to locate at the termini.
+
+### 2.1 Tap-Tpg
+
+```{r, fig(10, 4), Tap-tpg}
+x_ticks <- seq(from = 0, to = 100, by = 10) # list of X-ticks to place
+
+
+# Filter for protein of interest
+plot_data <- blast_data |>
+  filter(protein_match=="Tpg"| protein_match=="Tap") |>
+  filter(DNA_type!="extrachromosomal") |>
+  filter(DNA_type!="plasmid")
+
+# Plot
+
+plot_tap_tpg_loc <- ggplot(data=plot_data,
+      mapping=aes(y="",
+        x=relative_position_perc,
+        color=protein_match,
+        fill=protein_match
+      )) +
+  theme_minimal() +
+  scale_color_manual(values = c(palette_1[1],palette_1[2])) +
+  scale_fill_manual(values = c(palette_1[1],palette_1[2])) +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21,
+                alpha=0.5) +
+  scale_x_continuous(limits=c(0, 100),
+                     breaks=x_ticks,
+                     labels = function(x) paste0(x, "%")) +
+  labs(y="",
+       x="Relative chromosomal position (%)",
+       fill="Protein",
+       color="Protein"
+       #title="Terminal proteins are preferentially encoded at the chromosomal terminus"
+       ) +
+  expand_limits(y= c(-3, 5)) +
+  facet_wrap(~protein_match) 
+#  facet_grid(DNA_type~protein_match,
+#             switch="y")
+
+plot_tap_tpg_loc
+```
+
+Seeing the plot as a function of absolute position:
+
+```{r}
+
+# Find distance to start and end
+# Fill a column with the shortest one for plotting
+tap_tpg <- blast_data |>
+  filter(protein_match=="Tpg"| protein_match=="Tap") |>
+  mutate(midpoint=(start+stop)/2) |>
+  mutate(midpoint = as.integer(midpoint)) |>
+  mutate(dist_to_start=midpoint,
+         dist_to_stop=DNA_length-midpoint) |>
+  mutate(abs_dist=case_when(
+    dist_to_start<dist_to_stop ~ dist_to_start,
+    dist_to_start>dist_to_stop ~dist_to_stop))
+
+# Plot the damn thing
+p <- ggplot(data=tap_tpg,
+      mapping=aes(y="",
+        x=abs_dist/1000,
+        color=protein_match,
+        fill=protein_match
+      )) +
+  theme_minimal() +
+  scale_color_manual(values = c(palette_1[1],palette_1[2])) +
+  scale_fill_manual(values = c(palette_1[1],palette_1[2])) +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21) +
+  labs(y="",
+       x="Absolute distance to nearest terminus (kb)",
+       #title="Terminal proteins are preferentially encoded at the chromosomal terminus"
+       ) +
+  expand_limits(y= c(-3, 5)) +
+  facet_wrap(~protein_match) +
+  facet_grid(DNA_type~protein_match,
+             switch="y") +
+  xlim(0,6000)
+
+p
+
+
+```
+
+### 2.2 Tac-Tpc
+
+```{r, fig(10, 4), Tac-tpc}
+x_ticks <- seq(from = 0, to = 100, by = 10) # list of X-ticks to place
+
+
+# Filter for protein of interest
+plot_data <- blast_data |>
+  mutate(protein_match=str_replace_all(protein_match,"TPC","Tpc")) |> # required for consistensy of protein naming
+  filter(protein_match=="Tac"| protein_match=="Tpc") |>
+  filter(DNA_type!="extrachromosomal") |>
+  filter(DNA_type!="plasmid")
+
+# Plot
+# A lot of energy going into making in match powerpoint
+plot_tac_tpc_loc <- ggplot(data=plot_data,
+      mapping=aes(y="",
+        x=relative_position_perc,
+        color=protein_match,
+        fill=protein_match,
+      )) +
+  theme_minimal() +
+  scale_color_manual(values = c(palette_1[1],palette_1[2])) +
+  scale_fill_manual(values = c(palette_1[1],palette_1[2])) +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21,
+                alpha=0.5) +
+  scale_x_continuous(limits=c(0, 100),
+                     breaks=x_ticks,
+                     labels = function(x) paste0(x, "%")) +
+  labs(y="",
+       x="Relative chromosomal position (%)",
+       fill="Protein",
+       color="Protein") +
+  facet_wrap(~protein_match)
+  #expand_limits(y= c(-3, 5)) +
+  #facet_grid(DNA_type~protein_match,
+#             switch="y")
+
+plot_tac_tpc_loc
+```
+
+### 2.3 GtpA-GtpB
+
+```{r, fig(10, 4), GtpA-GtpB}
+x_ticks <- seq(from = 0, to = 100, by = 10) # list of X-ticks to place
+
+
+# Filter for protein of interest
+plot_data <- blast_data |>
+  filter(protein_match=="GtpA"| protein_match=="GtpB") |>
+  filter(DNA_type!="extrachromosomal") |>
+  filter(DNA_type!="plasmid")
+
+
+plot_data |>
+  mutate(relative_position)
+
+
+# Plot
+# A lot of energy going into making in match powerpoint
+plot_gtpa_gptb_loc <- ggplot(data=plot_data,
+      mapping=aes(y="",
+        x=relative_position_perc,
+        color=protein_match,
+        fill=protein_match,
+      )) +
+  theme_minimal() +
+  scale_color_manual(values = c(palette_1[1],palette_1[2])) +
+  scale_fill_manual(values = c(palette_1[1],palette_1[2])) +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21,
+                alpha=0.5) +
+  scale_x_continuous(limits=c(0, 100),
+                     breaks=x_ticks,
+                     labels = function(x) paste0(x, "%")) +
+  labs(y="",
+       x="Relative chromosomal position (%)",
+       fill="Protein",
+       color="Protein") +
+  facet_wrap(~protein_match)
+  #expand_limits(y= c(-3, 5)) +
+  #facet_grid(DNA_type~protein_match,
+#             switch="y")
+
+plot_gtpa_gptb_loc
+```
+
+### 2.4 Combined plots
+
+```{r, combined plot}
+
+fig1 <- ggarrange(plot_tap_tpg_loc,
+                  plot_tac_tpc_loc,
+                  plot_gtpa_gptb_loc,
+          ncol = 1,
+          nrow = 3,
+          legend="right")
+
+
+fig1
+```
+
+```{r}
+x_ticks <- seq(from = 0, to = 100, by = 10)
+
+plot_data <- blast_data |>
+  
+  mutate(protein_match = factor(protein_match, levels = c("Tap",
+                                                          "Tpg",
+                                                          "Tac",
+                                                          "Tpc",
+                                                          "GtpA",
+                                                          "GtpB"))) |>
+  arrange(protein_match) |>
+  filter(DNA_type!="extrachromosomal")
+
+
+
+
+comb_plot <- ggplot(data=plot_data,
+      mapping=aes(y="",
+        x=relative_position_perc,
+        color=protein_match,
+        fill=protein_match,
+      )) +
+  theme_minimal() +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21,
+                alpha=0.5) +
+  scale_color_manual(values = palette_2) +
+  scale_fill_manual(values = palette_2 ) +
+  scale_x_continuous(limits=c(0, 100),
+                     breaks=x_ticks,
+                     labels = function(x) paste0(x, "%")) +
+  labs(y="",
+       x="Relative position (%)",
+       fill="Protein",
+      color="Protein") +
+  facet_grid(protein_match~DNA_type,
+             switch="y")
+
+ggsave(filename = "../figures/supl_figure_telomere_machinery_location.svg",
+       plot = comb_plot,
+        width = 10, height = 8, dpi = 300)
+
+
+```
+
+### 2.5 Venn diagram and location plot
+
+```{r}
+
+library(gridExtra)
+library(grid)
+
+
+venn_and_plot <- grid.arrange(venn_strain, comb_plot,
+                              ncol=2)
+
+ggsave(filename="../figures/figure_4_venn_digram_and_location.svg",
+       plot=venn_and_plot,
+       width=15,
+       height=8)
+```
+
+### 2.6 Strains with no full system
+
+### 2.7 Supl. Distance from end
+
+We can also depict the location as a distance from the end, rather than the relative location along the chromosome.
+
+```{r}
+dist_data <- blast_data |>
+    mutate(temp_start = case_when(
+      strand=="+" ~ start,
+      strand=="-" ~ stop),
+         temp_stop = case_when(
+           strand=="+" ~ stop,
+           strand=="-" ~ start)) |>
+  mutate(start=temp_start,
+         stop=temp_stop) |>
+  select(-temp_start,-temp_stop) |>
+  mutate(mid = case_when(strand=="+" ~ start + (abs(start-stop)/2),
+                 strand=="-" ~ stop + abs(start-stop)/2)) |>
+  mutate(dist_to_term = case_when(
+    mid<(DNA_length/2) ~ mid,
+    mid>(DNA_length/2) ~ DNA_length-mid
+  )) |>
+  mutate(protein_match = factor(protein_match, levels = c("Tap",
+                                                        "Tpg",
+                                                        "Tac",
+                                                        "Tpc",
+                                                        "GtpA",
+                                                        "GtpB"))) |>
+  arrange(protein_match) |>
+  filter(DNA_type!="extrachromosomal")
+
+distance_from_end <- ggplot(data=dist_data,
+        aes(y=dist_to_term,
+            x="",
+            color=protein_match)) +
+  scale_color_manual(values = palette_2) +
+  labs(y="distance to terminus, kb",
+       x="") +
+  geom_boxplot() +
+  facet_grid(~DNA_type~protein_match)
+
+
+
+ggsave(filename="../figures/supl_figure_distance_from_end.svg",
+       plot=distance_from_end,
+       width=15,
+       height=8)
+  
+```
+
+```{r}
+plas_info <- blast_data |>
+  filter(DNA_type=="plasmid") |>
+  select(accession,
+         DNA_type,
+         DNA_length) |>
+  distinct()
+
+plas_info$DNA_length <- as.numeric(plas_info$DNA_length)
+mean(plas_info$DNA_length)
+median(plas_info$DNA_length)
+  
+```
+
+# 3. Clustering of co-located hits
+
+Finding co-located gene-pairs to look at how they evolve compared to the cluster the ends fall into. To ensure that this makes sense there are also supl. plots for the typical distance between the proteins.
+
+### 3.1 Table of co-located Tap-Tpg
+
+```{r}
+blast_data <- read_tsv("../data/term_prot_BLAST_info.tsv") |>
+  filter(qcov>=40) |>
+  filter(evalue<=1e-10) |>
+  mutate(protein_match=str_replace_all(protein_match,"TPC","Tpc")) |>
+  mutate(
+    start = str_extract(location, "(?<=\\[)\\d+"),
+    stop = str_extract(location, "(?<=:)\\d+"),
+    strand = str_extract(location, "(?<=\\()\\+|\\-")
+  ) |> # need to flip stop and start for negative strand as biopython gives interval from least to biggest number
+  mutate(temp_start = case_when(strand=="+" ~ start,
+                                strand=="-" ~ stop),
+         temp_stop = case_when(strand=="+" ~ stop,
+                                strand=="-" ~ start)) |>
+  mutate(start=temp_start,
+         stop=temp_stop) |>
+  select(-location,
+         -temp_start,
+         -temp_stop) |>
+  mutate(
+    start = as.numeric(start),
+    stop = as.numeric(stop)
+  ) |>
+    mutate(
+    relative_position=start/DNA_length
+  ) |>
+   mutate(side=case_when(relative_position<0.5 ~ "left",
+                         relative_position>=0.5 ~ "right")) |>
+  mutate(replicon_end=str_c(accession,
+                            side,
+                            strand,
+                            sep="_"))
+
+#
+tap <- blast_data |>
+  filter(protein_match=="Tap") |>
+  rename(tap_start = start) |>
+  rename(tap_stop = stop) |>
+  rename(tap_strand = strand) |>
+  rename(tap_id=protein_id) |>
+  mutate(tap_length=abs(tap_stop-tap_start)) |>
+  select(-pident,
+         -evalue,
+         -qcov,
+         -protein_match)
+#
+tpg <- blast_data |>
+  filter(protein_match=="Tpg") |>
+  rename(tpg_start = start) |>
+  rename(tpg_stop = stop) |>
+  rename(tpg_strand = strand) |>
+  rename(tpg_id=protein_id) |>
+  mutate(tpg_length=abs(tpg_stop-tpg_start)) |>
+  select(-taxon,
+         -DNA_type,
+         -accession,
+         -relative_position,
+         -side,
+         -pident,
+         -evalue,
+         -qcov,
+         -strain_name,
+         -protein_match,
+         -DNA_length)
+
+# Get operons from intergeneic distance
+tap_tpg_operon <- inner_join(tap,
+           tpg,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(tap_start-tpg_start),
+    abs(tap_start-tpg_stop),
+    abs(tap_stop-tpg_stop),
+    abs(tap_stop-tpg_start))
+    )) |>
+  ungroup() |>
+  mutate(co_located = case_when(intergenic_dist<300 ~ TRUE,
+                                intergenic_dist>=300~ FALSE)) |>
+  filter(co_located==TRUE)
+
+
+
+
+tap_tpg_simp <- tap_tpg_operon |>
+    select(strain_name,
+         accession,
+         taxon,
+         DNA_type,
+         DNA_length,
+         tap_id,
+         tpg_id,
+         intergenic_dist,
+         side
+         ) |>
+  mutate(replicon_end=str_c(accession,
+                  "linear",
+                  side,
+                  sep="_"))
+
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target")) |>
+  filter(clust_type!="C") |>
+  rename(replicon_end = query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n())
+
+tap_tpg_cluster <- inner_join(tap_tpg_simp,
+                              clust_data,
+                              by=join_by(replicon_end))
+
+# Big clust_nums
+# export to python
+exp_data <- tap_tpg_cluster |>
+  filter(cluster_size>3)
+
+
+write_tsv(exp_data, "../tables_and_lists/tap_tpg_pairs_all.tsv")
+
+```
+
+### 3.2 Supl. Distances for tap-tpg
+
+```{r}
+tap_tpg_intergenic <- inner_join(tap,
+           tpg,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(tap_start-tpg_start),
+    abs(tap_start-tpg_stop),
+    abs(tap_stop-tpg_stop),
+    abs(tap_stop-tpg_start))
+    )) |>
+  ungroup()
+
+a <-ggplot(tap_tpg_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[1]) +
+  coord_cartesian(
+  ylim = c(0,1000)) +
+  labs(y="Distance, bp")+
+  labs(title="Distance from Tap to Tpg")
+
+b <-ggplot(tap_tpg_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="Distance, bp")+
+  scale_y_log10()
+  
+
+c <-ggplot(tap_tpg_intergenic,
+       aes(x="",
+           y=intergenic_dist)) +
+  geom_beeswarm(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="",
+       x="")+
+  scale_y_log10()
+
+
+tap_tpg_intergenic_distance <- a/(b+c)
+ggsave(filename="../figures/supl_figure_5_tap_tpg_intergeneic_distance.svg",
+       plot=tap_tpg_intergenic_distance,
+       width=15,
+       height=8)
+
+
+```
+
+### 3.3 Table of co-located Tac-Tpc
+
+```{r}
+#
+tac <- blast_data |>
+  filter(protein_match=="Tac") |>
+  rename(tac_start = start) |>
+  rename(tac_stop = stop) |>
+  rename(tac_strand = strand) |>
+  rename(tac_id=protein_id) |>
+  mutate(tac_length=abs(tac_stop-tac_start)) |>
+  select(-pident,
+         -evalue,
+         -qcov,
+         -protein_match)
+
+
+
+
+#
+tpc <- blast_data |>
+  filter(protein_match=="Tpc") |>
+  rename(tpc_start = start) |>
+  rename(tpc_stop = stop) |>
+  rename(tpc_strand = strand) |>
+  rename(tpc_id=protein_id) |>
+  mutate(tpc_length=abs(tpc_stop-tpc_start)) |>
+  select(-taxon,
+         -DNA_type,
+         -accession,
+         -relative_position,
+         -side,
+         -pident,
+         -evalue,
+         -qcov,
+         -strain_name,
+         -protein_match,
+         -DNA_length)
+#
+
+tac_tpc_operon <- inner_join(tac,
+           tpc,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(tac_start-tpc_start),
+    abs(tac_start-tpc_stop),
+    abs(tac_stop-tpc_stop),
+    abs(tac_stop-tpc_start))
+    )) |>
+  ungroup() |>
+  mutate(co_located = case_when(intergenic_dist<300 ~ TRUE,
+                                intergenic_dist>=300~ FALSE)) |>
+  filter(co_located==TRUE)
+
+tac_tpc_simp <- tac_tpc_operon |>
+    select(strain_name,
+         accession,
+         taxon,
+         DNA_type,
+         DNA_length,
+         tac_id,
+         tpc_id,
+         intergenic_dist,
+         side
+         ) |>
+  mutate(replicon_end=str_c(accession,
+                  "linear",
+                  side,
+                  sep="_"))
+
+
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target")) |>
+  filter(clust_type!="C") |>
+  rename(replicon_end = query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n())
+
+tac_tpc_cluster <- inner_join(tac_tpc_simp,
+                              clust_data,
+                              by=join_by(replicon_end))
+
+# Big clust_nums
+# export to python
+exp_data <- tac_tpc_cluster |>
+  filter(cluster_size>3)
+
+
+write_tsv(exp_data, "../tables_and_lists/tac_tpc_pairs_all.tsv")
+
+```
+
+### 3.3 Supl. Distance between Tac and Tpc
+
+```{r}
+tac_tpc_intergenic <- inner_join(tac,
+           tpc,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(tac_start-tpc_start),
+    abs(tac_start-tpc_stop),
+    abs(tac_stop-tpc_stop),
+    abs(tac_stop-tpc_start))
+    )) |>
+  ungroup()
+
+a <-ggplot(tac_tpc_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[1]) +
+  coord_cartesian(
+  ylim = c(0,250)) +
+  labs(y="Distance, bp")+
+  labs(title="Distance from Tac to Tpc")
+
+b <-ggplot(tac_tpc_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="Distance, bp")+
+  scale_y_log10()
+  
+
+c <-ggplot(tac_tpc_intergenic,
+       aes(x="",
+           y=intergenic_dist)) +
+  geom_beeswarm(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="",
+       x="")+
+  scale_y_log10()
+
+
+tac_tpc_intergenic_distance <- a/(b+c)
+ggsave(filename="../figures/supl_figure_6_tac_tpc_intergeneic_distance.svg",
+       plot=tac_tpc_intergenic_distance,
+       width=15,
+       height=8)
+
+```
+
+### 3.4 Table of co-located GtpA-GtpB
+
+```{r}
+#
+gtpa <- blast_data |>
+  filter(protein_match=="GtpA") |>
+  rename(gtpa_start = start) |>
+  rename(gtpa_stop = stop) |>
+  rename(gtpa_strand = strand) |>
+  rename(gtpa_id=protein_id) |>
+  mutate(gtpa_length=abs(gtpa_stop-gtpa_start)) |>
+  select(-pident,
+         -evalue,
+         -qcov,
+         -protein_match)
+#
+gtpb <- blast_data |>
+  filter(protein_match=="GtpB") |>
+  rename(gtpb_start = start) |>
+  rename(gtpb_stop = stop) |>
+  rename(gtpb_strand = strand) |>
+  rename(gtpb_id=protein_id) |>
+  mutate(gtpb_length=abs(gtpb_stop-gtpb_start)) |>
+  select(-taxon,
+         -DNA_type,
+         -accession,
+         -relative_position,
+         -side,
+         -pident,
+         -evalue,
+         -qcov,
+         -strain_name,
+         -protein_match,
+         -DNA_length)
+#
+gtpa_gtpb_operon <- inner_join(gtpa,
+           gtpb,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(gtpa_start-gtpb_start),
+    abs(gtpa_start-gtpb_stop),
+    abs(gtpa_stop-gtpb_stop),
+    abs(gtpa_stop-gtpb_start))
+    )) |>
+  ungroup() |>
+  mutate(co_located = case_when(intergenic_dist<300 ~ TRUE,
+                                intergenic_dist>=300~ FALSE)) |>
+  filter(co_located==TRUE)
+
+gtpa_gtpb_simp <- gtpa_gtpb_operon |>
+    select(strain_name,
+         accession,
+         taxon,
+         DNA_type,
+         DNA_length,
+         gtpa_id,
+         gtpb_id,
+         intergenic_dist,
+         side
+         ) |>
+  mutate(replicon_end=str_c(accession,
+                  "linear",
+                  side,
+                  sep="_"))
+
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target")) |>
+  filter(clust_type!="C") |>
+  rename(replicon_end = query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n())
+
+gtpa_gtpb_cluster <- inner_join(gtpa_gtpb_simp,
+                              clust_data,
+                              by=join_by(replicon_end))
+
+# Big clust_nums
+# export to python
+exp_data <- gtpa_gtpb_cluster |>
+  filter(cluster_size>3)
+
+
+write_tsv(exp_data, "../tables_and_lists/gtpA_gtpB_pairs_all.tsv")
+
+
+```
+
+### 3.4 Supl. Distance between GtpA and GtpB
+
+```{r}
+gtpa_gtpb_intergenic <- inner_join(gtpa,
+           gtpb,
+           by=join_by(replicon_end),
+           relationship = "many-to-many") |>
+  rowwise() |> 
+  mutate(intergenic_dist=min(c(
+    abs(gtpa_start-gtpb_start),
+    abs(gtpa_start-gtpb_stop),
+    abs(gtpa_stop-gtpb_stop),
+    abs(gtpa_stop-gtpb_start))
+    )) |>
+  ungroup()
+
+a <-ggplot(gtpa_gtpb_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[1]) +
+  coord_cartesian(
+  ylim = c(0,250)) +
+  labs(y="Distance, bp")+
+  labs(title="Distance from GtpA to GtpB")
+
+b <-ggplot(gtpa_gtpb_intergenic,
+       aes(y=intergenic_dist)) +
+  geom_boxplot(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="Distance, bp")+
+  scale_y_log10()
+  
+
+c <-ggplot(gtpa_gtpb_intergenic,
+       aes(x="",
+           y=intergenic_dist)) +
+  geom_beeswarm(alpha=0.5,
+                color = palette_1[2]) +
+  labs(y="",
+       x="")+
+  scale_y_log10()
+
+
+gtpa_gtpb_intergenic_distance <- a/(b+c)
+ggsave(filename="../figures/supl_figure_6_gtpA_gtpB_intergeneic_distance.svg",
+       plot=gtpa_gtpb_intergenic_distance,
+       width=15,
+       height=8)
+```
+
+# 4. Investigation of non-hit strains
+
+```{r}
+# Need to get a full list of strains
+tap_tpg_strain <- blast_data |>
+  filter(protein_match %in% c("Tpg", "Tap")) |>      
+  group_by(strain_name) |>                     
+  filter(all(c("Tpg", "Tap") %in% protein_match)) %>% 
+  pull(strain_name) |>                       # Extract strain names as a vector
+  unique()
+
+tac_tpc_strain <- blast_data |>
+  filter(protein_match %in% c("Tac", "Tpc")) |>      
+  group_by(strain_name) |>                      
+  filter(all(c("Tac", "Tpc") %in% protein_match)) %>% 
+  pull(strain_name) |>                       
+  unique()
+
+gtpA_gtpB_strain <- blast_data |>
+  filter(protein_match %in% c("GtpA", "GtpB")) |>      
+  group_by(strain_name) |>                      
+  filter(all(c("GtpA", "GtpB") %in% protein_match)) %>% 
+  pull(strain_name) |>                       
+  unique()
+
+all_strains_with_system <- tibble(
+  strain_name = unique(c(tap_tpg_strain, tac_tpc_strain, gtpA_gtpB_strain))
+)
+
+all_G1034_strains = read.csv(file = "../data/complete.linear.G1034.filtered.txt",
+                       header=FALSE) |>
+  rename(strain_name=V1)
+
+strains_with_no_system <- anti_join(all_G1034_strains,
+          all_strains_with_system,
+          join_by(strain_name)
+          )
+
+
+write_tsv(strains_with_no_system,
+          file="../tables_and_lists/41_strains_no_maintanance_machinery.tsv")
+
+
+
+```
+
+```{r}
+# Load in extension table
+# Load data extension data 
+ext_table <- read_tsv(file="../tables_and_lists/table_11_ext_by_data_wide.tsv") |>
+  rename(strain_name=strain.x)
+
+ext_of_no_systems <- inner_join(strains_with_no_system,
+                                ext_table,
+                                join_by(strain_name))
+
+```
+
+```{r}
+common_limits <- c(-200, 100000)
+plot_data <- ext_of_no_systems
+
+chr_data <- plot_data |> 
+  filter(rep_type=="chromosome") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())
+
+# Get tick positions every 100 replicons
+chr_breaks <- chr_data$replicon[seq(1, nrow(chr_data), by=100)]
+chr_labels <- seq(0, length(chr_breaks) * 100 - 100, by=100)
+
+# Make subset for each plot
+
+plas_data <- plot_data |> 
+  filter(rep_type=="plasmid") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon))) |>
+  mutate(replicon_index = row_number())  # get number for breaks and labels
+  
+# Get tick positions every 100 replicons
+plas_breaks <- plas_data$replicon[seq(1, nrow(plas_data), by=100)]
+plas_labels <- seq(0, length(plas_breaks) * 100 - 100, by=100)
+
+
+extra_data <- plot_data |> 
+  filter(rep_type=="extrachromosomal") |>
+  arrange(ONT_ext, desc(Ill_ext)) |> 
+  mutate(replicon = factor(replicon, levels = unique(replicon)))
+
+
+extra_breaks <- extra_data$replicon[seq(1, nrow(extra_data), by=50)]
+extra_labels <- seq(0, length(extra_breaks) * 50 - 50, by=50)
+
+#-----------------------GENERATE PLOTS WITH NO FILTERING ON CLUSTER NUMBER
+chrom_p <- ggplot(data=chr_data, aes(x=reorder(replicon, abs(ONT_ext)))) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Chromosomes") +
+  scale_y_continuous(trans = pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        pplot.grid.x=element_blank()) +   # Hides x-axis labels
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = chr_breaks, labels = chr_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+plas_p <- ggplot(data=plas_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Plasmids") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank()) +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+extrachr_p <- ggplot(data=extra_data, aes(x=replicon)) +
+  geom_bar(aes(y=ONT_ext, fill="ONT_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  geom_bar(aes(y=Ill_ext, fill="Ill_ext"), 
+           stat="identity", 
+           position="identity",
+           alpha=0.5) +
+  scale_fill_manual(name="Type", 
+                    values=c("ONT_ext"="#00868B", "Ill_ext"="#FF6A00"),
+                    labels=c("ONT_ext"="ONT", "Ill_ext"="Illumina")) +
+  labs(x="Replicon Ends",
+       y="Basepairs",
+       title="Extrachromosomal elements") +
+  scale_y_continuous(trans = scales::pseudo_log_trans(base = 10),
+                     breaks = c(-100,-10,0,10, 100, 1000, 10000),
+                     labels = abs,
+                     limits = common_limits) +
+  theme(panel.background=element_rect(fill="white"),
+        plot.background=element_rect(fill="white"),
+        panel.grid.x=element_blank()) +   
+  geom_hline(yintercept = c(-100,-10,0, 10, 100, 1000,10000), linetype = "dashed", color = "black",
+             alpha=0.5) +
+  scale_x_discrete(breaks = plas_breaks, labels = plas_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(breaks = extra_breaks, labels = extra_labels) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Arrange plots
+library(ggpubr)
+fig1 <- ggarrange(chrom_p,
+          extrachr_p,
+          plas_p,
+          labels = c("B", "C", "D"),
+          ncol = 3,
+          nrow = 1,
+          common.legend = TRUE,
+          align="hv",
+          legend="bottom")
+
+
+fig1
+```
+
+```{r}
+summary <- ext_of_no_systems |>
+  summarise(
+    mean_value = mean(Ill_ext, na.rm = TRUE),
+    median_value = median(Ill_ext, na.rm = TRUE),
+    num_over_100 = sum(Ill_ext < (-100)),
+                       n=n())
+summary
+```
+
+## 4.2 Blast of strains with no proteins
+
+```{r}
+
+# Get all BLAST results for the strains
+BLAST_of_no_full_system <- inner_join(strains_with_no_system,
+                                      blast_data,
+                                      by=join_by(strain_name))
+
+no_system_at_all <-anti_join(strains_with_no_system,
+                                      blast_data,
+                                      by=join_by(strain_name))
+
+# Count number of strains with at least one homologs but a missing partner
+BLAST_of_no_full_system |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+# Tpg hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="Tpg") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+# Tpg hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="Tap") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+# Tac hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="Tac") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+# Tpc hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="Tpc") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+# GtpA hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="GtpA") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+
+# GtpB hits with missing partner
+BLAST_of_no_full_system |>
+  filter(protein_match=="GtpB") |>
+  pull(strain_name) |>
+  unique() |>
+  length()
+
+
+#### Write to list
+write_tsv(BLAST_of_no_full_system,
+          file="../tables_and_lists/supl_table_002_strains_no_maintanance_machinery_but_a_least_one_homolog.tsv")
+
+```
+
+# 5. Tap-Tpg: Clustering from protein families
+
+Co-localized tap and tpg were clustered seperately at 70% identity by CD-HIT.
+
+## 5.1 Exploratory heatmaps
+
+```{r}
+tap_cdhit <- read_tsv("../data/tap_70.tsv",
+                      col_names=c("tap_id","tap_cd_clust")) |>
+    separate(tap_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,tap_cd_clust) |>
+  rename(tap_id=rest)
+                      
+tpg_cdhit <- read_tsv("../data/tpg_70.tsv",
+                      col_names=c("tpg_id","tpg_cd_clust") ) |>
+  separate(tpg_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,tpg_cd_clust) |>
+  rename(tpg_id=rest)
+
+tap_tpg_cluster <- read_tsv("../tables_and_lists/tap_tpg_pairs_all.tsv") |>
+  select(-target,
+         -seq_len,
+         -cigar,
+         -ign1,
+         -ign2,
+         -clust_type) |>
+  rename(telo_clust = clust_num)
+
+tap_tpg_with_id <- inner_join(tap_tpg_cluster,
+                              tap_cdhit,
+                              by=join_by(tap_id))
+
+tap_tpg_with_id <- inner_join(tap_tpg_with_id,
+                              tpg_cdhit,
+                              by=join_by(tpg_id))
+
+# Simple classification:
+tap_tpg_with_id <- tap_tpg_with_id |>
+  mutate(clust_comb = paste(tap_cd_clust, tpg_cd_clust, sep = "_")) |>
+  group_by(clust_comb) |>
+  mutate(cdhit_comb_clust = cur_group_id()) |>
+  ungroup()
+
+
+cluster_loop_relation <- read_excel("../data/telogroup_first_3_loops_info.xlsx") |>
+  rename(telo_clust=TELOCLUSTER,
+         loop_1_canonical="canonical 1st",
+         loop_1="1st loop",
+         loop_2="2nd loop",
+         loop_3="3rd loop") |>
+  select(telo_clust,
+         loop_1,
+         loop_2,
+         loop_3,
+         loop_1_canonical)
+
+tap_tpg_loop <- inner_join(tap_tpg_with_id,
+                           cluster_loop_relation,
+                           by=join_by(telo_clust)) |>
+  add_count(telo_clust) |>
+  filter(n>2)
+
+
+```
+
+###5.1.1 Co-occurence of proteins
+
+```{r}
+total_n <- tap_tpg_loop |> count() |> pull(n)
+
+tap_tpg_co_occur <- tap_tpg_loop |>
+  count(tap_cd_clust,tpg_cd_clust, DNA_type) |>
+  group_by(tap_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tap_cd_clust,tpg_cd_clust, DNA_type, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(tap_cd_clust),
+             x = factor(tpg_cd_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tpg family (n = ", total_n, ")"),
+    y = "Tap family",
+    fill = "Percent of Tap family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~DNA_type)
+
+tap_tpg_co_occur_no_DNA <- tap_tpg_loop |>
+  count(tap_cd_clust,tpg_cd_clust) |>
+  group_by(tap_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tap_cd_clust,tpg_cd_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(tap_cd_clust),
+             x = factor(tpg_cd_clust), fill = percent)) +
+  geom_tile(color = "grey80") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tpg family (n = ", total_n, ")"),
+    y = "Tap family",
+    fill = "Percent of Tap family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tap_tpg_co_occur
+
+
+library(rcompanion)
+
+cramer_df <- tap_tpg_with_id |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust))
+
+# Create contingency tables
+tap_tpg_table <- table(cramer_df$tap_cd_clust, cramer_df$tpg_cd_clust)
+
+# Compute Cramér's V
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+cat("Cramér's V for Tap vs Tpg:", tap_tpg_v, "\n")
+
+
+ggsave(filename="../figures/figure_6a_tap_tpg_co_occurence.svg",
+       plot=tap_tpg_co_occur,
+       width=15,
+       height=8)
+
+```
+
+### 5.1.2 Proteins vs Telogroup
+
+```{r}
+# Total n
+total_n <- tap_tpg_loop |> add_count(telo_clust) |> count() |> pull(n)
+
+tap_telo <- tap_tpg_loop |>
+  count(tap_cd_clust,telo_clust) |>
+  group_by(tap_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tap_cd_clust, telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(telo_clust),
+             x = factor(tap_cd_clust), fill = percent)) +
+  geom_tile(color = "grey80") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tap family (n = ", total_n, ")"),
+    y = "Telocluster",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_telo <- tap_tpg_loop |>
+  count(tpg_cd_clust,telo_clust) |>
+  group_by(tpg_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tpg_cd_clust, telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(telo_clust),
+             x = factor(tpg_cd_clust), fill = percent)) +
+  geom_tile(color = "grey80") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tpg family (n = ", total_n, ")"),
+    y = "",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+combined_plot <- (tap_telo + tpg_telo) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right")
+
+
+
+cramer_df <- tap_tpg_loop |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpg_table <- table(cramer_df$telo_clust, cramer_df$tpg_cd_clust)
+tap_table <- table(cramer_df$telo_clust, cramer_df$tap_cd_clust)
+tap_tpg_table <- table(cramer_df$telo_clust, cramer_df$cdhit_comb_clust)
+
+# Chi-squared test
+tpg_chisq <- chisq.test(tpg_table)
+tap_chisq <- chisq.test(tap_table)
+tap_tpg_chisq <- chisq.test(tap_tpg_table)
+
+# Cramér's V
+tpg_V <- cramerV(tpg_table)
+tap_V <- cramerV(tap_table)
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+# Output results
+cat("Tpg vs telo_group:\n")
+cat("  Cramér's V:", tpg_V, "\n")
+cat("  P-value:", tpg_chisq$p.value, "\n\n")
+
+cat("Tap vs telo_group:\n")
+cat("  Cramér's V:", tap_V, "\n")
+cat("  P-value:", tap_chisq$p.value, "\n\n")
+
+cat("Tap_tpg_complex vs telo_group:\n")
+cat("  Cramér's V:", tap_tpg_v, "\n")
+cat("  P-value:", tap_tpg_chisq$p.value, "\n")
+
+
+ggsave(filename="../figures/figure_6b_tap_tpg_vs_Telo.svg",
+       plot=combined_plot,
+       width=15,
+       height=8)
+
+combined_plot
+
+```
+
+### 5.1.2 Loops to protein-relation
+
+#### Loop 1
+
+```{r}
+
+
+
+# tpg cluster
+tap_loop1 <- tap_tpg_loop |>
+  count(loop_1, tap_cd_clust) |>
+  group_by(loop_1) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_1, tap_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_1), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_1",
+    fill = "percent of lop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop1 <- tap_tpg_loop |>
+  count(loop_1, tpg_cd_clust) |>
+  group_by(loop_1) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_1, tpg_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_1), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_1",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop1 <- tap_tpg_loop |>
+  count(loop_1,cdhit_comb_clust ) |>
+  group_by(loop_1) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_1, cdhit_comb_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_1), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_1",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tap_loop1/tpg_loop1/comb_loop1
+
+
+library(rcompanion)
+
+# Assuming A is your tibble with columns col1, col2, col3
+
+cramer_df <- tap_tpg_loop |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpg_table <- table(cramer_df$loop_1, cramer_df$tpg_cd_clust)
+tap_table <- table(cramer_df$loop_1, cramer_df$tap_cd_clust)
+tap_tpg_table <- table(cramer_df$loop_1, cramer_df$cdhit_comb_clust)
+
+
+
+# Compute Cramér's V
+tpg_V <- cramerV(tpg_table)
+tap_V <- cramerV(tap_table)
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+cat("Cramér's V for Tpg vs loop_1 is:", tpg_V, "\n")
+cat("Cramér's V for Tap vs loop_1 is:", tap_V, "\n")
+cat("Cramér's V for Tap_tpg_complex vs loop_1:", tap_tpg_v, "\n")
+
+
+# Plot with counts
+# tpg cluster
+tap_loop1 <- tap_tpg_loop |>
+  count(loop_1, tap_cd_clust) |>
+  complete(loop_1, tap_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_1), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_1",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop1 <- tap_tpg_loop |>
+  count(loop_1, tpg_cd_clust) |>
+  complete(loop_1, tpg_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_1), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_1",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop1 <- tap_tpg_loop |>
+  count(loop_1,cdhit_comb_clust ) |>
+  complete(loop_1, cdhit_comb_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_1), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_1",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tap_loop1/tpg_loop1/comb_loop1
+```
+
+#### Loop 2
+
+```{r}
+# tpg cluster
+tap_loop2 <- tap_tpg_loop |>
+  count(loop_2, tap_cd_clust) |>
+  group_by(tap_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_2, tap_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_2), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_2",
+    fill = "percent of lop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop2 <- tap_tpg_loop |>
+  count(loop_2, tpg_cd_clust) |>
+  group_by(tpg_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_2, tpg_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_2), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_2",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop2 <- tap_tpg_loop |>
+  count(loop_2,cdhit_comb_clust ) |>
+  group_by(cdhit_comb_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_2, cdhit_comb_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_2), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_2",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+tap_loop2/tpg_loop2/comb_loop2
+
+
+library(rcompanion)
+
+# Assuming A is your tibble with columns col1, col2, col3
+
+cramer_df <- tap_tpg_loop |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpg_table <- table(cramer_df$loop_2, cramer_df$tpg_cd_clust)
+tap_table <- table(cramer_df$loop_2, cramer_df$tap_cd_clust)
+tap_tpg_table <- table(cramer_df$loop_2, cramer_df$cdhit_comb_clust)
+
+
+
+# Compute Cramér's V
+tpg_V <- cramerV(tpg_table)
+tap_V <- cramerV(tap_table)
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+cat("Cramér's V for Tpg vs loop_2 is:", tpg_V, "\n")
+cat("Cramér's V for Tap vs loop_2 is:", tap_V, "\n")
+cat("Cramér's V for Tap_tpg_complex vs loop_2:", tap_tpg_v, "\n")
+
+#
+# Plot with counts
+# tpg cluster
+tap_loop2 <- tap_tpg_loop |>
+  count(loop_2, tap_cd_clust) |>
+  complete(loop_2, tap_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_2), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_2",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop2 <- tap_tpg_loop |>
+  count(loop_2, tpg_cd_clust) |>
+  complete(loop_2, tpg_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_2), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_2",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop2 <- tap_tpg_loop |>
+  count(loop_2,cdhit_comb_clust ) |>
+  complete(loop_2, cdhit_comb_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_2), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_2",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tap_loop2/tpg_loop2/comb_loop2
+
+
+```
+
+#### Loop 3
+
+```{r}
+# tpg cluster
+tap_loop3 <- tap_tpg_loop |>
+  count(loop_3, tap_cd_clust) |>
+  group_by(loop_3) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_3, tap_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_3), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_3",
+    fill = "percent of lop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop3 <- tap_tpg_loop |>
+  count(loop_3, tpg_cd_clust) |>
+  group_by(loop_3) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_3, tpg_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_3), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_3",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop3 <- tap_tpg_loop |>
+  count(loop_3,cdhit_comb_clust ) |>
+  group_by(loop_3) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_3, cdhit_comb_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_3), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_3",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+tap_loop3/tpg_loop3/comb_loop3
+
+
+library(rcompanion)
+
+# Assuming A is your tibble with columns col1, col2, col3
+
+cramer_df <- tap_tpg_loop |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpg_table <- table(cramer_df$loop_3, cramer_df$tpg_cd_clust)
+tap_table <- table(cramer_df$loop_3, cramer_df$tap_cd_clust)
+tap_tpg_table <- table(cramer_df$loop_3, cramer_df$cdhit_comb_clust)
+
+
+
+# Compute Cramér's V
+tpg_V <- cramerV(tpg_table)
+tap_V <- cramerV(tap_table)
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+cat("Cramér's V for Tpg vs loop_3 is:", tpg_V, "\n")
+cat("Cramér's V for Tap vs loop_3 is:", tap_V, "\n")
+cat("Cramér's V for Tap_tpg_complex vs loop_3:", tap_tpg_v, "\n")
+
+
+tap_loop3 <- tap_tpg_loop |>
+  count(loop_3, tap_cd_clust) |>
+  complete(loop_3, tap_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_3), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_3",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop3 <- tap_tpg_loop |>
+  count(loop_3, tpg_cd_clust) |>
+  complete(loop_3, tpg_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_3), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_3",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop3 <- tap_tpg_loop |>
+  count(loop_3,cdhit_comb_clust ) |>
+  complete(loop_3, cdhit_comb_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_3), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_3",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tap_loop3/tpg_loop3/comb_loop3
+```
+
+#### 5.1.2.4 Loop combinations
+
+```{r}
+# Naive combination:
+tap_tpg_loop <- tap_tpg_loop |>
+  mutate(loop_comb = paste(loop_1, loop_2, loop_3, sep = "_"))
+
+tap_loop_c <- tap_tpg_loop |>
+  count(loop_comb, tap_cd_clust) |>
+  group_by(loop_comb) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_comb, tap_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_comb), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_1_2_3",
+    fill = "percent of lop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpg_loop_c <- tap_tpg_loop |>
+  count(loop_comb, tpg_cd_clust) |>
+  group_by(loop_comb) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_comb, tpg_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_comb), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_1_2_3",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+comb_loop_c <- tap_tpg_loop |>
+  count(loop_comb,cdhit_comb_clust ) |>
+  group_by(loop_comb) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_comb, cdhit_comb_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_comb), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_comb",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+tap_loop_c/tpg_loop_c/comb_loop_c
+
+
+library(rcompanion)
+
+# Assuming A is your tibble with columns col1, col2, col3
+
+cramer_df <- tap_tpg_loop |>
+  mutate(tap_cd_clust = paste0("tap_", tap_cd_clust)) |>
+  mutate(tpg_cd_clust = paste0("tpg_", tpg_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpg_table <- table(cramer_df$loop_comb, cramer_df$tpg_cd_clust)
+tap_table <- table(cramer_df$loop_comb, cramer_df$tap_cd_clust)
+tap_tpg_table <- table(cramer_df$loop_comb, cramer_df$cdhit_comb_clust)
+
+
+
+# Compute Cramér's V
+tpg_V <- cramerV(tpg_table)
+tap_V <- cramerV(tap_table)
+tap_tpg_v <- cramerV(tap_tpg_table)
+
+cat("Cramér's V for Tpg vs loop_comb is:", tpg_V, "\n")
+cat("Cramér's V for Tap vs loop_comb is:", tap_V, "\n")
+cat("Cramér's V for Tap_tpg_complex vs loop_com:", tap_tpg_v, "\n")
+
+# counts
+tap_loop_c <- tap_tpg_loop |>
+  count(loop_comb, tap_cd_clust) |>
+  complete(loop_comb, tap_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tap_cd_clust),
+               y= factor(loop_comb), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap cluster",
+    y = "loop_1_2_3",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 6))
+
+tpg_loop_c <- tap_tpg_loop |>
+  count(loop_comb, tpg_cd_clust) |>
+  complete(loop_comb, tpg_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tpg_cd_clust),
+               y= factor(loop_comb), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tpg cluster",
+    y = "loop_comb",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 6))
+
+comb_loop_c <- tap_tpg_loop |>
+  count(loop_comb,cdhit_comb_clust ) |>
+  complete(loop_comb, cdhit_comb_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(cdhit_comb_clust),
+               y= factor(loop_comb), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "Tap-tpg cluster",
+    y = "loop_comb",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 6) )
+
+comb_loop <- tap_loop_c/tpg_loop_c/comb_loop_c
+
+
+ggsave(filename="../figures/figure_7_comb_loop.png",
+       plot=comb_loop,
+       width=15,
+       height=8)
+```
+
+```         
+```
+
+Given the cramers V values it lookes like grouping based on Tap or Tpg is corelates better with telo-cluster classification than tap-tpg combination.
+
+# 6. Tac-Tpc
+
+```{r}
+tac_cdhit <- read_tsv("../data/tac_70.tsv",
+                      col_names=c("tac_id","tac_cd_clust")) |>
+    separate(tac_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,tac_cd_clust) |>
+  rename(tac_id=rest)
+                      
+tpc_cdhit <- read_tsv("../data/tpc_70.tsv",
+                      col_names=c("tpc_id","tpc_cd_clust") ) |>
+  separate(tpc_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,tpc_cd_clust) |>
+  rename(tpc_id=rest)
+
+tac_tpc_cluster <- read_tsv("../tables_and_lists/tac_tpc_pairs_all.tsv") |>
+  select(-target,
+         -seq_len,
+         -cigar,
+         -ign1,
+         -ign2,
+         -clust_type) |>
+  rename(telo_clust = clust_num)
+
+tac_tpc_with_id <- inner_join(tac_tpc_cluster,
+                              tac_cdhit,
+                              by=join_by(tac_id))
+
+
+
+tac_tpc_with_id <- inner_join(tac_tpc_with_id,
+                              tpc_cdhit,
+                              by=join_by(tpc_id))
+
+
+```
+
+### 6.1 Exploratory heatmaps
+
+```{r}
+cluster_loop_relation <- read_excel("../data/telogroup_first_3_loops_info.xlsx") |>
+  rename(telo_clust=TELOCLUSTER,
+         loop_1_canonical="canonical 1st",
+         loop_1="1st loop",
+         loop_2="2nd loop",
+         loop_3="3rd loop") |>
+  select(telo_clust,
+         loop_1,
+         loop_2,
+         loop_3,
+         loop_1_canonical)
+
+tac_tpc_loop <- inner_join(tac_tpc_with_id,
+                           cluster_loop_relation,
+                           by=join_by(telo_clust)) |>
+  add_count(telo_clust) |>
+  filter(n>2)
+
+```
+
+#### 6.1.1 Co-occurence
+
+```{r}
+total_n <- tac_tpc_loop |> count() |> pull(n)
+
+
+ tac_tpc_co_occur <- tac_tpc_loop |>
+  count(tac_cd_clust,tpc_cd_clust, DNA_type) |>
+  group_by(tac_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tac_cd_clust,tpc_cd_clust, DNA_type, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(tac_cd_clust),
+             x = factor(tpc_cd_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = n), size = 3) +
+  labs(
+    y = paste0("Tac family (n = ", total_n, ")"),
+    x = paste0("Tpc family (n = ", total_n, ")"),
+    fill = "Percent of Tac family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~DNA_type)
+
+
+
+
+
+
+library(rcompanion)
+
+cramer_df <- tac_tpc_with_id |>
+  mutate(tac_cd_clust = paste0("tac_", tac_cd_clust)) |>
+  mutate(tpc_cd_clust = paste0("tpc_", tpc_cd_clust))
+
+# Create contingency tables
+tac_tpc_table <- table(cramer_df$tac_cd_clust, cramer_df$tpc_cd_clust)
+
+# Compute Cramér's V
+tac_tpc_v <- cramerV(tac_tpc_table)
+
+cat("Cramér's V for Tac vs Tpc:", tac_tpc_v, "\n")
+
+ggsave(filename="../figures/figure_5a_tac_tpc_co_occurence.svg",
+       plot=tac_tpc_co_occur,
+       width=15,
+       height=8)
+tac_tpc_co_occur
+```
+
+#### 6.1.2 Vs telogroup
+
+```{r}
+# Total n
+total_n <- tac_tpc_loop |> count() |> pull(n)
+
+tac_telo <- tac_tpc_loop |>
+  count(tac_cd_clust,telo_clust) |>
+  group_by(telo_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tac_cd_clust, telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(telo_clust),
+             x = factor(tac_cd_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tac family (n = ", total_n, ")"),
+    y = "Telo family",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpc_telo <- tac_tpc_loop |>
+  count(tpc_cd_clust,telo_clust) |>
+  group_by(telo_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(tpc_cd_clust, telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(telo_clust),
+             x = factor(tpc_cd_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("Tpc family (n = ", total_n, ")"),
+    y = "",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+tac_tpc_telo <- (tac_telo + tpc_telo) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right")
+
+ggsave(filename="../figures/figure_5b_tac_tpc_vs_telogroup.svg",
+       width=15,
+       height=8,
+       plot=tac_tpc_telo)
+
+tac_tpc_telo
+
+```
+
+```{r}
+
+### 5.1.2 Loops to protein-relation
+
+
+# tac cluster
+total_n <- tac_tpc_loop |> count() |> pull(n)
+
+# Then plug it into the x-axis label
+tac_loop1 <- tac_tpc_loop |>
+  count(loop_1, tac_cd_clust, DNA_type) |>
+  group_by(loop_1) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_1, tac_cd_clust, DNA_type, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(x = factor(tac_cd_clust),
+             y = factor(loop_1), fill = percent)) +
+  geom_tile(color = "black") +
+  geom_text(aes(label = n), size = 3) +
+  labs(
+    x = paste0("Tac cluster (n = ", total_n, ")"),
+    y = "loop_1",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~DNA_type)
+
+
+
+tpc_loop1 <- tac_tpc_loop |>
+  count(loop_1, tpc_cd_clust, DNA_type) |>
+  group_by(loop_1) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_1, tpc_cd_clust, DNA_type, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(x = factor(tpc_cd_clust),
+             y = factor(loop_1), fill = percent)) +
+  geom_tile(color = "black") +
+  geom_text(aes(label = n), size = 3) +
+  labs(
+    x = paste0("Tpc cluster (n = ", total_n, ")"),
+    y = "loop_1",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~DNA_type)
+
+tac_loop1/tpc_loop1
+
+# Calculating tac
+library(rcompanion)
+cramer_df <- tac_tpc_loop |>
+  mutate(tac_cd_clust = paste0("tac_", tac_cd_clust)) |>
+  mutate(tpc_cd_clust = paste0("tpc_", tpc_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+# Create contingency tables
+tpc_table <- table(cramer_df$loop_1, cramer_df$tpc_cd_clust)
+tac_table <- table(cramer_df$loop_1, cramer_df$tac_cd_clust)
+
+# Compute Cramér's V
+tpc_V <- cramerV(tpc_table)
+tac_V <- cramerV(tac_table)
+cat("Cramér's V for tpc vs loop_1 is:", tpc_V, "\n")
+cat("Cramér's V for tac vs loop_1 is:", tac_V, "\n")
+
+```
+
+#### Loop 2
+
+```{r}
+# tpc cluster
+tac_loop2 <- tac_tpc_loop |>
+  count(loop_2, tac_cd_clust) |>
+  group_by(tac_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_2, tac_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tac_cd_clust),
+               y= factor(loop_2), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "tac cluster",
+    y = "loop_2",
+    fill = "percent of lop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpc_loop2 <- tac_tpc_loop |>
+  count(loop_2, tpc_cd_clust) |>
+  group_by(tpc_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(loop_2, tpc_cd_clust, fill = list(percent = 0)) |>
+    ggplot(aes(x = factor(tpc_cd_clust),
+               y= factor(loop_2), fill = percent)) +
+geom_tile(color = "black") +
+  labs(
+    x = "tpc cluster",
+    y = "loop_2",
+    fill = "percent of loop-type"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+tac_loop2/tpc_loop2
+
+
+library(rcompanion)
+
+# Assuming A is your tibble with columns col1, col2, col3
+
+cramer_df <- tac_tpc_loop |>
+  mutate(tac_cd_clust = paste0("tac_", tac_cd_clust)) |>
+  mutate(tpc_cd_clust = paste0("tpc_", tpc_cd_clust)) |>
+  mutate(telo_clust = paste0("telo_", telo_clust))
+
+
+# Create contingency tables
+tpc_table <- table(cramer_df$loop_2, cramer_df$tpc_cd_clust)
+tac_table <- table(cramer_df$loop_2, cramer_df$tac_cd_clust)
+
+
+
+# Compute Cramér's V
+tpc_V <- cramerV(tpc_table)
+tac_V <- cramerV(tac_table)
+tac_tpc_v <- cramerV(tac_tpc_table)
+
+cat("Cramér's V for tpc vs loop_2 is:", tpc_V, "\n")
+cat("Cramér's V for tac vs loop_2 is:", tac_V, "\n")
+cat("Cramér's V for tac_tpc_complex vs loop_2:", tac_tpc_v, "\n")
+
+#
+# Plot with counts
+# tpc cluster
+tac_loop2 <- tac_tpc_loop |>
+  count(loop_2, tac_cd_clust) |>
+  complete(loop_2, tac_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tac_cd_clust),
+               y= factor(loop_2), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "tac cluster",
+    y = "loop_2",
+    fill = "Count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+tpc_loop2 <- tac_tpc_loop |>
+  count(loop_2, tpc_cd_clust) |>
+  complete(loop_2, tpc_cd_clust, fill = list(n = 0))|>
+    ggplot(aes(x = factor(tpc_cd_clust),
+               y= factor(loop_2), fill = n)) +
+geom_tile(color = "black") +
+  labs(
+    x = "tpc cluster",
+    y = "loop_2",
+    fill = "count"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+# 7. GtpA-GtpB
+
+```{r}
+gtpA_cdhit <- read_tsv("../data/gtpA_70.tsv",
+                      col_names=c("gtpa_id","gtpa_cd_clust")) |>
+    separate(gtpa_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,gtpa_cd_clust) |>
+  rename(gtpa_id=rest)
+                      
+gtpB_cdhit <- read_tsv("../data/gtpB_70.tsv",
+                      col_names=c("gtpb_id","gtpb_cd_clust") ) |>
+  separate(gtpb_id, 
+             into = c("part1", "part2", "part3", "rest"), sep = "_", extra = "merge") |>
+  select(rest,gtpb_cd_clust) |>
+  rename(gtpb_id=rest)
+
+gtpA_gtpB_cluster <- read_tsv("../tables_and_lists/gtpA_gtpB_pairs_all.tsv") |>
+  select(-target,
+         -seq_len,
+         -cigar,
+         -ign1,
+         -ign2,
+         -clust_type) |>
+  rename(telo_clust = clust_num)
+
+gtpA_gtpB_with_id <- inner_join(gtpA_gtpB_cluster,
+                              gtpA_cdhit,
+                              by=join_by(gtpa_id))
+
+
+
+gtpA_gtpB_with_id <- inner_join(gtpA_gtpB_with_id,
+                              gtpB_cdhit,
+                              by=join_by(gtpb_id))
+
+cluster_loop_relation <- read_excel("../data/telogroup_first_3_loops_info.xlsx") |>
+  rename(telo_clust=TELOCLUSTER,
+         loop_1_canonical="canonical 1st",
+         loop_1="1st loop",
+         loop_2="2nd loop",
+         loop_3="3rd loop") |>
+  select(telo_clust,
+         loop_1,
+         loop_2,
+         loop_3,
+         loop_1_canonical)
+
+gtpA_gtpB_loop <- inner_join(gtpA_gtpB_with_id,
+                           cluster_loop_relation,
+                           by=join_by(telo_clust)) |>
+    add_count(telo_clust) |>
+  filter(n>2)
+
+
+
+```
+
+### 7.1 Heatmaps
+
+#### 7.1.1 Co-occurence
+
+```{r}
+total_n <- gtpA_gtpB_loop |> count() |> pull(n)
+
+
+gtpA_gtpB_co_occur <- gtpA_gtpB_loop |>
+  count(gtpa_cd_clust,gtpb_cd_clust, DNA_type) |>
+  group_by(gtpa_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(gtpa_cd_clust,gtpb_cd_clust, DNA_type, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(x = factor(gtpa_cd_clust),
+             y = factor(gtpb_cd_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("GtpA family (n = ", total_n, ")"),
+    y = "GtpB family",
+    fill = "Percent of GtpA"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~DNA_type)
+
+gtpA_gtpB_co_occur
+
+ggsave(filename="../figures/supl_figure_gtpA_gtpB_co_occurence.svg",
+       width=15,
+       height=8,
+       plot=gtpA_gtpB_co_occur)
+
+
+```
+
+```{r}
+total_n <- gtpA_gtpB_loop |> count() |> pull(n)
+
+
+gtpa_telo <- gtpA_gtpB_loop |>
+  count(gtpa_cd_clust,telo_clust) |>
+  group_by(gtpa_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(gtpa_cd_clust,telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(x = factor(gtpa_cd_clust),
+             y = factor(telo_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("GtpA family (n = ", total_n, ")"),
+    y = "Telocluster",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+gtpb_telo <- gtpA_gtpB_loop |>
+  count(gtpb_cd_clust,telo_clust) |>
+  group_by(gtpb_cd_clust) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(gtpb_cd_clust,telo_clust, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(x = factor(gtpb_cd_clust),
+             y = factor(telo_clust), fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = ifelse(n == 0, NA, n)), size = 3) +
+  labs(
+    x = paste0("GtpB family (n = ", total_n, ")"),
+    y = "",
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+gtpA_gtpB_telo <- (gtpb_telo + gtpa_telo) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right")
+gtpA_gtpB_telo
+
+ggsave(filename="../figures/supl_figure_gtpA_gtpB_vs_telo.svg",
+       width=15,
+       height=8,
+       plot=gtpA_gtpB_telo)
+
+```
+
+# 8. Alternative systems for telomere maintanance
+
+###8.1 A potential new system, in strains with and without
+
+Plot of the frequency:
+
+```{r}
+
+# file of frequency
+prot_fam_in_linear_genomes <- read_csv("../data/no_sys_spec.csv") |>
+  rename(ref_freq = "reference freq") |>
+  rename(comp_freq = "comp freq")
+
+sub_data <- prot_fam_in_linear_genomes |>
+  filter(name=="NBC_00012_CP108311_PRJNA747871:OHA19_44885")
+
+freq_plot <- ggplot(data = prot_fam_in_linear_genomes,
+       mapping=aes(x=ref_freq,
+                   y=comp_freq)) +
+  geom_point(color=palette_2[5],
+             alpha=0.5) +
+geom_point(data = sub_data,
+           aes(x = ref_freq,
+               y=comp_freq),
+           inherit.aes = FALSE,
+             color = "red",shape=1,size=5, stroke=3) +
+  theme_minimal() +
+  labs(x="Freq. in strains with no system",
+       y="Freq. in strains with identified system") +
+    theme(
+    text = element_text(size = 16),               # Base font size
+    axis.title = element_text(size = 18),         # Axis title font size
+    axis.text = element_text(size = 14)
+  )
+
+
+ggsave(filename="../figures/figure_7a_frequency_plot.svg",
+       width=15,
+       height=8,
+       plot=freq_plot)
+
+ggsave(filename="../figures/figure_7a_frequency_plot.png",
+       width=15,
+       height=8,
+       plot=freq_plot)
+
+
+freq_plot
+```
+
+Inspecting the members of the protein family identified as being frequent in no_system strains.
+
+```{r}
+new_gene_info <- read_tsv("../data/new_gene_info_info.tsv")
+new_gene_info  <- new_gene_info |>
+  mutate(
+  start = str_extract(location, "(?<=\\[)\\d+"),
+  stop = str_extract(location, "(?<=:)\\d+"),
+  strand = str_extract(location, "(?<=\\()\\+|\\-")
+  ) |>
+  select(-location)|>
+  mutate(
+  start = as.numeric(start),
+  stop = as.numeric(stop)
+  ) |>
+  mutate(
+   relative_position=start/DNA_length,
+   relative_position_perc=(start/DNA_length)*100
+) |>
+  mutate(side=case_when(relative_position<0.5 ~ "left",
+                       relative_position>=0.5 ~ "right")) |>
+  mutate(replicon_end=str_c(accession,
+                "linear",
+                side,
+                sep="_")) |>
+  mutate(protein_match="OHA19_44885")
+```
+
+```{r}
+x_ticks <- seq(from = 0, to = 100, by = 10) # list of X-ticks to place
+
+
+# Filter for protein of interest
+new_plot_data <- new_gene_info |>
+  filter(DNA_type!="extrachromosomal")
+
+# Plot
+
+plot_new<- ggplot(data=new_plot_data,
+      mapping=aes(y="",
+        x=relative_position_perc,
+        color=protein_match,
+        fill=protein_match
+      )) +
+  theme_minimal() +
+  scale_color_manual(values = c(palette_1[1],palette_1[2])) +
+  scale_fill_manual(values = c(palette_1[1],palette_1[2])) +
+  geom_beeswarm(size=2,
+                priority="random",
+                cex=2.5,
+                method="swarm",
+                shape=21,
+                alpha=0.5) +
+  scale_x_continuous(limits=c(0, 100),
+                     breaks=x_ticks,
+                     labels = function(x) paste0(x, "%")) +
+  labs(y="",
+       x="Relative genomic position (%)",
+       fill="Protein",
+       color="Protein"
+       #title="Terminal proteins are preferentially encoded at the chromosomal terminus"
+       ) +
+  expand_limits(y= c(-3, 5)) +
+  facet_grid(~DNA_type)
+
+
+ggsave(filename="../figures/figure_7b_genomic_loc.svg",
+       width=15,
+       height=8,
+       plot=plot_new)
+
+
+plot_new
+```
+
+```{r}
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target")) |>
+  filter(clust_type!="C") |>
+  rename(replicon_end = query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n()) |>
+  filter(cluster_size>3)
+
+new_gene_cluster <- inner_join(new_gene_info,
+                               clust_data,
+                               by=join_by(replicon_end))
+
+
+total_n <- new_gene_cluster |> count() |> pull(n)
+
+
+heatmap_new_gene <- new_gene_cluster |>
+  add_count(clust_num) |>
+  filter(n>2) |>
+  count(protein_match,clust_num) |>
+  group_by(protein_match) |>
+  mutate(percent = n / sum(n) * 100) |>
+  ungroup() |>
+  complete(protein_match, clust_num, fill = list(percent = 0, n = 0)) |>
+  ggplot(aes(y = factor(clust_num),
+             x = factor(protein_match),
+             fill = percent)) +
+  geom_tile(color = "grey50") +
+  geom_text(aes(label = n), size = 3) +
+  labs(
+    x = paste0("Protein (n = ", total_n, ")"),
+    y = paste0("Telocluster"),
+    fill = "Percent of protein family"
+  ) +
+  scale_fill_gradient(low = "white", high = "steelblue", limits = c(0, 100)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+heatmap_new_gene
+```
+
+# 8. BLAST WITH CLUST
+
+This is just for checking unusual hits in the broader context of all clusters found hits.
+
+```{r}
+blast_data <- read_tsv("../data/term_prot_BLAST_info.tsv") |>
+  filter(qcov>=40) |>
+  filter(evalue<=1e-10) |>
+  mutate(protein_match=str_replace_all(protein_match,"TPC","Tpc")) |>
+  mutate(
+    start = str_extract(location, "(?<=\\[)\\d+"),
+    stop = str_extract(location, "(?<=:)\\d+"),
+    strand = str_extract(location, "(?<=\\()\\+|\\-")
+  ) |> # need to flip stop and start for negative strand as biopython gives interval from least to biggest number
+  mutate(temp_start = case_when(strand=="+" ~ start,
+                                strand=="-" ~ stop),
+         temp_stop = case_when(strand=="+" ~ stop,
+                                strand=="-" ~ start)) |>
+  mutate(start=temp_start,
+         stop=temp_stop) |>
+  select(-location,
+         -temp_start,
+         -temp_stop) |>
+  mutate(
+    start = as.numeric(start),
+    stop = as.numeric(stop)
+  ) |>
+    mutate(
+    relative_position=start/DNA_length
+  ) |>
+   mutate(side=case_when(relative_position<0.5 ~ "left",
+                         relative_position>=0.5 ~ "right")) |>
+  mutate(replicon_end=str_c(accession,
+                            "linear",
+                            side,
+                            sep="_"))
+
+clust_data <- read_tsv("../data/vclust.ID.72.length.90.uc",
+                       col_names=c("clust_type",
+                                   "clust_num",
+                                   "seq_len",
+                                   "hit_perc",
+                                   "strand",
+                                   "ign1",
+                                   "ign2",
+                                   "cigar",
+                                   "query",
+                                   "target")) |>
+  filter(clust_type!="C") |>
+  rename(replicon_end = query) |>
+  group_by(clust_num) |>
+  mutate(cluster_size = n())
+
+blast_with_clust <- inner_join(blast_data,
+                               clust_data,
+                               by=join_by(replicon_end))
+```
