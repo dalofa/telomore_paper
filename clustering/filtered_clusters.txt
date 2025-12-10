@@ -1,0 +1,9 @@
+# Clusters discarded (see Supplementary table 1)
+1216
+1340
+1341
+1344
+1509
+1803
+2045
+2442
