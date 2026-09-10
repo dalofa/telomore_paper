@@ -8,3 +8,4 @@ This repository contains:
 * mine_for_TPs: Scripts for mining G1034 genomes for telomeric proteins
 * R_viz: Scripts and data required to produce the plots in the paper
 * tables: A copy of the supplementary table containing all information used to cluster telomeres
+* inverted_pcr: The autofan2 script used to designing primers for inverted PCR analysis of telomeres
